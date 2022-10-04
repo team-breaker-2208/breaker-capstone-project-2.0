@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Home from "./components/Home";
 import Login from "./components/Login";
 import { AuthContext } from "./context/AuthContext";
+import { CookieClicker } from "./components/CookieClicker";
 
 function App() {
   // const {currentUser} = useContext(AuthContext)
@@ -23,6 +24,7 @@ function App() {
             <Route index element={<Home />} />
             <Route exact path="login" element={<Login />} />
             <Route exact path="register" element={<Register />} />
+            <Route exact path="cookieCliker" element={<CookieClicker />} />
           </Route>
       </Routes>
     </BrowserRouter>
