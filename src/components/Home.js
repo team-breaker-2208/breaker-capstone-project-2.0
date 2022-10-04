@@ -1,11 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import {signOut} from 'firebase/auth'
 import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
-    // const {currentUser} = useContext(AuthContext)
-    // console.log(currentUser)
+    const {currentUser} = useContext(AuthContext)
+    const [user, setUser] = useState({})
+    console.log(currentUser)
+    const navigate = useNavigate()
+
+    useEffect(()=> {
+        
+        setUser(currentUser)
+        console.log(user)
+        
+    },[currentUser, user])
+    
+    if(!currentUser) {
+        navigate("/login")
+    }
+
 
   return (
     <div>

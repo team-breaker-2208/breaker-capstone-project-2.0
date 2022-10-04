@@ -7,21 +7,21 @@ import { AuthContext } from "./context/AuthContext";
 import { CookieClicker } from "./components/CookieClicker";
 
 function App() {
-  // const {currentUser} = useContext(AuthContext)
+  const currentUser = useContext(AuthContext)
 
-  // const ProtectedRoute = ({children}) => {
-  //   if (!currentUser) {
-  //     return <Navigate to="/login" />
-  //   }
+  const ProtectedRoute = ({children}) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
 
-  //   return children
-  // }
+    return children
+  }
 
   return (
     <BrowserRouter>
       <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
+            <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route exact path="login" element={<Login />} />
             <Route exact path="register" element={<Register />} />
             <Route exact path="cookieCliker" element={<CookieClicker />} />
