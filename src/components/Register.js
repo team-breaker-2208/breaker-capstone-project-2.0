@@ -1,4 +1,6 @@
 import React from 'react'
+import { auth } from '../server/firebase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function Register() {
   const handleSubmit = async (e) => {
@@ -11,6 +13,13 @@ export default function Register() {
     console.log(displayName)
     console.log(email)
     console.log(password)
+
+    try {
+        const res = await createUserWithEmailAndPassword(auth, email, password)
+
+    } catch (ex) {
+        console.log(ex)
+    }
   }
 
 
