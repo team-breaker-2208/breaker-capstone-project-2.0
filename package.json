@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start & less-watch-compiler public/src public/style style.less",
-    "build": "react-scripts build",
+    "start-build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
