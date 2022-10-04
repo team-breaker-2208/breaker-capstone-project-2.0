@@ -1,8 +1,12 @@
 import React from 'react'
-import { auth } from '../server/firebase'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from '../server/firebase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; 
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function Register() {
+    const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -17,7 +21,25 @@ export default function Register() {
 
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password)
+
+        updateProfile(auth.currentUser, {
+            displayName: displayName
+          }).then(() => {
+            console.log(auth.currentUser)
+          }).catch((error) => {
+            console.log(error)
+          });
+
+        await setDoc(doc(db, "users", res.user.uid),{
+            uid: res.user.uid,
+            displayName,
+            email
+        })
+
+
+
         console.log(res)
+
 
     } catch (ex) {
         console.log(ex)
@@ -50,8 +72,7 @@ export default function Register() {
                     </div>
 
                     <button type="submit" className="login-button">Create User</button>
-                    {/* <p className="register-link">You have an account? <Link to="/login">Login</Link></p> */}
-                    {/* <div id="signInDiv"></div> */}
+                    <p className="register-link">You have an account? <Link to="/login">Login</Link></p>
                 </form>
             </div>
         </div>
