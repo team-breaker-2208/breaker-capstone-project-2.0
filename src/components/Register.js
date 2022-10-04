@@ -39,7 +39,7 @@ export default function Register() {
 
 
         console.log(res)
-
+        navigate("/")
 
     } catch (ex) {
         console.log(ex)
