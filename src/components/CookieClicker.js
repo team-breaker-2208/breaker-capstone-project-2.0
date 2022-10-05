@@ -1,18 +1,68 @@
 import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
+// import { onAuthStateChanged } from "firebase/auth";
+import { ref } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore"; 
+import { db, storage } from '../server/firebase';
+import {onDisconnect} from "firebase/database";
 
 export const CookieClicker = () => {
 
     const {currentUser} = useContext(AuthContext)
-    const [user, setUser] = useState({})
+    const [player, setPlayer] = useState({})
 
-    //dependency either[] or[currentUser,user],otherwise warning,
-    //but the first will not render the user and the later will cause infinite loop??
-    useEffect(()=> {
-        let userWithPoint={...currentUser,points:0};
-        setUser(userWithPoint);
-        console.log(user);
-    },[currentUser])      
+    useEffect(()=>{
+        const addPlayer = async()=>{
+            const player = await setDoc(doc(db, "player", currentUser.uid),{
+                uid: currentUser.uid,
+                displayName:currentUser.displayName,
+                points:0
+            })
+            setPlayer(player);
+    
+        }
+    },[])
+
+
+    // addPlayer();
+    // let playerRef = storage.ref("player");
+
+    let playerRef = ref(storage,`player/${currentUser.uid}`);
+    console.log(playerRef);
+    onDisconnect(playerRef).remove().catch((err) => {
+        if (err) {
+          console.error("could not establish onDisconnect event", err);
+        }
+      });
+
+    // playerRef.onDisconnect().remove();
+    // onDisconnect(playerRef).remove();
+
+
+    // let playerId;
+    // let playerRef;
+
+    // onAuthStateChanged((user) => {
+
+    //     console.log(user)
+        
+    //     if(user) {
+        
+        // playerId = currentUser.id;
+        // playerRef = ref(`players/${playerId}`);
+        
+    //     } else {
+        
+    //     console.log( "no player" )
+    //     }
+    // })
+
+    // useEffect(()=> {
+    //     let userWithPoint={...currentUser,points:0};
+    //     setPlayer(userWithPoint);
+    // },[currentUser]) 
+    
+    
     //how to get other users in this room
     const dummyUsers = [
     {displayName:"Tom",
@@ -36,12 +86,12 @@ export const CookieClicker = () => {
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
         <div className="cookie-container" >
-                        <h2>You {user.displayName} </h2>
+                        <h2>You  </h2>
                         <span className="cookieImage">
                         <img 
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDgy71hH1KUez-MRwk195KG_dx2I9-bULNg&usqp=CAU"
                             alt="Cookie" 
-                            onClick={(event)=>handleClick(event,user)}
+                            onClick={(event)=>handleClick(event,player)}
                         />
                         </span>
                     </div>
