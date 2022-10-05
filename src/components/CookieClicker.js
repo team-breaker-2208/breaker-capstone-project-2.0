@@ -2,91 +2,56 @@ import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
 import { ref } from "firebase/storage";
-import { doc, setDoc, getDoc, collection, getDocs } from "firebase/firestore"; 
+import { doc, setDoc, getDoc, collection, getDocs,updateDoc } from "firebase/firestore"; 
 import { db, storage } from '../server/firebase';
 import {onDisconnect} from "firebase/database";
 
 export const CookieClicker = () => {
 
     const {currentUser} = useContext(AuthContext)
-    const [player, setPlayer] = useState({})
-    const [playerId,setPlayerId] = useState("");
+    const [player, setPlayer] = useState({});
+    const [score,setScore]=useState(0);
 
     let playersCollectionRef = collection(db,"player");
     
 
     useEffect(()=>{
-        const addPlayer = async()=>{
-            const player = await setDoc(doc(db, "player", currentUser.uid),{
-                uid: currentUser.uid,
-                displayName:currentUser.displayName,
-                points:0
-            })
-            setPlayer(player);
-            setPlayerId(currentUser.uid);
-        };
-        addPlayer();
+        
+            const addPlayer = async()=>{
+                if(currentUser.displayName){
+                    await setDoc(doc(db, "player", currentUser.uid),{
+                        uid: currentUser.uid,
+                        displayName:currentUser.displayName,
+                        points:0
+                    })
+                }
+
+                // setPlayerId(currentUser.uid);
+            };
+            addPlayer();
 
         //to get all players in "player" collection
         const getUsers = async()=>{
-            const data = await getDocs(playersCollectionRef);
-            console.log("users",data);
-            let currentPlayerRef = doc(db,"player",playerId);
-            let currentPlayerSnap = await getDoc(currentPlayerRef);
-            console.log("currentPlayer",currentPlayerSnap);
-        }
-        getUsers();
+            // const data = await getDocs(playersCollectionRef);
 
-    
-        // let playerRef = ref(storage,`player/${currentUser.uid}`);
+            if(currentUser.displayName){
+                let currentPlayerRef = doc(db,"player",currentUser.uid);
+                let currentPlayerSnap = await getDoc(currentPlayerRef);
+                if (currentPlayerSnap.exists()) {
+                        setPlayer(currentPlayerSnap.data());
+                    } else {
+                    // doc.data() will be undefined in this case
+                    // console.log("No such document!");
+                    }
+                }
+            }
 
-        // console.log("playerRef",playerRef);
-        // onDisconnect(playerRef).remove().catch((err) => {
-        //     if (err) {
-        //       console.error("could not establish onDisconnect event", err);
-        //     }
-        //   });
-    },[player,playerId,currentUser])
-
-
-    // addPlayer();
-    // let playerRef = storage.ref("player");
-
-    // let playerRef = ref(storage,`player/${playerId}`);
-    // console.log(playerRef);
-    // onDisconnect(playerRef).remove().catch((err) => {
-    //     if (err) {
-    //       console.error("could not establish onDisconnect event", err);
-    //     }
-    //   });
-
-
-
-    // let playerId;
-    // let playerRef;
-
-    // onAuthStateChanged((user) => {
-
-    //     console.log(user)
+            getUsers(); 
         
-    //     if(user) {
-        
-        // playerId = currentUser.id;
-        // playerRef = ref(`players/${playerId}`);
-        
-    //     } else {
-        
-    //     console.log( "no player" )
-    //     }
-    // })
+    },[currentUser])
 
-    // useEffect(()=> {
-    //     let userWithPoint={...currentUser,points:0};
-    //     setPlayer(userWithPoint);
-    // },[currentUser]) 
-    
-    
-    //how to get other users in this room
+ 
+
     const dummyUsers = [
     {displayName:"Tom",
     points:0,
@@ -98,9 +63,12 @@ export const CookieClicker = () => {
     }];
 
 
-    const handleClick=(event,user)=>{
-        user.points++;
-        console.log(user.displayName +" points: " + user.points);
+    const handleClick=async(player)=>{
+        const playerRef = doc(db,'player',player.uid);
+
+        const res = await updateDoc(playerRef,{points:player.points+=1});
+        console.log("points: ",player.points);
+        setScore(player.points);
         
     }
 
@@ -109,14 +77,15 @@ export const CookieClicker = () => {
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
         <div className="cookie-container" >
-                        <h2>You  </h2>
+                        <h2>You {player.displayName}  </h2>
                         <span className="cookieImage">
                         <img 
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDgy71hH1KUez-MRwk195KG_dx2I9-bULNg&usqp=CAU"
                             alt="Cookie" 
-                            onClick={(event)=>handleClick(event,player)}
+                            onClick={()=>handleClick(player)}
                         />
                         </span>
+                        <h4>Score: {score}</h4>
                     </div>
             {dummyUsers.map((user)=>{
                 return(

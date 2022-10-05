@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Home() {
     const {currentUser} = useContext(AuthContext)
     const [user, setUser] = useState({})
-    console.log(currentUser)
+    // console.log(currentUser)
     const navigate = useNavigate()
 
     useEffect(()=> {
