@@ -1,22 +1,67 @@
 import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
-import { ref } from "firebase/storage";
-import { doc, setDoc, getDoc, collection, getDocs,updateDoc } from "firebase/firestore"; 
-import { db, storage } from '../server/firebase';
-import {onDisconnect} from "firebase/database";
+// import { ref } from "firebase/storage";
+import { doc, setDoc, getDoc, collection, getDocs, updateDoc, addDoc } from "firebase/firestore"; 
+import { db } from '../server/firebase';
+// import {onDisconnect} from "firebase/database";
+import { Link } from "react-router-dom";
 
 export const CookieClicker = () => {
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     const [score,setScore]=useState(0);
-
-    let playersCollectionRef = collection(db,"player");
-    
+    const [players, setPlayers] = useState([])
+    const [points, setPoints] = useState([])
+    const [gameId, setGameId] = useState("")
+    // const [gameOver, setGameOver] = useState(false) 
 
     useEffect(()=>{
+  
         
+        const getGame = async()=>{
+            let currentGame = false
+            
+            const gamesCollectionRef = await collection(db,"cookieClickerGames")
+            const data = await getDocs(gamesCollectionRef)
+            console.log(data.docs.map((game) => { 
+                const gameStatus = game.data().gameStatus
+
+                if(gameStatus){
+                    setGameId(game.data().gid)
+                    currentGame = true
+                }
+                return currentGame
+            }))
+            
+            if(currentGame === false ){
+                const addGame = async()=>{
+                    const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
+                        gameStatus: true
+                    })
+    
+                    await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
+                        gameStatus: true,
+                        gid: gameRef.id
+                    })
+                    console.log("Cookie Clicker Game ID: ",gameRef.id)
+                    setGameId(gameRef.id)
+                    currentGame = true
+                };
+                addGame();
+            }; 
+    
+        }
+        getGame()
+        
+
+    }, [])
+
+    console.log(gameId)
+    
+    useEffect(()=>{
+  
             const addPlayer = async()=>{
                 if(currentUser.displayName){
                     await setDoc(doc(db, "player", currentUser.uid),{
@@ -32,8 +77,7 @@ export const CookieClicker = () => {
 
         //to get all players in "player" collection
         const getUsers = async()=>{
-            // const data = await getDocs(playersCollectionRef);
-
+            
             if(currentUser.displayName){
                 let currentPlayerRef = doc(db,"player",currentUser.uid);
                 let currentPlayerSnap = await getDoc(currentPlayerRef);
@@ -47,33 +91,60 @@ export const CookieClicker = () => {
             }
 
             getUsers(); 
+
         
     },[currentUser])
 
+   
  
 
-    const dummyUsers = [
-    {displayName:"Tom",
-    points:0,
-    id:1
-    },
-    {displayName:"Jerry",
-    points:0,
-    id:2
-    }];
+
+    
+
+    // const dummyUsers = [
+    // {displayName:"Tom",
+    // points:0,
+    // id:1
+    // },
+    // {displayName:"Jerry",
+    // points:0,
+    // id:2
+    // }];
 
 
     const handleClick=async(player)=>{
         const playerRef = doc(db,'player',player.uid);
 
-        const res = await updateDoc(playerRef,{points:player.points+=1});
+        await updateDoc(playerRef,{points:player.points+=1});
         console.log("points: ",player.points);
         setScore(player.points);
+
+        let playersCollectionRef = collection(db,"player")
+        const data = await getDocs(playersCollectionRef);
+        // setPlayers(data.docs.map((player) => ({ ...player.data().points})))
+        setPlayers(data.docs.map((player) => { 
+            return player.data()
+        }))
+
+        setPoints(data.docs.map((player) => { 
+            return player.data().points
+        }))
+        // await setDoc(doc(db, "cookieClickerGames", gameId), {
+        //     gid: gameId,
+        //     players,
+        //     gameStatus: false,
+        //     winner: "Aaron",
+        //     losers: []
+        //   });
+
         
     }
 
+
+
   return (
-    <>
+    points.indexOf(10) === -1 || !player.points ? 
+        <>
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
         <div className="cookie-container" >
@@ -87,7 +158,7 @@ export const CookieClicker = () => {
                         </span>
                         <h4>Score: {score}</h4>
                     </div>
-            {dummyUsers.map((user)=>{
+            {/* {dummyUsers.map((user)=>{
                 return(
                     <div className="cookie-container" key={user.id}>
                         <h2>{user.displayName} </h2>
@@ -103,9 +174,12 @@ export const CookieClicker = () => {
                         </span>
                     </div>
                 )
-            })}
+            })} */}
         </div>
+    </>: <div>
+            <h1>Max points reached!</h1>
+            <Link to="/">Back to home</Link>
+         </div>
 
-    </>
   )
 }
