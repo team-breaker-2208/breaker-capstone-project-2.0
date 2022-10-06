@@ -52,15 +52,15 @@ export const CookieClicker = () => {
 
  
 
-    const dummyUsers = [
-    {displayName:"Tom",
-    points:0,
-    id:1
-    },
-    {displayName:"Jerry",
-    points:0,
-    id:2
-    }];
+    // const dummyUsers = [
+    // {displayName:"Tom",
+    // points:0,
+    // id:1
+    // },
+    // {displayName:"Jerry",
+    // points:0,
+    // id:2
+    // }];
 
 
     const handleClick=async(player)=>{
@@ -74,7 +74,7 @@ export const CookieClicker = () => {
 
   return (
     <>
-        <h1>Cookie Clicker!</h1>
+        <h1 >Cookie Clicker!</h1>
         <div className="cookies-container">
         <div className="cookie-container" >
                         <h2>You {player.displayName}  </h2>
@@ -87,7 +87,7 @@ export const CookieClicker = () => {
                         </span>
                         <h4>Score: {score}</h4>
                     </div>
-            {dummyUsers.map((user)=>{
+            {/* {dummyUsers.map((user)=>{
                 return(
                     <div className="cookie-container" key={user.id}>
                         <h2>{user.displayName} </h2>
@@ -103,7 +103,7 @@ export const CookieClicker = () => {
                         </span>
                     </div>
                 )
-            })}
+            })} */}
         </div>
 
     </>
