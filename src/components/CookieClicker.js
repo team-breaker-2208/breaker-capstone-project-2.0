@@ -5,10 +5,9 @@ import { ref } from "firebase/storage";
 import { doc, setDoc, getDoc, collection, getDocs,updateDoc } from "firebase/firestore"; 
 import { db, storage } from '../server/firebase';
 import {onDisconnect} from "firebase/database";
+import { Link } from "react-router-dom";
 
 export const CookieClicker = () => {
-
-    const [timer, setTimer] = useState(true);
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -34,8 +33,8 @@ export const CookieClicker = () => {
 
         //to get all players in "player" collection
         const getUsers = async()=>{
-            // const data = await getDocs(playersCollectionRef);
-
+            const data = await getDocs(playersCollectionRef);
+            
             if(currentUser.displayName){
                 let currentPlayerRef = doc(db,"player",currentUser.uid);
                 let currentPlayerSnap = await getDoc(currentPlayerRef);
@@ -74,14 +73,9 @@ export const CookieClicker = () => {
         
     }
 
-    //sets game timer for cookie clicker at 30 seconds
-    setTimeout(() => {  
-        setTimer(false);
-      }, "30000")
-
 
   return (
-    timer ? 
+    player.points < 10 || !player.points ? 
         <>
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
@@ -114,7 +108,10 @@ export const CookieClicker = () => {
                 )
             })}
         </div>
-    </>: <div>Time's up!</div>
+    </>: <div>
+            <h1>Max points reached!</h1>
+            <Link to="/">Back to home</Link>
+         </div>
 
   )
 }

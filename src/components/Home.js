@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react'
 import {signOut} from 'firebase/auth'
 import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+
 
 export default function Home() {
     const {currentUser} = useContext(AuthContext)
@@ -26,6 +27,7 @@ export default function Home() {
     <div>
         <h1>Welcome to Home</h1>
         {/* <span>{currentUser.displayName}</span> */}
+        <Link to="/cookieClicker">Go to Cookie Clicker</Link>
         <button onClick={()=>signOut(auth)}>Logout</button>
     </div>
   )
