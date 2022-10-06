@@ -19,10 +19,10 @@ export const CookieClicker = () => {
 
     useEffect(()=>{
   
-        let currentGame = false
-
+        
         const getGame = async()=>{
-
+            let currentGame = false
+            
             const gamesCollectionRef = await collection(db,"cookieClickerGames")
             const data = await getDocs(gamesCollectionRef)
             console.log(data.docs.map((game) => { 
@@ -34,27 +34,27 @@ export const CookieClicker = () => {
                 }
                 return currentGame
             }))
-            return currentGame
+            
+            if(currentGame === false ){
+                const addGame = async()=>{
+                    const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
+                        gameStatus: true
+                    })
+    
+                    await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
+                        gameStatus: true,
+                        gid: gameRef.id
+                    })
+                    console.log("Cookie Clicker Game ID: ",gameRef.id)
+                    setGameId(gameRef.id)
+                    currentGame = true
+                };
+                addGame();
+            }; 
+    
         }
         getGame()
-        console.log(currentGame)
         
-        if(currentGame === false){
-            const addGame = async()=>{
-                const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
-                    gameStatus: true
-                })
-
-                await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
-                    gameStatus: true,
-                    gid: gameRef.id
-                })
-                console.log("Cookie Clicker Game ID: ",gameRef.id)
-                setGameId(gameRef.id)
-
-            };
-            addGame();
-        }; 
 
     }, [])
 
