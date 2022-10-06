@@ -24,7 +24,7 @@ function App() {
             <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route exact path="login" element={<Login />} />
             <Route exact path="register" element={<Register />} />
-            <Route exact path="cookieCliker" element={<CookieClicker />} />
+            <Route exact path="cookieClicker" element={<CookieClicker />} />
           </Route>
       </Routes>
     </BrowserRouter>
