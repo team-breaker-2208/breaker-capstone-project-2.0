@@ -8,6 +8,8 @@ import {onDisconnect} from "firebase/database";
 
 export const CookieClicker = () => {
 
+    const [timer, setTimer] = useState(true);
+
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     const [score,setScore]=useState(0);
@@ -72,8 +74,15 @@ export const CookieClicker = () => {
         
     }
 
+    //sets game timer for cookie clicker at 30 seconds
+    setTimeout(() => {  
+        setTimer(false);
+      }, "30000")
+
+
   return (
-    <>
+    timer ? 
+        <>
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
         <div className="cookie-container" >
@@ -105,7 +114,7 @@ export const CookieClicker = () => {
                 )
             })}
         </div>
+    </>: <div>Time's up!</div>
 
-    </>
   )
 }
