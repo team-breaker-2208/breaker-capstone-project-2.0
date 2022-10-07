@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../server/firebase";
 
 export default function Login() {
-
-  const navigate = useNavigate()
+    const [error,setError] = useState(false);
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -17,7 +17,7 @@ export default function Login() {
             await signInWithEmailAndPassword(auth, email, password)
             navigate("/")
         } catch (ex) {
-            console.log(ex)
+            setError(true);
         }
     }
 
@@ -26,22 +26,22 @@ export default function Login() {
             <div className="login-container">
                 <h1 className="login-title">Welcome to Breaker Game!</h1>
                 <p className="login-message">Please Register or Login to Enter</p>
+
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="input-login">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" />
-                        <span className="msg">Valid email</span>
+                        <input type="email" name="email" id="email" placeholder="Email" />
+                        {/* <span className="msg">Valid email</span> */}
                     </div>
 
                     <div className="input-login">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" />
-                        <span className="msg">Incorrect password</span>
+                        <input type="password" name="password" id="password" placeholder="Password" />
                     </div>
-
+                    {error && <span className="msg">Fail to sign in</span>}
                     <button type="submit" className="login-button">Login</button>
+
                     <p className="register-link">Don't have an account? <Link to="/register">Register a new User</Link> </p>
-                    {/* <div id="signInDiv"></div> */}
                 </form>
             </div>
         </div>
