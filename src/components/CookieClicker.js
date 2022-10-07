@@ -1,4 +1,4 @@
-import React, { useContext,useState, useEffect } from "react";
+import React, { useContext,useState, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
 // import { ref } from "firebase/storage";
@@ -95,9 +95,6 @@ export const CookieClicker = () => {
         return () => {
             getGame()
         }
-        
-        
-
     }, [])
 
  
@@ -105,6 +102,63 @@ export const CookieClicker = () => {
     // {displayName:"Tom",
     // points:0,
     // id:1
+
+    const Ref = useRef(null);
+  
+    // The state for our timer
+    const [timer, setTimer] = useState('00:00:00');
+  
+  
+    const getTimeRemaining = (e) => {
+        const total = Date.parse(e) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / 1000 / 60 / 60) % 24);
+        return {
+            total, hours, minutes, seconds
+        };
+    }
+  
+  
+    const startTimer = (e) => {
+        let { total, hours, minutes, seconds } 
+                    = getTimeRemaining(e);
+        if (total >= 0) {
+            setTimer(
+                (hours > 9 ? hours : '0' + hours) + ':' +
+                (minutes > 9 ? minutes : '0' + minutes) + ':'
+                + (seconds > 9 ? seconds : '0' + seconds)
+            )
+        }
+    }
+  
+    const clearTimer = (e) => {   
+        setTimer('00:00:10');
+
+        if (Ref.current) clearInterval(Ref.current);
+        const id = setInterval(() => {
+            startTimer(e);
+        }, 1000)
+        Ref.current = id;
+    }
+  
+    const getDeadTime = () => {
+        let deadline = new Date();
+ 
+        deadline.setSeconds(deadline.getSeconds() + 10);
+        return deadline;
+    }
+
+    useEffect(() => {
+        clearTimer(getDeadTime());
+    }, []);
+ 
+    const onClickReset = () => {
+        clearTimer(getDeadTime());
+    }
+
+
+
     // },
     // {displayName:"Jerry",
     // points:0,
@@ -139,15 +193,20 @@ export const CookieClicker = () => {
                 losers: []
               });
         }
-
         
     }
-
-
 
   return (
     points.indexOf(10) === -1 || !player.points ? 
         <>
+
+{/* timer */}
+<div className="countDown">
+<h2>{timer}</h2>
+<button onClick={onClickReset}>Reset</button>
+</div>
+{/* timer */}
+
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
         <div className="cookie-container" >
@@ -183,6 +242,5 @@ export const CookieClicker = () => {
             <h1>Max points reached!</h1>
             <Link to="/">Back to home</Link>
          </div>
-
   )
 }

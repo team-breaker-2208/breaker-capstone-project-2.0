@@ -31,7 +31,6 @@ export default function Login() {
                     <div className="input-login">
                         <label htmlFor="email">Email</label>
                         <input type="email" name="email" id="email" placeholder="Email" />
-                        {/* <span className="msg">Valid email</span> */}
                     </div>
 
                     <div className="input-login">

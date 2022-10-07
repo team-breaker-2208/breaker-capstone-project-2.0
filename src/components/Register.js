@@ -61,19 +61,19 @@ export default function Register() {
 
                     <div className="input-login">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Enter Valid email" />
+                        <input type="email" name="email" id="email" placeholder="Enter email" />
                         {/* <span className="msg">Valid email</span> */}
                     </div>
 
                     <div className="input-login">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="New Password" />
+                        <input type="password" name="password" id="password" placeholder="Enter Password" />
                         {/* <span className="msg">Must meet Password criteria</span> */}
                     </div>
 
                     <div className="input-login">
                         <label htmlFor="password">Password Confirmation</label>
-                        <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" />
+                        <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm password" />
                         {/* <span className="msg">Must meet Password criteria</span> */}
                     </div>
                     {error && <span className="msg">{error}</span>}
