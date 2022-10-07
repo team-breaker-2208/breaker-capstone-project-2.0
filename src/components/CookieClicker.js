@@ -17,15 +17,53 @@ export const CookieClicker = () => {
     const [gameId, setGameId] = useState("")
     // const [gameOver, setGameOver] = useState(false) 
 
+    
+    
+    useEffect(()=>{
+  
+        const addPlayer = async()=>{
+                if(currentUser.displayName){
+                    await setDoc(doc(db, "player", currentUser.uid),{
+                        uid: currentUser.uid,
+                        displayName:currentUser.displayName,
+                        points:0
+                    })
+                }
+
+                // setPlayerId(currentUser.uid);
+        };
+        addPlayer();
+
+        //to get all players in "player" collection
+        const getUsers = async()=>{
+            
+            if(currentUser.displayName){
+                let currentPlayerRef = doc(db,"player",currentUser.uid);
+                let currentPlayerSnap = await getDoc(currentPlayerRef);
+                if (currentPlayerSnap.exists()) {
+                        setPlayer(currentPlayerSnap.data());
+                } else {
+                    // doc.data() will be undefined in this case
+                    // console.log("No such document!");
+                }
+            }
+        }
+
+        getUsers(); 
+
+        
+    },[currentUser])
+
     useEffect(()=>{
   
         
         const getGame = async()=>{
             let currentGame = false
             
-            const gamesCollectionRef = await collection(db,"cookieClickerGames")
+            const gamesCollectionRef = collection(db,"cookieClickerGames")
             const data = await getDocs(gamesCollectionRef)
-            console.log(data.docs.map((game) => { 
+            
+            data.docs.map((game) => { 
                 const gameStatus = game.data().gameStatus
 
                 if(gameStatus){
@@ -33,7 +71,8 @@ export const CookieClicker = () => {
                     currentGame = true
                 }
                 return currentGame
-            }))
+            })
+
             
             if(currentGame === false ){
                 const addGame = async()=>{
@@ -47,60 +86,21 @@ export const CookieClicker = () => {
                     })
                     console.log("Cookie Clicker Game ID: ",gameRef.id)
                     setGameId(gameRef.id)
-                    currentGame = true
                 };
                 addGame();
             }; 
     
         }
-        getGame()
+
+        return () => {
+            getGame()
+        }
+        
         
 
     }, [])
 
-    console.log(gameId)
-    
-    useEffect(()=>{
-  
-            const addPlayer = async()=>{
-                if(currentUser.displayName){
-                    await setDoc(doc(db, "player", currentUser.uid),{
-                        uid: currentUser.uid,
-                        displayName:currentUser.displayName,
-                        points:0
-                    })
-                }
-
-                // setPlayerId(currentUser.uid);
-            };
-            addPlayer();
-
-        //to get all players in "player" collection
-        const getUsers = async()=>{
-            
-            if(currentUser.displayName){
-                let currentPlayerRef = doc(db,"player",currentUser.uid);
-                let currentPlayerSnap = await getDoc(currentPlayerRef);
-                if (currentPlayerSnap.exists()) {
-                        setPlayer(currentPlayerSnap.data());
-                    } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                    }
-                }
-            }
-
-            getUsers(); 
-
-        
-    },[currentUser])
-
-   
  
-
-
-    
-
     // const dummyUsers = [
     // {displayName:"Tom",
     // points:0,
@@ -129,13 +129,16 @@ export const CookieClicker = () => {
         setPoints(data.docs.map((player) => { 
             return player.data().points
         }))
-        // await setDoc(doc(db, "cookieClickerGames", gameId), {
-        //     gid: gameId,
-        //     players,
-        //     gameStatus: false,
-        //     winner: "Aaron",
-        //     losers: []
-        //   });
+        
+        if(points.indexOf(9) === true){
+            await setDoc(doc(db, "cookieClickerGames", gameId), {
+                gid: gameId,
+                players,
+                gameStatus: false,
+                winner: "Aaron",
+                losers: []
+              });
+        }
 
         
     }
