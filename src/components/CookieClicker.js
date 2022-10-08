@@ -2,10 +2,11 @@ import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
 // import { ref } from "firebase/storage";
-import { doc, setDoc, getDoc, collection, getDocs, updateDoc, addDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc, collection, getDocs, updateDoc, addDoc, deleteDoc } from "firebase/firestore"; 
+import { query, where, onSnapshot } from "firebase/firestore";
 import { db } from '../server/firebase';
 // import {onDisconnect} from "firebase/database";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 
 export const CookieClicker = () => {
 
@@ -16,6 +17,7 @@ export const CookieClicker = () => {
     const [points, setPoints] = useState([])
     const [gameId, setGameId] = useState("")
     // const [gameOver, setGameOver] = useState(false) 
+    const navigate = useNavigate()
 
     
     
@@ -26,7 +28,8 @@ export const CookieClicker = () => {
                     await setDoc(doc(db, "player", currentUser.uid),{
                         uid: currentUser.uid,
                         displayName:currentUser.displayName,
-                        points:0
+                        points:0,
+                        gid: gameId
                     })
                 }
 
@@ -50,9 +53,9 @@ export const CookieClicker = () => {
         }
 
         getUsers(); 
-
         
-    },[currentUser])
+    },[currentUser, gameId])
+    
 
     useEffect(()=>{
   
@@ -79,23 +82,25 @@ export const CookieClicker = () => {
                     const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
                         gameStatus: true
                     })
-    
+                    // console.log('gameRef addDoc', gameRef)
                     await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
                         gameStatus: true,
                         gid: gameRef.id
                     })
-                    console.log("Cookie Clicker Game ID: ",gameRef.id)
+                    // console.log('Cookie Clicker Game ID: ', gameRef.id)
+ 
                     setGameId(gameRef.id)
                 };
                 addGame();
             }; 
     
+            // console.log('currentGame:', currentGame)
         }
 
         return () => {
             getGame()
         }
-        
+
         
 
     }, [])
@@ -111,6 +116,15 @@ export const CookieClicker = () => {
     // id:2
     // }];
 
+    // useEffect(()=>{
+    //     const setGameId = async ()=>{
+    //         let playersCollectionRef = collection(db,"player")
+    //         const data = await getDocs(playersCollectionRef);
+    //         data.docs.map(async(player) => { 
+    //             updateDoc(playerRef,{points:player.points+=1});
+    //         })
+    //     }
+    // }, [])
 
     const handleClick=async(player)=>{
         const playerRef = doc(db,'player',player.uid);
@@ -130,19 +144,53 @@ export const CookieClicker = () => {
             return player.data().points
         }))
         
-        if(points.indexOf(9) === true){
-            await setDoc(doc(db, "cookieClickerGames", gameId), {
-                gid: gameId,
-                players,
-                gameStatus: false,
-                winner: "Aaron",
-                losers: []
-              });
-        }
-
-        
+        // if(points.indexOf(3) >= 0){
+        //     await setDoc(doc(db, "cookieClickerGames", gameId), {
+        //         gid: gameId,
+        //         players,
+        //         gameStatus: false,
+        //         winner: "Aaron",
+        //         losers: []
+        //       });
+        // }
     }
 
+    //firebase realtime listening
+    const q = query(collection(db, "player"), where("gid", "==", "YytsVCM7yCKixTSD7Oh8"));
+    useEffect(()=>{
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            let playersArr = querySnapshot.docs
+            let points = playersArr.map(doc=>doc.data().points)
+   
+            if (points.includes(3)) {
+                let index = points.indexOf(3)
+                let winner = playersArr[index].data().displayName
+                let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
+                let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
+
+                //increment that user's star property by 5! (which is winner)
+                const updateUserStar = async ()=>{
+                    const userRef = doc(db,'users', playersArr[index].data().uid);
+                    let user = await getDoc(userRef);
+                    await updateDoc(userRef,{star:(user.data().star+5)})
+                }
+                updateUserStar()
+
+                console.log('game done', winner)
+                alert(`game done winner is ${winner}, points is 3; ${player2} points is ${player2Points}`)
+
+                //delete all pleyers in firebase!
+                let uidArr = [...playersArr.map(doc=>doc.data().uid)]
+                console.log('uidArr', uidArr)
+                uidArr.forEach(async(uid)=>{
+                    await deleteDoc(doc(db, 'player', uid ))
+                })
+
+                navigate('/')
+            }         
+        }); 
+        return () => unsubscribe()
+    },[])
 
 
   return (
@@ -150,17 +198,17 @@ export const CookieClicker = () => {
         <>
         <h1>Cookie Clicker!</h1>
         <div className="cookies-container">
-        <div className="cookie-container" >
-                        <h2>You {player.displayName}  </h2>
-                        <span className="cookieImage">
-                        <img 
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDgy71hH1KUez-MRwk195KG_dx2I9-bULNg&usqp=CAU"
-                            alt="Cookie" 
-                            onClick={()=>handleClick(player)}
-                        />
-                        </span>
-                        <h4>Score: {score}</h4>
-                    </div>
+            <div className="cookie-container" >
+                <h2>You {player.displayName}  </h2>
+                <span className="cookieImage">
+                <img 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDgy71hH1KUez-MRwk195KG_dx2I9-bULNg&usqp=CAU"
+                    alt="Cookie" 
+                    onClick={()=>handleClick(player)}
+                />
+                </span>
+                <h4>Score: {score}</h4>
+            </div>
             {/* {dummyUsers.map((user)=>{
                 return(
                     <div className="cookie-container" key={user.id}>
