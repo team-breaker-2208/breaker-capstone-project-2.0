@@ -221,19 +221,18 @@ export const CookieClicker = () => {
                     updateUserStar()
                 }
 
-                setTimeout(() => {
-                    const updateGame = async ()=>{
-                        await setDoc(doc(db, "cookieClickerGames", gameId), {
+   
+                const updateGame = async ()=>{
+                    await setDoc(doc(db, "cookieClickerGames", gameId), {
                             gid: gameId,
                             gameStatus: false,
                             winner,
                             player2:{name: player2, points: player2Points}
                         });
-                    }
-                    updateGame()
+                }
+                
+                updateGame()
                     
-                }, 5000);
-
                 // console.log('game done', winner)
 
                 //delete all pleyers in firebase!
