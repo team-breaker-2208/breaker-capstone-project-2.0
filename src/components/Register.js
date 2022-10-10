@@ -33,7 +33,8 @@ export default function Register() {
         await setDoc(doc(db, "users", res.user.uid),{
             uid: res.user.uid,
             displayName,
-            email
+            email,
+            star:0
         })
 
 
