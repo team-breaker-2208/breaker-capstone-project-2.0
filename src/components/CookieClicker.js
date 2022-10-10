@@ -25,7 +25,7 @@ export const CookieClicker = () => {
   
         const addPlayer = async()=>{
                 if(currentUser.displayName){
-                    await setDoc(doc(db, "player", currentUser.uid),{
+                    await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
                         uid: currentUser.uid,
                         displayName:currentUser.displayName,
                         points:0,
@@ -41,7 +41,7 @@ export const CookieClicker = () => {
         const getUsers = async()=>{
             
             if(currentUser.displayName){
-                let currentPlayerRef = doc(db,"player",currentUser.uid);
+                let currentPlayerRef = doc(db,"CookieClickerPlayer",currentUser.uid);
                 let currentPlayerSnap = await getDoc(currentPlayerRef);
                 if (currentPlayerSnap.exists()) {
                         setPlayer(currentPlayerSnap.data());
@@ -109,7 +109,7 @@ export const CookieClicker = () => {
   
             const addPlayer = async()=>{
                 if(currentUser.displayName){
-                    await setDoc(doc(db, "player", currentUser.uid),{
+                    await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
                         uid: currentUser.uid,
                         displayName:currentUser.displayName,
                         points:0
@@ -124,7 +124,7 @@ export const CookieClicker = () => {
         const getUsers = async()=>{
             
             if(currentUser.displayName){
-                let currentPlayerRef = doc(db,"player",currentUser.uid);
+                let currentPlayerRef = doc(db,"CookieClickerPlayer",currentUser.uid);
                 let currentPlayerSnap = await getDoc(currentPlayerRef);
                 if (currentPlayerSnap.exists()) {
                         setPlayer(currentPlayerSnap.data());
@@ -167,13 +167,13 @@ export const CookieClicker = () => {
     // }, [])
 
     const handleClick=async(player)=>{
-        const playerRef = doc(db,'player',player.uid);
+        const playerRef = doc(db,'CookieClickerPlayer',player.uid);
 
         await updateDoc(playerRef,{points:player.points+=1});
         console.log("points: ",player.points);
         setScore(player.points);
 
-        let playersCollectionRef = collection(db,"player")
+        let playersCollectionRef = collection(db,"CookieClickerPlayer")
         const data = await getDocs(playersCollectionRef);
         // setPlayers(data.docs.map((player) => ({ ...player.data().points})))
         setPlayers(data.docs.map((player) => { 
@@ -198,7 +198,7 @@ export const CookieClicker = () => {
     //firebase realtime listening
     useEffect(()=>{
 
-        const q = query(collection(db, "player"), where("gid", "==", gameId));
+        const q = query(collection(db, "CookieClickerPlayer"), where("gid", "==", gameId));
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             // console.log('firebase realtime listening')
@@ -239,7 +239,7 @@ export const CookieClicker = () => {
                 //delete all pleyers in firebase!
                 let uidArr = [...playersArr.map(doc=>doc.data().uid)]
                 uidArr.forEach(async(uid)=>{
-                    await deleteDoc(doc(db, 'player', uid ))
+                    await deleteDoc(doc(db, 'CookieClickerPlayer', uid ))
                 })
                 
                 navigate('/')
