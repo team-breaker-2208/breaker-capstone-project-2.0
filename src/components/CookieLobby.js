@@ -122,7 +122,11 @@ const CookieLobby = () => {
         <div>Welcome to Cookie Clicker!</div>
         <h2>Lobby Status:{players.length}/2 Players</h2>
             <div className="PlayersContainer">
-                {/* map over and display players */}
+                {players.map((singlePlayer) => {
+                    return (
+                        <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
+                    )
+                })}
             </div>
             <div>Number in lobby: {players.length}</div>
             <div>Waiting on {2 - players.length} more</div>
