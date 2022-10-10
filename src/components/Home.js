@@ -28,7 +28,7 @@ export default function Home() {
     <div>
         <h1>Welcome to Home</h1>
         {/* <span>{currentUser.displayName}</span> */}
-        <Link to="/cookieClicker">Go to Cookie Clicker</Link>
+        <Link to="/CookieLobby">Go to Cookie Clicker</Link>
         <button onClick={()=>signOut(auth)}>Logout</button>
     </div>
   )
