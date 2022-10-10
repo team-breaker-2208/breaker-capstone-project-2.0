@@ -2,12 +2,13 @@ import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
 // import { ref } from "firebase/storage";
-import { doc, setDoc, getDoc, collection, getDocs, updateDoc, addDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc, collection, getDocs, updateDoc, addDoc, deleteDoc, query, onSnapshot, where } from "firebase/firestore"; 
 import { db } from '../server/firebase';
 // import {onDisconnect} from "firebase/database";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const CookieClicker = () => {
+    const navigate = useNavigate
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -142,6 +143,62 @@ export const CookieClicker = () => {
 
         
     }
+
+    useEffect(()=>{
+
+        const q = query(collection(db, "player"), where("gid", "==", gameId));
+
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            // console.log('firebase realtime listening')
+            let playersArr = querySnapshot.docs
+            let points = playersArr.map(doc=>doc.data().points)
+   
+            if (points.includes(3)) {
+                let index = points.indexOf(3)
+                let winner = playersArr[index].data().displayName
+                let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
+                let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
+
+                //increment that user's star property by 5! (which is winner)
+                const updateUserStar = async ()=>{
+                    const userRef = doc(db,'users', playersArr[index].data().uid);
+                    let user = await getDoc(userRef);
+                    await updateDoc(userRef,{star:(user.data().star+5)})
+                }
+                if (player.displayName === winner) {                   
+                    updateUserStar()
+                }
+
+                setTimeout(() => {
+                    const updateGame = async ()=>{
+                        await setDoc(doc(db, "cookieClickerGames", gameId), {
+                            gid: gameId,
+                            gameStatus: false,
+                            winner,
+                            player2:{name: player2, points: player2Points}
+                        });
+                    }
+                    updateGame()
+                    
+                }, 5000);
+
+                // console.log('game done', winner)
+
+                //delete all pleyers in firebase!
+                let uidArr = [...playersArr.map(doc=>doc.data().uid)]
+                uidArr.forEach(async(uid)=>{
+                    await deleteDoc(doc(db, 'player', uid ))
+                })
+                
+                navigate('/')
+                
+                alert(`game done winner is ${winner}, points is 3; ${player2} points is ${player2Points}`)
+
+            }         
+        }); 
+        return () => unsubscribe()
+    // },[])
+    },[gameId]) 
 
 
 
