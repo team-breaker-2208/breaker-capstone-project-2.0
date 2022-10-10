@@ -14,13 +14,14 @@ export default function Home() {
     useEffect(()=> {
         
         setUser(currentUser)
-        console.log(user)
+        // console.log(user)
         
     },[currentUser, user])
     
     if(!currentUser) {
         navigate("/login")
     }
+    
 
 
   return (

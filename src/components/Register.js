@@ -21,7 +21,6 @@ export default function Register() {
 
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password)
-
         updateProfile(auth.currentUser, {
             displayName: displayName
           }).then(() => {
