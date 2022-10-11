@@ -3,9 +3,14 @@ import { auth, db } from '../server/firebase'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 import { useNavigate, Link } from 'react-router-dom'
+import { useState } from 'react';
 
 export default function Register() {
-    const navigate = useNavigate()
+
+  const [loading,setLoading] = useState(false)
+
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,8 +25,8 @@ export default function Register() {
     
 
     try {
+        setLoading(true)
         const res = await createUserWithEmailAndPassword(auth, email, password)
-
         updateProfile(auth.currentUser, {
             displayName: displayName
           }).then(() => {
@@ -33,12 +38,14 @@ export default function Register() {
         await setDoc(doc(db, "users", res.user.uid),{
             uid: res.user.uid,
             displayName,
-            email
+            email,
+            star:0
         })
 
 
 
         console.log(res)
+        setLoading(false)
         navigate("/")
 
     } catch (ex) {
@@ -71,7 +78,9 @@ export default function Register() {
                         <span className="msg">Must meet Password criteria</span>
                     </div>
 
-                    <button type="submit" className="login-button">Create User</button>
+
+
+                    <button disabled={loading} type= "submit" className="login-button">Create User</button>
                     <p className="register-link">You have an account? <Link to="/login">Login</Link></p>
                 </form>
             </div>
