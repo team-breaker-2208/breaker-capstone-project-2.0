@@ -40,14 +40,33 @@ export default function Home() {
       }
   },[])
     
-
+  const gameTwo = []
 
   return (
-    <div>
-        <h1>Welcome to Home</h1>
+    <div className='mainLobby-container'>
+        <h1>Weclome to the Games Center</h1>
         {/* <span>{currentUser.displayName}</span> */}
-        {cookiePlayers.length < 2 ? <Link to="/CookieLobby">Go to Cookie Clicker</Link>: <span>Cookie Clicker Lobby is full</span>}
-        <button onClick={()=>signOut(auth)}>Logout</button>
+        <div className='gamesContainer'>
+          <div className='cookieClicker-mainLobby-container'>
+            <h2>Cookie Clicker Game</h2>
+            <h4>{cookiePlayers.length}/2</h4>
+              {cookiePlayers.length < 2 ? 
+                <Link to="/CookieLobby">
+                  <button className='join-button'>Join Game</button>
+                </Link>: 
+              <span>Cookie Clicker Lobby is full</span>}
+          </div>
+          <div className='gameTwo-mainLobby-container'>
+            <h2>Game 2</h2>
+            <h4>0/2</h4>
+              {gameTwo.length < 2 ? 
+                <Link to="/CookieLobby">
+                  <button className='join-button'>Join Game</button>
+                </Link>: 
+              <span>Cookie Clicker Lobby is full</span>}
+          </div>
+        </div>
+        <button className='logout-button' onClick={()=>signOut(auth)}>Logout</button>
     </div>
   )
 }

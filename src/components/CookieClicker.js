@@ -14,7 +14,7 @@ export const CookieClicker = () => {
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     const [score,setScore]=useState(0);
-    const [players, setPlayers] = useState([])
+    // const [players, setPlayers] = useState([])
     const [points, setPoints] = useState([])
     const [gameId, setGameId] = useState("")
     // const [gameOver, setGameOver] = useState(false) 
@@ -176,9 +176,9 @@ export const CookieClicker = () => {
         let playersCollectionRef = collection(db,"CookieClickerPlayer")
         const data = await getDocs(playersCollectionRef);
         // setPlayers(data.docs.map((player) => ({ ...player.data().points})))
-        setPlayers(data.docs.map((player) => { 
-            return player.data()
-        }))
+        // setPlayers(data.docs.map((player) => { 
+        //     return player.data()
+        // }))
 
         setPoints(data.docs.map((player) => { 
             return player.data().points
