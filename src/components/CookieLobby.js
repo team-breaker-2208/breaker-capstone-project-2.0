@@ -117,6 +117,10 @@ const CookieLobby = () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
     }
 
+    if (players.length === 2){
+        navigate("/cookieClicker");
+    }
+
   return (
     <div className="lobbyContainer">
         <div>Welcome to Cookie Clicker!</div>
