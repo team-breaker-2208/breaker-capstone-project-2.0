@@ -4,7 +4,7 @@ import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
-import { query, onSnapshot, setDoc, doc } from "firebase/firestore";
+import { query, onSnapshot, setDoc, doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../server/firebase';
 
 
@@ -14,6 +14,7 @@ export default function Home() {
     const [user, setUser] = useState({})
     const [cookiePlayers, setCookiePlayers] = useState([]);
     const [mainLobbyPlayers, setMainLobbyPlayers] = useState([]);
+    const [mainLobbyPlayer, setMainLobbyPlayer] = useState({})
     const [loading, setLoading] = useState(false)
     // console.log(currentUser)
     const navigate = useNavigate()
@@ -37,16 +38,29 @@ export default function Home() {
                   await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
                       displayName:currentUser.displayName,
+                      stars: currentUser.stars
                   })
               }
       };
       addPlayer();
+      
+      const getSinglePlayer = async()=>{
+            
+        if(currentUser.displayName){
+            let currentPlayerRef = doc(db,"MainLobbyPlayer",currentUser.uid);
+            let currentPlayerSnap = await getDoc(currentPlayerRef);
+            if (currentPlayerSnap.exists()) {
+                    setMainLobbyPlayer(currentPlayerSnap.data());
+            } 
+        }
+    }
+    setLoading(true);
 
-
-      setLoading(true);
-
-
-      setLoading(false);
+    // setTimeout(()=>{
+    //     console.log("loading complete")
+    getSinglePlayer(); 
+    setLoading(false);
+    // }, 5000);
 
   },[currentUser])
 
@@ -75,6 +89,10 @@ export default function Home() {
           unsubscribe();
       }
   },[])
+
+  const handleClick = async() => {
+    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayer.uid))
+  }
     
   const gameTwo = []
 
@@ -90,7 +108,7 @@ export default function Home() {
             <h4>{cookiePlayers.length}/2</h4>
               {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
-                  <button className='join-button'>Join Game</button>
+                  <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
               <span>Cookie Clicker Lobby is full</span>}
           </div>
@@ -107,7 +125,10 @@ export default function Home() {
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {
                     return (
+                      <div>
                         <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
+                        <h2>{singlePlayer.data().stars}</h2>
+                      </div>
                     )
             })}
         </div>
