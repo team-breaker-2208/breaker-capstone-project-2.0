@@ -4,7 +4,7 @@ import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
-import { query, onSnapshot } from "firebase/firestore";
+import { query, onSnapshot, setDoc, doc } from "firebase/firestore";
 import { db } from '../server/firebase';
 
 
@@ -13,6 +13,8 @@ export default function Home() {
     const {currentUser} = useContext(AuthContext)
     const [user, setUser] = useState({})
     const [cookiePlayers, setCookiePlayers] = useState([]);
+    const [mainLobbyPlayers, setMainLobbyPlayers] = useState([]);
+    const [loading, setLoading] = useState(false)
     // console.log(currentUser)
     const navigate = useNavigate()
 
@@ -27,6 +29,27 @@ export default function Home() {
         navigate("/login")
     }
 
+    //adding players to CookieClicker lobby
+    useEffect(()=>{
+  
+      const addPlayer = async()=>{
+              if(currentUser.displayName){
+                  await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
+                      uid: currentUser.uid,
+                      displayName:currentUser.displayName,
+                  })
+              }
+      };
+      addPlayer();
+
+
+      setLoading(true);
+
+
+      setLoading(false);
+
+  },[currentUser])
+
     //watching number of players in CookieClicker
     useEffect(()=>{
       const qPlayers = query(collection(db, "CookieClickerPlayer"));
@@ -40,12 +63,27 @@ export default function Home() {
       }
   },[])
     
+    //watching number of players in Main Lobby
+    useEffect(()=>{
+      const qPlayers = query(collection(db, "MainLobbyPlayer"));
+      const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
+          let playersArr = querySnapshot.docs;
+          setMainLobbyPlayers(playersArr);
+      });
+      
+      return()=>{
+          unsubscribe();
+      }
+  },[])
+    
   const gameTwo = []
 
   return (
     <div className='mainLobby-container'>
         <h1>Weclome to the Games Center</h1>
         {/* <span>{currentUser.displayName}</span> */}
+        {loading ?<div>Loading...</div> : 
+        <div>
         <div className='gamesContainer'>
           <div className='cookieClicker-mainLobby-container'>
             <h2>Cookie Clicker Game</h2>
@@ -66,7 +104,15 @@ export default function Home() {
               <span>Cookie Clicker Lobby is full</span>}
           </div>
         </div>
+        <div className='mainLobby-players-container'>
+            {mainLobbyPlayers.map((singlePlayer) => {
+                    return (
+                        <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
+                    )
+            })}
+        </div>
         <button className='logout-button' onClick={()=>signOut(auth)}>Logout</button>
+    </div>}
     </div>
   )
 }

@@ -130,4 +130,6 @@
   color: #003A70;
   transition: 0.1s;
   cursor: pointer;
+  max-width: 300px;
+  max-height: 100px;
 }
