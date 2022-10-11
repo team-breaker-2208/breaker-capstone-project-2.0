@@ -249,7 +249,7 @@ export const CookieClicker = () => {
         }); 
         return () => unsubscribe()
     // },[])
-    },[gameId])   
+    },[gameId, navigate, player.displayName])   
 
     // console.log('CookieClicker.js component renders!')
     
