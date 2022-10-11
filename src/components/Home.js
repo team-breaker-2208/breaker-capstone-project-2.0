@@ -3,8 +3,8 @@ import {signOut} from 'firebase/auth'
 import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom'
-import { doc, setDoc, getDoc, collection, getDocs, updateDoc, addDoc, deleteDoc } from "firebase/firestore"; 
-import { query, where, onSnapshot } from "firebase/firestore";
+import { collection } from "firebase/firestore"; 
+import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../server/firebase';
 
 
