@@ -34,11 +34,18 @@ export default function Home() {
     useEffect(()=>{
   
       const addPlayer = async()=>{
-              if(currentUser.displayName){
-                  await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
+        
+        
+        
+        if(currentUser.displayName){
+          let currentPlayerRef = doc(db,"users",currentUser.uid);
+          let currentPlayerSnap = await getDoc(currentPlayerRef);
+          const stars = currentPlayerSnap.data().star
+          
+          await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
                       displayName:currentUser.displayName,
-                      stars: currentUser.stars
+                      stars: stars
                   })
               }
       };
@@ -125,9 +132,9 @@ export default function Home() {
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {
                     return (
-                      <div>
-                        <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
-                        <h2>{singlePlayer.data().stars}</h2>
+                      <div key={singlePlayer.data().uid} className="single-lobby-player">
+                        <h3 >{singlePlayer.data().displayName}</h3>
+                        <h4 >{singlePlayer.data().stars} Stars</h4>
                       </div>
                     )
             })}

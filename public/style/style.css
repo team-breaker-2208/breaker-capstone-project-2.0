@@ -257,3 +257,11 @@ img {
   color: green;
   animation-delay: 3;
 }
+.mainLobby-players-container {
+  border-style: ridge;
+}
+.single-lobby-player {
+  border-style: ridge;
+  padding: 10px;
+  background-color: bisque;
+}
