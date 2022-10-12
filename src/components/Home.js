@@ -15,6 +15,7 @@ export default function Home() {
     const [cookiePlayers, setCookiePlayers] = useState([]);
     const [mainLobbyPlayers, setMainLobbyPlayers] = useState([]);
     const [mainLobbyPlayer, setMainLobbyPlayer] = useState({})
+    const [mainLobbyPlayerId, setMainLobbyPlayerId] = useState("")
     const [loading, setLoading] = useState(false)
     // console.log(currentUser)
     const navigate = useNavigate()
@@ -41,6 +42,8 @@ export default function Home() {
           let currentPlayerRef = doc(db,"users",currentUser.uid);
           let currentPlayerSnap = await getDoc(currentPlayerRef);
           const stars = currentPlayerSnap.data().star
+          setMainLobbyPlayerId(currentPlayerSnap.data().uid);
+          setMainLobbyPlayer(currentPlayerSnap.data())
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
@@ -49,25 +52,11 @@ export default function Home() {
                   })
               }
       };
-      addPlayer();
-      
-      const getSinglePlayer = async()=>{
-            
-        if(currentUser.displayName){
-            let currentPlayerRef = doc(db,"MainLobbyPlayer",currentUser.uid);
-            let currentPlayerSnap = await getDoc(currentPlayerRef);
-            if (currentPlayerSnap.exists()) {
-                    setMainLobbyPlayer(currentPlayerSnap.data());
-            } 
-        }
-    }
-    setLoading(true);
 
-    // setTimeout(()=>{
-    //     console.log("loading complete")
-    getSinglePlayer(); 
-    setLoading(false);
-    // }, 5000);
+      setLoading(true)
+      addPlayer();
+      setLoading(false)
+    
 
   },[currentUser])
 
@@ -98,8 +87,18 @@ export default function Home() {
   },[])
 
   const handleClick = async() => {
-    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayer.uid))
+    console.log("main player Id", mainLobbyPlayerId)
+      await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
+
+  const handleNavigateAway = async () => {
+    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
+}
+
+window.onunload = function(){
+    handleNavigateAway();
+    return 'Are you sure you want to leave?';
+  };
     
   const gameTwo = []
 
@@ -131,6 +130,15 @@ export default function Home() {
         </div>
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {
+                  if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
+                    return(
+                      <div key={singlePlayer.data().uid} className="main-lobby-player">
+                        <h3 >{singlePlayer.data().displayName}</h3>
+                        <h4 >{singlePlayer.data().stars} Stars</h4>
+                      </div>
+                    )
+                  }
+        
                     return (
                       <div key={singlePlayer.data().uid} className="single-lobby-player">
                         <h3 >{singlePlayer.data().displayName}</h3>
