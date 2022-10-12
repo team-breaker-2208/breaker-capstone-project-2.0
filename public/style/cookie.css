@@ -14,12 +14,12 @@
   justify-content: center;
   align-items: center;
 }
-h2 {
+.cookie-container h2 {
   color: #030337;
 }
-h4 {
+.cookie-container h4 {
   color: #030337;
 }
-img {
+.cookie-container img {
   border-radius: 50%;
 }

@@ -4,18 +4,15 @@
   box-sizing: border-box;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 h1 {
   color: red;
 }
-
 .cookies-container {
   display: flex;
   justify-content: center;
   margin-top: 60px;
   border-top: 25px;
 }
-
 .cookie-container {
   background-color: #87eeee;
   display: flex;
@@ -26,19 +23,15 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-
 .cookie-container h2 {
   color: #030337;
 }
-
 .cookie-container h4 {
   color: #030337;
 }
-
 .cookie-container img {
   border-radius: 50%;
 }
-
 .login-container {
   --color: #FFCB05;
   background-color: var(--color);
@@ -50,7 +43,6 @@ h1 {
   border-color: #C85048;
   border-style: ridge;
 }
-
 .login-container label {
   display: flex;
   align-items: center;
@@ -59,12 +51,10 @@ h1 {
   cursor: pointer;
   background-color: #FFCB05;
 }
-
 .login-container * {
   --color: hsl(var(--primary-dark-hsl), 0.8);
   background-image: linear-gradient(red, orange);
 }
-
 .login-title {
   margin: 0;
   color: #003A70;
@@ -73,7 +63,6 @@ h1 {
   font-weight: bolder;
   background-color: #FFCB05;
 }
-
 .form {
   display: flex;
   flex-direction: column;
@@ -81,12 +70,10 @@ h1 {
   margin-top: 40px;
   background-color: #FFCB05;
 }
-
 .input-login {
   display: flex;
   flex-direction: column;
 }
-
 .login-message {
   color: #003A70;
   font-weight: lighter;
@@ -94,7 +81,6 @@ h1 {
   padding: 1em;
   background-color: #FFCB05;
 }
-
 .register-link {
   color: #003A70;
   font-weight: lighter;
@@ -102,12 +88,10 @@ h1 {
   padding: 2px;
   background-color: #FFCB05;
 }
-
 .input-login label {
   color: #003A70;
   font-weight: lighter;
 }
-
 .input-login input {
   font-size: 1.75rem;
   padding: 0.5em;
@@ -115,38 +99,30 @@ h1 {
   color: #003A70;
   font-weight: 500;
 }
-
 .input-login.valid input {
   box-shadow: 0 0 2px 1px hsl(var(--valid-hsl));
 }
-
 .input-login.error input {
   box-shadow: 0 0 2px 1px hsl(var(--error-hsl));
 }
-
 .input-login:focus {
   box-shadow: 0 0 2px 1px hsl(var(--primary-hsl));
 }
-
 .input-login .msg {
   display: none;
   font-size: 1.4rem;
   font-weight: 500;
 }
-
 .input-login.valid .msg,
 .input-login.error .msg {
   display: block;
 }
-
 .input-login.valid .msg {
   color: hsl(var(--valid-hsl));
 }
-
 .input-login.error .msg {
   color: hsl(var(--error-hsl));
 }
-
 .login-button {
   font-size: 0.9em;
   text-transform: uppercase;
@@ -160,7 +136,6 @@ h1 {
   transition: 0.1s;
   cursor: pointer;
 }
-
 .logout-button:focus,
 .logout-button:hover,
 .login-button:hover,
@@ -177,7 +152,6 @@ h1 {
   color: white;
   transition: 0.1s;
 }
-
 .logout-button {
   font-size: 0.9em;
   text-transform: uppercase;
@@ -193,7 +167,6 @@ h1 {
   max-width: 300px;
   max-height: 100px;
 }
-
 .login-container {
   --color: hsl(var(--primary-dark-hsl), 0.8);
   background-color: var(--color);
@@ -203,7 +176,6 @@ h1 {
   max-width: 600px;
   border-radius: 20px;
 }
-
 .login-container label {
   display: flex;
   align-items: center;
@@ -211,14 +183,12 @@ h1 {
   color: white;
   cursor: pointer;
 }
-
 .mainLobby-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-
 .gamesContainer {
   display: inline-flex;
   justify-content: center;
@@ -227,7 +197,6 @@ h1 {
   gap: 40px;
   margin-top: 20px;
 }
-
 .cookieClicker-mainLobby-container {
   display: flex;
   justify-content: space-around;
@@ -241,14 +210,12 @@ h1 {
   padding: 20px;
   border-radius: 5px;
 }
-
 .cookieClicker-mainLobby-container h2,
 .cookieClicker-mainLobby-container h4 {
   color: #c41414;
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
 }
-
 .gameTwo-mainLobby-container {
   display: flex;
   justify-content: space-around;
@@ -263,102 +230,83 @@ h1 {
   border-radius: 5px;
   background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
 }
-
 .gameTwo-mainLobby-container h2,
 .gameTwo-mainLobby-container h4 {
   color: #c41414;
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
 }
-
 .join-button {
   height: 30px;
   margin-top: auto;
   margin-bottom: auto;
   background-color: green;
 }
-
 .join-button:disabled {
   background-color: grey;
 }
-
 .cookieClicker-loading-screen span color:red .ready {
   animation-fill-mode: backwards;
   animation-delay: 1;
 }
-
 .cookieClicker-loading-screen span .set {
   color: #ffc107;
   animation-delay: 2;
 }
-
 .cookieClicker-loading-screen span .go {
   color: green;
   animation-delay: 3;
 }
-
 .mainLobby-players-container {
   border-style: ridge;
 }
-
 .single-lobby-player {
   border-style: ridge;
   padding: 10px;
   background-color: bisque;
 }
-
 .ready,
 .set,
 .go {
   font-size: 50px;
   color: white;
 }
-
 .ready {
   animation: mymove 1s;
   animation-delay: 0s;
 }
-
 @keyframes mymove {
   from {
     background-color: red;
   }
-
   to {
     background-color: blue;
   }
 }
-
 .set {
   animation: mymove2 1s;
   animation-delay: 1s;
 }
-
 @keyframes mymove2 {
   from {
     background-color: blue;
   }
-
   to {
     background-color: green;
   }
 }
-
 .go {
   animation: mymove3 1s;
   animation-delay: 2s;
 }
-
 @keyframes mymove3 {
   from {
     background-color: green;
   }
-
   to {
     background-color: yellow;
   }
 }
-
 .main-lobby-player {
   border-style: ridge;
   padding: 10px;
