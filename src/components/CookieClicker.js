@@ -185,7 +185,8 @@ export const CookieClicker = () => {
                 let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
                 let losersArr = playersArr.filter(doc=>doc.data().displayName!==winner)
-                
+                console.log(losersArr)
+                console.log(losersArr.data())
 
                 //increment that user's star property by 5! (which is winner)
                 const updateUserStar = async ()=>{
