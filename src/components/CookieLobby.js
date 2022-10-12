@@ -55,7 +55,7 @@ const CookieLobby = () => {
             setLoading(false);
         // }, 5000);
         
-        console.log("now loading")
+        // console.log("now loading")
     },[currentUser, gameId])
     
     //getting or creating the current Game
@@ -72,7 +72,7 @@ const CookieLobby = () => {
                 }
                 return currentGame
             })
-            console.log('get games runs!')
+            // console.log('get games runs!')
 
             if(currentGame === false ){
                 const addGame = async()=>{
@@ -108,7 +108,7 @@ const CookieLobby = () => {
         }
     },[])
 
-    console.log("players for Cookie: ",players);
+    // console.log("players for Cookie: ",players);
 
     const handleNavigateAway = async () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
@@ -127,11 +127,11 @@ const CookieLobby = () => {
         setTimeout(()=>{
             navigate("/cookieClicker");
 
-        }, "5000")
+        }, "3000")
         return(
             <div className="cookieClicker-loading-screen">
                 <span className="ready">Ready!</span>
-                <span className="set">Set...</span>
+                <span className="set">Set!</span>
                 <span className="go">GO!</span>
 
             </div>
@@ -141,20 +141,20 @@ const CookieLobby = () => {
   return (
     <div className="lobbyContainer">
         <div>Welcome to Cookie Clicker!</div>
-            {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-            <h2>Lobby Status:{players.length}/2 Players</h2>
-                {players.map((singlePlayer) => {
-                    return (
-                        <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
-                    )
-                })}
-            
-            <div>Number in lobby: {players.length}</div>
-            <div>Waiting on {2 - players.length} more</div> 
-            </div>}
+        {loading ?<div>Loading...</div> : <div className="PlayersContainer">
+        <h2>Lobby Status:{players.length}/2 Players</h2>
+            {players.map((singlePlayer) => {
+                return (
+                    <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
+                )
+            })}
+        
+        <div>Number in lobby: {players.length}</div>
+        <div>Waiting on {2 - players.length} more</div> 
+        </div>}
 
-            
-            <Link to="/"><button onClick={()=>handleClick(player)}>Leave Lobby</button></Link>
+        
+        <Link to="/"><button onClick={()=>handleClick(player)}>Leave Lobby</button></Link>
     </div>
   )
 }

@@ -87,8 +87,7 @@ export default function Home() {
   },[])
 
   const handleClick = async() => {
-
-    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayer.uid))
+    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
   const handleLogout = async() =>{
@@ -110,7 +109,7 @@ window.onunload = function(){
 
   return (
     <div className='mainLobby-container'>
-        <h1>Weclome to the Games Center</h1>
+        <h1 className='test'>Weclome to the Games Center</h1>
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
         <div>
