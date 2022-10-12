@@ -265,3 +265,9 @@ h1 {
   padding: 10px;
   background-color: bisque;
 }
+.main-lobby-player {
+  border-style: ridge;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+}

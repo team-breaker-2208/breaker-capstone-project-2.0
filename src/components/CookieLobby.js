@@ -114,7 +114,7 @@ const CookieLobby = () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
     }
 
-    window.onbeforeunload = function(){
+    window.onunload = function(){
         handleNavigateAway();
         return 'Are you sure you want to leave?';
       };
@@ -131,7 +131,7 @@ const CookieLobby = () => {
         return(
             <div className="cookieClicker-loading-screen">
                 <span className="ready">Ready!</span>
-                <span className="set">Set</span>
+                <span className="set">Set...</span>
                 <span className="go">GO!</span>
 
             </div>
