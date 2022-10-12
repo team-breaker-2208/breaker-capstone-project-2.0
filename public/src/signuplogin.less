@@ -1,14 +1,20 @@
 .login-container {
-    --color: #FFCB05;
-    background-color: var(--color);
-    box-shadow: 0 0 15px black;
-    padding: 40px 30px;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 20px;
-    border-color: #C85048;
-    border-style: ridge;
+  --color: hsl(var(--primary-dark-hsl), .8);
+  background-color: var(--color);
+  box-shadow: 0 0 15px var(--color);
+  padding: 40px 30px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 20px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
   }
+}
   .login-container label {
     display: flex;
     align-items: center;
