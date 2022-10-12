@@ -98,6 +98,12 @@ export default function Home() {
   },[])
 
   const handleClick = async() => {
+
+    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayer.uid))
+  }
+
+  const handleLogout = async() =>{
+    signOut(auth);
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayer.uid))
   }
     
@@ -139,7 +145,7 @@ export default function Home() {
                     )
             })}
         </div>
-        <button className='logout-button' onClick={()=>signOut(auth)}>Logout</button>
+        <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>
     </div>}
     </div>
   )
