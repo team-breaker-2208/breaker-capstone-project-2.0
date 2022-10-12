@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../server/firebase";
 
 export default function Login() {
+    const [error, setError] = useState(false)
 
   const navigate = useNavigate()
 
@@ -18,6 +19,7 @@ export default function Login() {
             navigate("/")
         } catch (ex) {
             console.log(ex)
+            setError(true)
         }
     }
 
@@ -38,6 +40,8 @@ export default function Login() {
                         <input type="password" name="password" id="password" />
                         <span className="msg">Incorrect password</span>
                     </div>
+                    
+                    {error && <span className="msg">Failed to sign in</span>}
 
                     <button type="submit" className="login-button">Login</button>
                     <p className="register-link">Don't have an account? <Link to="/register">Register a new User</Link> </p>
