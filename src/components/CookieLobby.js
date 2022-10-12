@@ -142,7 +142,7 @@ const CookieLobby = () => {
     <div className="lobbyContainer">
         <div>Welcome to Cookie Clicker!</div>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-        <h2>Lobby Status:{players.length}/2 Players</h2>
+        <h2>Lobby Status:{players.length}/3 Players</h2>
             {players.map((singlePlayer) => {
                 return (
                     <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>

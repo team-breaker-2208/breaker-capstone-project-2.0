@@ -116,8 +116,8 @@ window.onunload = function(){
         <div className='gamesContainer'>
           <div className='cookieClicker-mainLobby-container'>
             <h2>Cookie Clicker Game</h2>
-            <h4>{cookiePlayers.length}/2</h4>
-              {cookiePlayers.length < 2 ? 
+            <h4>{cookiePlayers.length}/3</h4>
+              {cookiePlayers.length < 3 ? 
                 <Link to="/CookieLobby">
                   <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
