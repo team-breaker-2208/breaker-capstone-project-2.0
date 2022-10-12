@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import { AuthContext } from "./context/AuthContext";
 import { CookieClicker } from "./components/CookieClicker";
 import CookieLobby from "./components/CookieLobby";
+import WinnerPage from './components/WinnerPage'
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="register" element={<Register />} />
             <Route exact path="cookieClicker" element={<CookieClicker />} />
             <Route exact path="CookieLobby" element={<CookieLobby/>} />
+            <Route exact path='winnerPage' element={<WinnerPage/>}/>
           </Route>
       </Routes>
     </BrowserRouter>
