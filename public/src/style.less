@@ -7,6 +7,8 @@
     color: red
   }
 
+  
+
   @import "./cookie.less";
   @import './signuplogin.less';
 
@@ -32,7 +34,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
+    align-content: center;
+    background-image: linear-gradient(purple,blue,pink);
   }
 
 
@@ -41,6 +44,7 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: center;
     gap:40px;
     margin-top: 20px;
 
@@ -102,11 +106,17 @@
 }
 
 .mainLobby-players-container {
+  display:flex;
   border-style: ridge;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .single-lobby-player{
   border-style: ridge;
   padding: 10px;
   background-color: bisque;
+  margin:10px;
+  width: 150px;
 }
