@@ -98,6 +98,7 @@ export default function Home() {
   },[])
 
   const handleClick = async() => {
+    console.log('mainLobbyPlayer.uid', mainLobbyPlayer.uid)
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayer.uid))
   }
     
@@ -105,7 +106,7 @@ export default function Home() {
 
   return (
     <div className='mainLobby-container'>
-        <h1>Weclome to the Games Center</h1>
+        <h1 className='test'>Weclome to the Games Center</h1>
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
         <div>

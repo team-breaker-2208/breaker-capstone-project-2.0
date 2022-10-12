@@ -265,3 +265,45 @@ img {
   padding: 10px;
   background-color: bisque;
 }
+.ready,
+.set,
+.go {
+  font-size: 50px;
+  color: white;
+}
+.ready {
+  animation: mymove 1s;
+  animation-delay: 0s;
+}
+@keyframes mymove {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: blue;
+  }
+}
+.set {
+  animation: mymove2 1s;
+  animation-delay: 1s;
+}
+@keyframes mymove2 {
+  from {
+    background-color: blue;
+  }
+  to {
+    background-color: green;
+  }
+}
+.go {
+  animation: mymove3 1s;
+  animation-delay: 2s;
+}
+@keyframes mymove3 {
+  from {
+    background-color: green;
+  }
+  to {
+    background-color: yellow;
+  }
+}

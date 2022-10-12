@@ -69,7 +69,7 @@ export const CookieClicker = () => {
                 }
                 return currentGame
             })
-            console.log('get games runs!')
+            // console.log('get games runs!')
 
             if(currentGame === false ){
                 const addGame = async()=>{
@@ -84,7 +84,7 @@ export const CookieClicker = () => {
                     setGameId(gameRef.id)
                     currentGame = true
                 };
-                console.log('addGame function runs!')
+                // console.log('addGame function runs!')
 
                 // return ()=>{
                 //     addGame();
@@ -103,7 +103,7 @@ export const CookieClicker = () => {
     }, [])
     // }, [player])
 
-    console.log(gameId)
+    // console.log(gameId)
     
     useEffect(()=>{
   
@@ -139,32 +139,6 @@ export const CookieClicker = () => {
 
         
     },[currentUser])
-
-   
- 
-
-
-    
-
-    // const dummyUsers = [
-    // {displayName:"Tom",
-    // points:0,
-    // id:1
-    // },
-    // {displayName:"Jerry",
-    // points:0,
-    // id:2
-    // }];
-
-    // useEffect(()=>{
-    //     const setGameId = async ()=>{
-    //         let playersCollectionRef = collection(db,"player")
-    //         const data = await getDocs(playersCollectionRef);
-    //         data.docs.map(async(player) => { 
-    //             updateDoc(playerRef,{points:player.points+=1});
-    //         })
-    //     }
-    // }, [])
 
     const handleClick=async(player)=>{
         const playerRef = doc(db,'CookieClickerPlayer',player.uid);
@@ -240,11 +214,12 @@ export const CookieClicker = () => {
                 uidArr.forEach(async(uid)=>{
                     await deleteDoc(doc(db, 'CookieClickerPlayer', uid ))
                 })
-                
-                navigate('/')
-                
-                alert(`game done winner is ${winner}, points is 3; ${player2} points is ${player2Points}`)
+            
+                    navigate('/winnerPage', {state:[winner,player2,player2Points]})
+  
+                // alert(`Game done! Winner is ${winner}, points is 3. ${player2} points is ${player2Points}!`)
 
+                
             }         
         }); 
         return () => unsubscribe()
