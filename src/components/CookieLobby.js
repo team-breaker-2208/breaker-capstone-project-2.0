@@ -114,7 +114,7 @@ const CookieLobby = () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
     }
 
-    window.onbeforeunload = function(){
+    window.onunload = function(){
         handleNavigateAway();
         return 'Are you sure you want to leave?';
       };
