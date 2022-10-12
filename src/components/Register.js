@@ -8,6 +8,9 @@ import { useState } from 'react';
 export default function Register() {
 
   const [loading,setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [emptyError, setEmptyError] = useState(false)
+  const [passwordError, setPasswordError] = useState(false)
 
 
   const navigate = useNavigate()
@@ -23,33 +26,45 @@ export default function Register() {
     console.log(email)
     console.log(password)
     
+    if(!displayName || !email || !password ){
+      setEmptyError(true)
+    } 
+    setEmptyError(false)
+    if(password.length < 6){
+      setPasswordError(true)
+    }
+    
+  
+  else {
+    setPasswordError(false)
+      try {
+          setLoading(true)
+          const res = await createUserWithEmailAndPassword(auth, email, password)
+          updateProfile(auth.currentUser, {
+              displayName: displayName
+            }).then(() => {
+              console.log(auth.currentUser)
+            }).catch((error) => {
+              console.log(error)
+            });
 
-    try {
-        setLoading(true)
-        const res = await createUserWithEmailAndPassword(auth, email, password)
-        updateProfile(auth.currentUser, {
-            displayName: displayName
-          }).then(() => {
-            console.log(auth.currentUser)
-          }).catch((error) => {
-            console.log(error)
-          });
+          await setDoc(doc(db, "users", res.user.uid),{
+              uid: res.user.uid,
+              displayName,
+              email,
+              star:0
+          })
 
-        await setDoc(doc(db, "users", res.user.uid),{
-            uid: res.user.uid,
-            displayName,
-            email,
-            star:0
-        })
+          console.log(res)
+          setLoading(false)
+          navigate("/")
 
+      } catch (ex) {
+          console.log(ex)
+          setError(true)
+          setLoading(false)
+      }
 
-
-        console.log(res)
-        setLoading(false)
-        navigate("/")
-
-    } catch (ex) {
-        console.log(ex)
     }
   }
 
@@ -72,13 +87,15 @@ export default function Register() {
                         <span className="msg">Valid email</span>
                     </div>
 
+                        {passwordError && <span className="msg">Password must be at least 6 characters long!</span>}
                     <div className="input-login">
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password" placeholder="New Password" />
                         <span className="msg">Must meet Password criteria</span>
                     </div>
 
-
+                    {emptyError && <span className="msg">Fields cannot be left empty!</span>}
+                    {error && <span className="msg">Email is already in use!</span>}
 
                     <button disabled={loading} type= "submit" className="login-button">Create User</button>
                     <p className="register-link">You have an account? <Link to="/login">Login</Link></p>
