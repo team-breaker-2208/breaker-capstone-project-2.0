@@ -184,6 +184,8 @@ export const CookieClicker = () => {
                 let winner = playersArr[index].data().displayName
                 let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
+                let losersArr = playersArr.filter(doc=>doc.data().displayName!==winner)
+                
 
                 //increment that user's star property by 5! (which is winner)
                 const updateUserStar = async ()=>{
@@ -217,7 +219,9 @@ export const CookieClicker = () => {
                 
                 setTimeout(() => {
                     
-                    navigate('/winnerPage', {state:[winner,player2,player2Points]})
+                    // navigate('/winnerPage', {state:[winner,player2,player2Points]})
+                    navigate('/winnerPage', {state:[winner, losersArr]})
+
                 }, 1000);
   
                 // alert(`Game done! Winner is ${winner}, points is 3. ${player2} points is ${player2Points}!`)

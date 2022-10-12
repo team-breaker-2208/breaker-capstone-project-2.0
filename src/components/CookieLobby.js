@@ -123,7 +123,7 @@ const CookieLobby = () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
     }
 
-    if (players.length === 2){
+    if (players.length === 3){
         setTimeout(()=>{
             navigate("/cookieClicker");
 
@@ -150,7 +150,7 @@ const CookieLobby = () => {
             })}
         
         <div>Number in lobby: {players.length}</div>
-        <div>Waiting on {2 - players.length} more</div> 
+        <div>Waiting on {3 - players.length} more</div> 
         </div>}
 
         
