@@ -214,8 +214,11 @@ export const CookieClicker = () => {
                 uidArr.forEach(async(uid)=>{
                     await deleteDoc(doc(db, 'CookieClickerPlayer', uid ))
                 })
-            
+                
+                setTimeout(() => {
+                    
                     navigate('/winnerPage', {state:[winner,player2,player2Points]})
+                }, 1000);
   
                 // alert(`Game done! Winner is ${winner}, points is 3. ${player2} points is ${player2Points}!`)
 
