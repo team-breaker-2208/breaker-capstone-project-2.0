@@ -1,0 +1,57 @@
+.winner-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+    background-image: url('https://cdn.shopify.com/s/files/1/0257/6718/2416/files/Gold_Balloon_Zoom_Background.jpg?v=1595051323');
+    background-position: center;
+    background-size: cover;
+    height: 800px;
+
+    .title-word {
+        animation: color-animation 4s linear infinite;
+        font-family: Comic Sans MS, Comic Sans, cursive;
+    }
+
+    .title-word-1 {
+        padding-top: 200px;
+        --color-1: #5553df;
+        --color-2: #3D8DAE;
+        --color-3: #E4A9A8;
+    }
+
+    .title-word-2 {
+        --color-1: #42d753;
+        --color-2: #ACCFCB;
+        --color-3: #17494D;
+    }
+}
+
+@keyframes color-animation {
+    0% {
+        color: var(--color-1)
+    }
+
+    32% {
+        color: var(--color-1)
+    }
+
+    33% {
+        color: var(--color-2)
+    }
+
+    65% {
+        color: var(--color-2)
+    }
+
+    66% {
+        color: var(--color-3)
+    }
+
+    99% {
+        color: var(--color-3)
+    }
+
+    100% {
+        color: var(--color-1)
+    }
+}
