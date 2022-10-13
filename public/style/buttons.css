@@ -69,3 +69,12 @@ button:focus::after {
 button:disabled {
   background-color: grey;
 }
+.join-button {
+  height: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: green;
+}
+.join-button:disabled {
+  background-color: grey;
+}

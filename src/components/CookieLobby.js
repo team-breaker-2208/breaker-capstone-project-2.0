@@ -22,6 +22,8 @@ const CookieLobby = () => {
     useEffect(()=>{
   
         const addPlayer = async()=>{
+            console.log(currentUser)
+            console.log(gameId)
                 if(currentUser.displayName){
                     await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
                         uid: currentUser.uid,
@@ -51,8 +53,8 @@ const CookieLobby = () => {
 
         // setTimeout(()=>{
         //     console.log("loading complete")
-            getSinglePlayer(); 
-            setLoading(false);
+        getSinglePlayer(); 
+        setLoading(false);
         // }, 5000);
         
         // console.log("now loading")
@@ -83,6 +85,7 @@ const CookieLobby = () => {
                         gameStatus: true,
                         gid: gameRef.id
                     })
+                    console.log()
                     setGameId(gameRef.id)
                     currentGame = true
                 };
@@ -110,14 +113,14 @@ const CookieLobby = () => {
 
     // console.log("players for Cookie: ",players);
 
-    const handleNavigateAway = async () => {
-        await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
-    }
+    // const handleNavigateAway = async () => {
+    //     await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
+    // }
 
-    window.onunload = function(){
-        handleNavigateAway();
-        return 'Are you sure you want to leave?';
-      };
+    // window.onunload = function(){
+    //     handleNavigateAway();
+    //     return 'Are you sure you want to leave?';
+    //   };
 
     const handleClick = async(player)=>{
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
@@ -127,7 +130,7 @@ const CookieLobby = () => {
         setTimeout(()=>{
             navigate("/cookieClicker");
 
-        }, "3000")
+        }, "6000")
         return(
             <div className="cookieClicker-loading-screen">
                 <span className="ready">Ready!</span>

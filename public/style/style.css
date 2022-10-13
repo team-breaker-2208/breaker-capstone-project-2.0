@@ -172,27 +172,43 @@ h1 {
   max-width: 300px;
   max-height: 100px;
 }
-root {
-  --clr-btn: hsl(200, 100%, 54%);
-  --clr-bg: hsl(204, 21%, 16%);
-}
 .join-button {
   font-size: 1em;
   font-weight: bolder;
 }
-button {
-  font-size: 4em;
-  background-image: linear-gradient(red, pink, orange);
-  display: inline-block;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--clr-btn);
-  border: var(--clr-btn) 0.125em solid;
-  padding: 0.25em 1em;
-  border-radius: 0.25em;
-  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.817), 0 0 0.5em currentColor;
-  box-shadow: inset 0 0 0.5em 0 var(--clr-btn), 0 0 0.5em 0 var(--clr-btn);
-  position: relative;
+.join-button:disabled {
+  background-color: grey;
+}
+.join-button {
+  height: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: green;
+}
+.join-button:disabled {
+  background-color: grey;
+}
+.mainLobby-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.gamesContainer {
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+}
+.cookieClicker-mainLobby-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 5px;
   border-style: ridge;
   transition: background-color 100ms linear;
 }
@@ -243,14 +259,9 @@ button:focus::after {
 button:disabled {
   background-color: grey;
 }
-.mainLobby-container {
+.cookieClicker-loading-screen {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
-}
-.gamesContainer {
-  display: inline-flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
@@ -296,6 +307,33 @@ button:disabled {
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
 }
+.gameTwo-mainLobby-container h2,
+.gameTwo-mainLobby-container h4 {
+  color: #c41414;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: bolder;
+}
+.join-button {
+  height: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: green;
+}
+.join-button:disabled {
+  background-color: grey;
+}
+.cookieClicker-loading-screen span color:red .ready {
+  animation-fill-mode: backwards;
+  animation-delay: 1;
+}
+.cookieClicker-loading-screen span .set {
+  color: #ffc107;
+  animation-delay: 2;
+}
+.cookieClicker-loading-screen span .go {
+  color: green;
+  animation-delay: 3;
+}
 .mainLobby-players-container {
   border-style: ridge;
 }
@@ -304,11 +342,52 @@ button:disabled {
   padding: 10px;
   background-color: bisque;
 }
+.ready,
+.set,
+.go {
+  font-size: 50px;
+  color: white;
+}
+.ready {
+  animation: mymove 1s;
+  animation-delay: 0s;
+}
+@keyframes mymove {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: blue;
+  }
+}
+.set {
+  animation: mymove2 1s;
+  animation-delay: 1s;
+}
+@keyframes mymove2 {
+  from {
+    background-color: blue;
+  }
+  to {
+    background-color: green;
+  }
+}
+.go {
+  animation: mymove3 1s;
+  animation-delay: 2s;
+}
+@keyframes mymove3 {
+  from {
+    background-color: green;
+  }
+  to {
+    background-color: yellow;
+  }
+}
 .main-lobby-player {
   border-style: ridge;
   padding: 10px;
-  color: white;
-  background-color: orange;
+  background-color: bisque;
 }
 root {
   --clr-btn: hsl(200, 100%, 54%);
