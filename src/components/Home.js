@@ -17,13 +17,11 @@ export default function Home() {
     const [mainLobbyPlayer, setMainLobbyPlayer] = useState({})
     const [mainLobbyPlayerId, setMainLobbyPlayerId] = useState("")
     const [loading, setLoading] = useState(false)
-    // console.log(currentUser)
     const navigate = useNavigate()
 
     useEffect(()=> {
         
         setUser(currentUser)
-        // console.log(user)
         
     },[currentUser, user])
     
@@ -116,8 +114,8 @@ window.onunload = function(){
         <div className='gamesContainer'>
           <div className='cookieClicker-mainLobby-container'>
             <h2>Cookie Clicker Game</h2>
-            <h4>{cookiePlayers.length}/3</h4>
-              {cookiePlayers.length < 3 ? 
+            <h4>{cookiePlayers.length}/2</h4>
+              {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                   <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 

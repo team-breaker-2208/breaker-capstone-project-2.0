@@ -105,40 +105,40 @@ export const CookieClicker = () => {
 
     // console.log(gameId)
     
-    useEffect(()=>{
+    // useEffect(()=>{
   
-            const addPlayer = async()=>{
-                if(currentUser.displayName){
-                    await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
-                        uid: currentUser.uid,
-                        displayName:currentUser.displayName,
-                        points:0
-                    })
-                }
+    //         const addPlayer = async()=>{
+    //             if(currentUser.displayName){
+    //                 await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
+    //                     uid: currentUser.uid,
+    //                     displayName:currentUser.displayName,
+    //                     points:0
+    //                 })
+    //             }
 
-                // setPlayerId(currentUser.uid);
-            };
-            addPlayer();
+    //             // setPlayerId(currentUser.uid);
+    //         };
+    //         addPlayer();
 
-        //to get all players in "player" collection
-        const getUsers = async()=>{
+    //     //to get all players in "player" collection
+    //     const getUsers = async()=>{
             
-            if(currentUser.displayName){
-                let currentPlayerRef = doc(db,"CookieClickerPlayer",currentUser.uid);
-                let currentPlayerSnap = await getDoc(currentPlayerRef);
-                if (currentPlayerSnap.exists()) {
-                        setPlayer(currentPlayerSnap.data());
-                    } else {
-                    // doc.data() will be undefined in this case
-                    // console.log("No such document!");
-                    }
-                }
-            }
+    //         if(currentUser.displayName){
+    //             let currentPlayerRef = doc(db,"CookieClickerPlayer",currentUser.uid);
+    //             let currentPlayerSnap = await getDoc(currentPlayerRef);
+    //             if (currentPlayerSnap.exists()) {
+    //                     setPlayer(currentPlayerSnap.data());
+    //                 } else {
+    //                 // doc.data() will be undefined in this case
+    //                 // console.log("No such document!");
+    //                 }
+    //             }
+    //         }
 
-            getUsers(); 
+    //         getUsers(); 
 
         
-    },[currentUser])
+    // },[currentUser])
 
     const handleClick=async(player)=>{
         const playerRef = doc(db,'CookieClickerPlayer',player.uid);
@@ -184,9 +184,9 @@ export const CookieClicker = () => {
                 let winner = playersArr[index].data().displayName
                 let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
-                let losersArr = playersArr.filter(doc=>doc.data().displayName!==winner)
-                console.log(losersArr)
-                console.log(losersArr.data())
+                // let losersArr = playersArr.filter(doc=>doc.data().displayName!==winner)
+                // console.log(losersArr)
+                // console.log(losersArr.data())
 
                 //increment that user's star property by 5! (which is winner)
                 const updateUserStar = async ()=>{
@@ -218,12 +218,12 @@ export const CookieClicker = () => {
                     await deleteDoc(doc(db, 'CookieClickerPlayer', uid ))
                 })
                 
-                setTimeout(() => {
+                // setTimeout(() => {
                     
-                    // navigate('/winnerPage', {state:[winner,player2,player2Points]})
-                    navigate('/winnerPage', {state:[winner, losersArr]})
+                    navigate('/winnerPage', {state:[winner,player2,player2Points]})
+                //     navigate('/winnerPage', {state:[winner, losersArr]})
 
-                }, 1000);
+                // }, 1000);
   
                 // alert(`Game done! Winner is ${winner}, points is 3. ${player2} points is ${player2Points}!`)
 

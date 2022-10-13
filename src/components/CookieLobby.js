@@ -110,20 +110,20 @@ const CookieLobby = () => {
 
     // console.log("players for Cookie: ",players);
 
-    const handleNavigateAway = async () => {
-        await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
-    }
+    // const handleNavigateAway = async () => {
+    //     await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
+    // }
 
-    window.onunload = function(){
-        handleNavigateAway();
-        return 'Are you sure you want to leave?';
-      };
+    // window.onunload = function(){
+    //     handleNavigateAway();
+    //     return 'Are you sure you want to leave?';
+    //   };
 
     const handleClick = async(player)=>{
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
     }
 
-    if (players.length === 3){
+    if (players.length === 2){
         setTimeout(()=>{
             navigate("/cookieClicker");
 
@@ -142,7 +142,7 @@ const CookieLobby = () => {
     <div className="lobbyContainer">
         <div>Welcome to Cookie Clicker!</div>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-        <h2>Lobby Status:{players.length}/3 Players</h2>
+        <h2>Lobby Status:{players.length}/2 Players</h2>
             {players.map((singlePlayer) => {
                 return (
                     <h3 key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
@@ -150,7 +150,7 @@ const CookieLobby = () => {
             })}
         
         <div>Number in lobby: {players.length}</div>
-        <div>Waiting on {3 - players.length} more</div> 
+        <div>Waiting on {2 - players.length} more</div> 
         </div>}
 
         
