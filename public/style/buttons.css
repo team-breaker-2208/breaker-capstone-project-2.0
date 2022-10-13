@@ -1,9 +1,71 @@
-.join-button {
-  height: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background-color: green;
+root {
+  --clr-btn: hsl(200, 100%, 54%);
+  --clr-bg: hsl(204, 21%, 16%);
 }
-.join-button:disabled {
+.join-button {
+  font-size: 1em;
+  font-weight: bolder;
+}
+button {
+  font-size: 4em;
+  background-image: linear-gradient(red, pink, orange);
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--clr-btn);
+  border: var(--clr-btn) 0.125em solid;
+  padding: 0.25em 1em;
+  border-radius: 0.25em;
+  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.817), 0 0 0.5em currentColor;
+  box-shadow: inset 0 0 0.5em 0 var(--clr-btn), 0 0 0.5em 0 var(--clr-btn);
+  position: relative;
+  border-style: ridge;
+  transition: background-color 100ms linear;
+}
+button::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--clr-btn);
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1.5em);
+  opacity: 0.7;
+}
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(purple, red, blue);
+  color: black;
+  box-shadow: 0 0 2em 0.5em var(--clr-btn);
+  opacity: 0;
+  background-color: var(--clr-btn);
+  z-index: -1;
+  transition: opacity 100ms linear;
+}
+button:hover,
+button:focus {
+  color: black;
+  text-shadow: none;
+  background-image: linear-gradient(orange, red, pink);
+  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.817), 0 0 0.5em currentColor;
+  box-shadow: inset 0 0 0.5em 0 var(--clr-btn), 0 0 0.5em 0 var(--clr-btn);
+}
+button:focus::before,
+button:hover::before {
+  opacity: 1;
+}
+button:hover::after,
+button:focus::after {
+  opacity: 1;
+}
+button:disabled {
   background-color: grey;
 }
