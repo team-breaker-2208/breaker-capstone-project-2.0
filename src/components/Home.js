@@ -112,14 +112,14 @@ export default function Home() {
       await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-  const handleNavigateAway = async () => {
-    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-}
+//   const handleNavigateAway = async () => {
+//     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
+// }
 
-window.onunload = function(){
-    handleNavigateAway();
-    return 'Are you sure you want to leave?';
-  };
+// window.onunload = function(){
+//     handleNavigateAway();
+//     return 'Are you sure you want to leave?';
+//   };
     
   const gameTwo = []
 
@@ -189,6 +189,6 @@ window.onunload = function(){
         </div>
         <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>
     </div>}
-    </div>
+    </div>       
   )
 }

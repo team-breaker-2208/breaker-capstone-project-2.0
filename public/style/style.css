@@ -275,121 +275,127 @@ h1 {
   padding: 10px;
   border: dimgray;
 }
-.mainLobby-container {
+.cookieClicker-loading-screen {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-.gamesContainer {
-  display: inline-flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 20px;
-}
-.cookieClicker-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 5px;
-  border-style: ridge;
-  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
+  background-image: url('https://samburke.files.wordpress.com/2011/08/ready-set-go-pic-001.png');
+  background-position: center;
   background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-}
-.cookieClicker-mainLobby-container h2,
-.cookieClicker-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.gameTwo-mainLobby-container {
-  height: 300px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 5px;
-  border-style: ridge;
-  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
-  background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-  background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
-}
-.gameTwo-mainLobby-container h2,
-.gameTwo-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.join-button {
-  height: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background-color: green;
-}
-.join-button:disabled {
-  background-color: grey;
-}
-.cookieClicker-loading-screen span color:red .ready {
-  animation-fill-mode: backwards;
-  animation-delay: 1;
-}
-.cookieClicker-loading-screen span .set {
-  color: #ffc107;
-  animation-delay: 2;
-}
-.cookieClicker-loading-screen span .go {
-  color: green;
-  animation-delay: 3;
+  height: 800px;
 }
 .ready,
 .set,
 .go {
-  font-size: 50px;
+  font-size: 70px;
   color: white;
+  visibility: hidden;
+  padding: 25px;
+  border-radius: 50%;
 }
 .ready {
-  animation: mymove 1s;
-  animation-delay: 0s;
+  animation: mymove 2s;
+  margin-top: 50px;
 }
 @keyframes mymove {
   from {
-    background-color: red;
+    visibility: hidden;
+    text-shadow: 2px 2px 15px #000000;
   }
   to {
-    background-color: blue;
+    visibility: visible;
+    margin-left: 100px;
+    background-image: url('http://www.nigella.com/assets/uploads/recipes/chocolate-chip-cookies-56388ed4575b0.jpg');
+    background-position: center;
+    background-size: cover;
   }
 }
 .set {
-  animation: mymove2 1s;
-  animation-delay: 1s;
+  animation: mymove2 2s;
+  animation-delay: 2s;
+  margin-top: 50px;
 }
 @keyframes mymove2 {
   from {
-    background-color: blue;
+    font-size: 90px;
+    visibility: hidden;
   }
   to {
-    background-color: green;
+    font-size: 90px;
+    visibility: visible;
+    margin-left: 100px;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqHTnpzqY1mUn32uQue1PyBzDC69nOhkgmMkGy0Mj_XJSQqRRUnttENainHfB6RzZtSfU&usqp=CAU');
+    background-position: center;
+    background-size: cover;
   }
 }
 .go {
-  animation: mymove3 1s;
-  animation-delay: 2s;
+  animation: mymove3 2s;
+  animation-delay: 4s;
+  margin-top: 50px;
 }
 @keyframes mymove3 {
   from {
-    background-color: green;
+    font-size: 110px;
+    visibility: hidden;
   }
   to {
-    background-color: yellow;
+    font-size: 110px;
+    visibility: visible;
+    margin-left: 100px;
+    background-image: url('https://t3.ftcdn.net/jpg/02/19/32/48/360_F_219324829_hyEzNkzKJlQVlyARbPAz9j2REHTPIskq.jpg');
+    background-position: center;
+    background-size: cover;
   }
+}
+.winner-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  background-image: url('https://cdn.shopify.com/s/files/1/0257/6718/2416/files/Gold_Balloon_Zoom_Background.jpg?v=1595051323');
+  background-position: center;
+  background-size: cover;
+  height: 800px;
+}
+.winner-title .title-word {
+  animation: color-animation 4s linear infinite;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}
+.winner-title .title-word-1 {
+  padding-top: 200px;
+  --color-1: #5553df;
+  --color-2: #3D8DAE;
+  --color-3: #E4A9A8;
+}
+.winner-title .title-word-2 {
+  --color-1: #42d753;
+  --color-2: #ACCFCB;
+  --color-3: #17494D;
+}
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
+}
+.mainLobby-players-container {
+  border-style: ridge;
 }

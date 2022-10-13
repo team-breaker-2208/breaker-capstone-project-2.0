@@ -1,71 +1,111 @@
+// .cookieClicker-loading-screen {
+//   span {
+//     color:red .ready {
+//       animation-fill-mode: backwards;
+//       animation-delay: 1;
+//     }
+
+//     .set {
+//       color: rgb(255, 193, 7);
+//       animation-delay: 2;
+//     }
+
+//     .go {
+//       color: green;
+//       animation-delay: 3;
+//     }
+//   }
+
+// }
 .cookieClicker-loading-screen {
-    span {
-      color:red .ready {
-        animation-fill-mode: backwards;
-        animation-delay: 1;
-      }
-  
-      .set {
-        color: rgb(255, 193, 7);
-        animation-delay: 2;
-      }
-  
-      .go {
-        color: green;
-        animation-delay: 3;
-      }
-    }
-  
-  }  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://samburke.files.wordpress.com/2011/08/ready-set-go-pic-001.png');
+  background-position: center;
+  background-size: cover;
+  height: 800px;
+}
+
 
 .ready,
 .set,
 .go {
-  font-size: 50px;
+  font-size: 70px;
   color: white;
+  visibility: hidden;
+  padding: 25px;
+  border-radius: 50%
 }
 
 .ready {
-  animation: mymove 1s;
-  animation-delay: 0s;
+  animation: mymove 2s;
+  margin-top: 50px;
+  // animation-delay: 0s;
 }
 
 @keyframes mymove {
-  from {
-    background-color: red;
+  from { 
+    visibility: hidden;
+    text-shadow: 2px 2px 15px #000000;
   }
 
   to {
-    background-color: blue
+    visibility: visible;
+    margin-left: 100px;
+    background-image: url('http://www.nigella.com/assets/uploads/recipes/chocolate-chip-cookies-56388ed4575b0.jpg');
+    background-position: center;
+    background-size: cover;
   }
 }
 
+
 .set {
-  animation: mymove2 1s;
-  animation-delay: 1s;
+  animation: mymove2 2s;
+  animation-delay: 2s;
+  margin-top: 50px;
 }
 
 @keyframes mymove2 {
   from {
-    background-color: blue;
+
+    font-size: 90px;
+    visibility: hidden;
   }
 
   to {
-    background-color: green
+    // background-color: green;
+    font-size: 90px;
+    visibility: visible;
+    margin-left: 100px;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqHTnpzqY1mUn32uQue1PyBzDC69nOhkgmMkGy0Mj_XJSQqRRUnttENainHfB6RzZtSfU&usqp=CAU');
+    background-position: center;
+    background-size: cover;
   }
 }
 
+
 .go {
-  animation: mymove3 1s;
-  animation-delay: 2s;
+  animation: mymove3 2s;
+  animation-delay: 4s;
+  margin-top: 50px;
 }
 
 @keyframes mymove3 {
   from {
-    background-color: green;
+
+    font-size: 110px;
+    visibility: hidden;
   }
 
   to {
-    background-color: yellow
+    // background-color: yellow;
+    font-size: 110px;
+    visibility: visible;
+    margin-left: 100px;
+    background-image: url('https://t3.ftcdn.net/jpg/02/19/32/48/360_F_219324829_hyEzNkzKJlQVlyARbPAz9j2REHTPIskq.jpg');
+    background-position: center;
+    background-size: cover;
   }
 }
