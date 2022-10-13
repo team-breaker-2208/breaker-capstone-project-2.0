@@ -220,8 +220,8 @@ export const CookieClicker = () => {
                 
                 // setTimeout(() => {
                     
-                //     navigate('/winnerPage', {state:[winner,player2,player2Points]})
-                //     // navigate('/winnerPage', {state:[winner, losersArr]})
+                    navigate('/winnerPage', {state:[winner,player2,player2Points]})
+                    // navigate('/winnerPage', {state:[winner, losersArr]})
 
                 // }, 1000);
   

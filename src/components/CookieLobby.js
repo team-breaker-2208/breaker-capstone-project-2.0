@@ -127,10 +127,10 @@ const CookieLobby = () => {
     }
 
     if (players.length === 2){
-        // setTimeout(()=>{
+        setTimeout(()=>{
             navigate("/cookieClicker");
 
-        // }, "3000")
+        }, "6000")
         return(
             <div className="cookieClicker-loading-screen">
                 <span className="ready">Ready!</span>
