@@ -181,138 +181,6 @@ h1 {
 .join-button:disabled {
   background-color: grey;
 }
-.mainLobby-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.gamesContainer {
-  display: inline-flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 20px;
-}
-.cookieClicker-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 5px;
-  border-style: ridge;
-  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
-  background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-}
-.cookieClicker-mainLobby-container h2,
-.cookieClicker-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.gameTwo-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 5px;
-  border-style: ridge;
-  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
-  background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-  background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
-}
-.gameTwo-mainLobby-container h2,
-.gameTwo-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.gameTwo-mainLobby-container h2,
-.gameTwo-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.mainLobby-players-container {
-  border-style: ridge;
-}
-.single-lobby-player {
-  border-style: ridge;
-  padding: 10px;
-  background-color: bisque;
-}
-.main-lobby-player {
-  border-style: ridge;
-  padding: 10px;
-  color: white;
-  background-color: orange;
-}
-.mainLobby-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.gamesContainer {
-  display: inline-flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 20px;
-}
-.cookieClicker-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 5px;
-  border-style: ridge;
-  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
-  background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-}
-.cookieClicker-mainLobby-container h2,
-.cookieClicker-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.gameTwo-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 5px;
-  border-style: ridge;
-  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
-  background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-  background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
-}
-.gameTwo-mainLobby-container h2,
-.gameTwo-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
-.gameTwo-mainLobby-container h2,
-.gameTwo-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
 .join-button {
   height: 30px;
   margin-top: auto;
@@ -322,17 +190,58 @@ h1 {
 .join-button:disabled {
   background-color: grey;
 }
-.cookieClicker-loading-screen span color:red .ready {
-  animation-fill-mode: backwards;
-  animation-delay: 1;
+.mainLobby-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-.cookieClicker-loading-screen span .set {
-  color: #ffc107;
-  animation-delay: 2;
+.gamesContainer {
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
 }
-.cookieClicker-loading-screen span .go {
-  color: green;
-  animation-delay: 3;
+.cookieClicker-mainLobby-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 5px;
+  border-style: ridge;
+  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
+  background-size: cover;
+  padding: 20px;
+  border-radius: 5px;
+}
+.cookieClicker-mainLobby-container h2,
+.cookieClicker-mainLobby-container h4 {
+  color: #c41414;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: bolder;
+}
+.gameTwo-mainLobby-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 5px;
+  border-style: ridge;
+  background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
+  background-size: cover;
+  padding: 20px;
+  border-radius: 5px;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
+}
+.gameTwo-mainLobby-container h2,
+.gameTwo-mainLobby-container h4 {
+  color: #c41414;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: bolder;
 }
 .mainLobby-players-container {
   border-style: ridge;
@@ -341,48 +250,6 @@ h1 {
   border-style: ridge;
   padding: 10px;
   background-color: bisque;
-}
-.ready,
-.set,
-.go {
-  font-size: 50px;
-  color: white;
-}
-.ready {
-  animation: mymove 1s;
-  animation-delay: 0s;
-}
-@keyframes mymove {
-  from {
-    background-color: red;
-  }
-  to {
-    background-color: blue;
-  }
-}
-.set {
-  animation: mymove2 1s;
-  animation-delay: 1s;
-}
-@keyframes mymove2 {
-  from {
-    background-color: blue;
-  }
-  to {
-    background-color: green;
-  }
-}
-.go {
-  animation: mymove3 1s;
-  animation-delay: 2s;
-}
-@keyframes mymove3 {
-  from {
-    background-color: green;
-  }
-  to {
-    background-color: yellow;
-  }
 }
 .main-lobby-player {
   border-style: ridge;

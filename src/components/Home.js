@@ -96,14 +96,14 @@ export default function Home() {
       await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-  const handleNavigateAway = async () => {
-    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-}
+//   const handleNavigateAway = async () => {
+//     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
+// }
 
-window.onunload = function(){
-    handleNavigateAway();
-    return 'Are you sure you want to leave?';
-  };
+// window.onunload = function(){
+//     handleNavigateAway();
+//     return 'Are you sure you want to leave?';
+//   };
     
   const gameTwo = []
 
@@ -116,8 +116,8 @@ window.onunload = function(){
         <div className='gamesContainer'>
           <div className='cookieClicker-mainLobby-container'>
             <h2>Cookie Clicker Game</h2>
-            <h4>{cookiePlayers.length}/3</h4>
-              {cookiePlayers.length < 3 ? 
+            <h4>{cookiePlayers.length}/2</h4>
+              {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                   <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
