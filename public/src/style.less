@@ -5,9 +5,12 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
+
 h1 {
   color: red
 }
+@import './colors.less';
 
 @import "./cookie.less";
 @import './signuplogin.less';
@@ -18,15 +21,8 @@ h1 {
 @import './winnerPage.less';
 @import './background.less';
 
-.mainLobby-players-container {
-  border-style: ridge;
+
+
+body{
+  background-image: linear-gradient(@cookieLobbyBorders, @cookiebg, @cookieLobbyUser);
 }
-
-.single-lobby-player {
-  border-style: ridge;
-  padding: 10px;
-  background-color: bisque;
-}
-
-
-
