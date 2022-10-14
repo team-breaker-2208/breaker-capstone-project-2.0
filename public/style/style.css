@@ -228,6 +228,7 @@ button:disabled {
   align-items: center;
 }
 .PlayersContainer {
+  height: 70vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -491,30 +492,27 @@ button:disabled {
   padding: 5px;
   display: flex;
   justify-content: space-around;
-  position: absolute;
+  position: relative;
   width: 100%;
 }
 .footer img {
   height: 46px;
 }
-body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  color: var(--clr-btn);
-  padding-right: 10rem;
-  margin: 0;
+@media only screen and (max-width: 600px) {
+  .navBar {
+    font-size: 20px;
+    width: 100vh;
+  }
+  .mainLobby-container {
+    margin-left: 100%;
+  }
 }
-#root {
-  width: 100vw;
+body {
   height: 100vh;
-}
-body {
-  min-height: 100vh;
+  width: 100vw;
   display: grid;
   place-items: center;
   color: var(--clr-btn);
-  padding-right: 10rem;
   margin: 0;
 }
 #root {
