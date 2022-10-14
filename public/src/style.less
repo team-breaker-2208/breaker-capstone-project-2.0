@@ -21,8 +21,12 @@ h1 {
 @import './winnerPage.less';
 
 
-
-
-body{
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
   background-image: linear-gradient(@cookieLobbyBorders, @cookiebg, @cookieLobbyUser);
+  color: var(--clr-btn);
+  padding-right: 10rem;
 }
+
