@@ -33,7 +33,15 @@ export default function Home() {
         {displayName:"Lily",
         uid:3,
         stars:10
-        }
+        },
+        {displayName:"Lily",
+        uid:3,
+        stars:10
+        },
+        {displayName:"Lily",
+        uid:3,
+        stars:10
+        },
     ]
 
     useEffect(()=> {

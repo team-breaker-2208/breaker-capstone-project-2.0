@@ -6,7 +6,10 @@ import Login from "./components/Login";
 import { AuthContext } from "./context/AuthContext";
 import { CookieClicker } from "./components/CookieClicker";
 import CookieLobby from "./components/CookieLobby";
-import WinnerPage from './components/WinnerPage'
+import WinnerPage from './components/WinnerPage';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Profile from './components/Profile';
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -21,6 +24,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Nav />
       <Routes>
           <Route path="/">
             <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -29,8 +33,10 @@ function App() {
             <Route exact path="cookieClicker" element={<CookieClicker />} />
             <Route exact path="CookieLobby" element={<CookieLobby/>} />
             <Route exact path='winnerPage' element={<WinnerPage/>}/>
+            <Route exact path='profile' element={<Profile/>}/>
           </Route>
       </Routes>
+    <Footer />
     </BrowserRouter>
   );
 }
