@@ -2,7 +2,7 @@ import React from 'react'
 // import { useLocation } from "react-router-dom";
 import {Link} from 'react-router-dom'
 // import useWindowSize from 'react-use/lib/useWindowSize'
-import Confetti from 'react-confetti'
+// import Confetti from 'react-confetti'
 
 const WinnerPage = ()=>{
     // const location = useLocation();
