@@ -21,28 +21,28 @@ export default function Home() {
     const navigate = useNavigate()
 
     //dummyData
-    const dummyData=[
-        {displayName:"Mike",
-        uid:1,
-        stars:0
-        },
-        {displayName:"Jake",
-        uid:2,
-        stars:5
-        },
-        {displayName:"Lily",
-        uid:3,
-        stars:10
-        },
-        {displayName:"Lily",
-        uid:3,
-        stars:10
-        },
-        {displayName:"Lily",
-        uid:3,
-        stars:10
-        },
-    ]
+    // const dummyData=[
+    //     {displayName:"Mike",
+    //     uid:1,
+    //     stars:0
+    //     },
+    //     {displayName:"Jake",
+    //     uid:2,
+    //     stars:5
+    //     },
+    //     {displayName:"Lily",
+    //     uid:3,
+    //     stars:10
+    //     },
+    //     {displayName:"Lily",
+    //     uid:3,
+    //     stars:10
+    //     },
+    //     {displayName:"Lily",
+    //     uid:3,
+    //     stars:10
+    //     },
+    // ]
 
     useEffect(()=> {
         
@@ -141,11 +141,11 @@ export default function Home() {
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 3</h4>
+                    <h4>Players: {cookiePlayers.length} / 2</h4>
                 </div>
                 <div className='cookieClicker-mainLobby-container'>
                 </div>
-                {cookiePlayers.length < 3 ? 
+                {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
         <h2>Current Players In Lobby:</h2>
         <div className='mainLobby-players-container'>
-            {/* {mainLobbyPlayers.map((singlePlayer) => {
+            {mainLobbyPlayers.map((singlePlayer) => {
                   if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
                     return(
                       <div key={singlePlayer.data().uid} className="main-lobby-player">
@@ -183,16 +183,16 @@ export default function Home() {
                         <h4 >{singlePlayer.data().stars} Stars</h4>
                       </div>
                     )
-            })} */}
+            })}
 
-            {dummyData.map((singlePlayer)=>{
+            {/* {dummyData.map((singlePlayer)=>{
                 return(
                     <div key={singlePlayer.uid} className="main-lobby-player">
                         <h3>{singlePlayer.displayName}</h3>
                         <h4>{singlePlayer.stars} Stars</h4>
                     </div>
                 )
-            })}
+            })} */}
 
         </div>
         <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>

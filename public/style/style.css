@@ -288,8 +288,9 @@ h1 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  gap: 16px;
+  gap: 25px;
   border: none;
+  width: 600px;
 }
 .single-lobby-player {
   width: 130px;
@@ -469,7 +470,6 @@ h1 {
   display: flex;
   justify-content: space-around;
   position: absolute;
-  bottom: 0;
   width: 100%;
 }
 .footer img {

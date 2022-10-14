@@ -1,4 +1,5 @@
 .navBar {
+  margin: 0;
   display: flex;
   justify-content: space-between;
   background-color: #486BBD;
@@ -13,10 +14,12 @@
 .navBar .logo span {
   font-family: monospace, sans-serif;
   font-weight: bolder;
+  font-size: 30px;
 }
 .navBar img {
-  height: 70px;
-  width: 100px;
+  height: 90px;
+  width: 140px;
+  border-radius: 50px;
 }
 .navBar .nav-right {
   display: flex;
@@ -36,6 +39,9 @@
   padding: 5px;
   display: flex;
   justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 .footer img {
   height: 46px;
