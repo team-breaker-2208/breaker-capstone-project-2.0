@@ -17,6 +17,48 @@ const CookieLobby = () => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
+
+    //getting or creating the current Game
+    useEffect(()=>{
+        const getGame = async()=>{
+            let currentGame = false
+            const gamesCollectionRef = collection(db,"cookieClickerGames")
+            const data = await getDocs(gamesCollectionRef)
+            data.docs.map((game) => { 
+                const gameStatus = game.data().gameStatus
+                if(gameStatus){
+                    console.log("GID in getGame", game.data().gid)
+                    setGameId(game.data().gid)
+                    currentGame = true
+                }
+                return currentGame
+            })
+            // console.log('get games runs!')
+
+            if(currentGame === false ){
+                const addGame = async()=>{
+                    const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
+                        gameStatus: true
+                    })
+                    await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
+                        gameStatus: true,
+                        gid: gameRef.id
+                    })
+                    setGameId(gameRef.id)
+                    currentGame = true
+                };
+                console.log('addGame function runs!')
+
+                addGame();
+            }; 
+        }
+        getGame()
+        return () => {
+            console.log("get/add game useEffect was fired!")
+        }
+    }, [])  
+
+ 
     
     //adding players to CookieClicker lobby
     useEffect(()=>{
@@ -27,7 +69,7 @@ const CookieLobby = () => {
                         uid: currentUser.uid,
                         displayName:currentUser.displayName,
                         points:0,
-                        gid: gameId
+                        // gid: gameId
                     })
                 }
         };
@@ -58,43 +100,7 @@ const CookieLobby = () => {
         // console.log("now loading")
     },[currentUser, gameId])
     
-    //getting or creating the current Game
-    useEffect(()=>{
-        const getGame = async()=>{
-            let currentGame = false
-            const gamesCollectionRef = collection(db,"cookieClickerGames")
-            const data = await getDocs(gamesCollectionRef)
-            data.docs.map((game) => { 
-                const gameStatus = game.data().gameStatus
-                if(gameStatus){
-                    setGameId(game.data().gid)
-                    currentGame = true
-                }
-                return currentGame
-            })
-            // console.log('get games runs!')
-
-            if(currentGame === false ){
-                const addGame = async()=>{
-                    const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
-                        gameStatus: true
-                    })
-                    await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
-                        gameStatus: true,
-                        gid: gameRef.id
-                    })
-                    setGameId(gameRef.id)
-                    currentGame = true
-                };
-                console.log('addGame function runs!')
-
-                addGame();
-            }; 
-        }
-        return () => {
-            getGame()
-        }
-    }, [])    
+      
 
     useEffect(()=>{
         const qPlayers = query(collection(db, "CookieClickerPlayer"));
@@ -133,7 +139,6 @@ const CookieLobby = () => {
                 <span className="ready">Ready!</span>
                 <span className="set">Set!</span>
                 <span className="go">GO!</span>
-
             </div>
         )
     }

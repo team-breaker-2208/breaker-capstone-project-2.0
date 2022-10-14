@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
 // import { ref } from "firebase/storage";
 import { doc, setDoc, getDoc, collection, getDocs, updateDoc, deleteDoc } from "firebase/firestore"; 
-import { query, where, onSnapshot } from "firebase/firestore";
+import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../server/firebase';
 // import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
@@ -64,6 +64,7 @@ export const CookieClicker = () => {
             data.docs.map((game) => { 
                 const gameStatus = game.data().gameStatus
                 if(gameStatus){
+                    console.log("GID in getGame", game.data().gid)
                     setGameId(game.data().gid)
                     currentGame = true
                 }
@@ -96,9 +97,9 @@ export const CookieClicker = () => {
             // }; 
             // console.log('currentGame:', currentGame)
         }
+        getGame()
         return () => {
             console.log('game add/get useEffect FIRED!')
-            getGame()
         }
     }, [])
     // }, [player])
@@ -138,7 +139,8 @@ export const CookieClicker = () => {
     //firebase realtime listening
     useEffect(()=>{
 
-        const q = query(collection(db, "CookieClickerPlayer"), where("gid", "==", gameId));
+        const q = query(collection(db, "CookieClickerPlayer"));
+        // where("gid", "==", gameId)
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             // console.log('firebase realtime listening')
@@ -206,7 +208,9 @@ export const CookieClicker = () => {
             console.log("game update useEffect FIRED!")
         }
     // },[])
-    },[gameId, player.displayName])   
+    },[gameId, player.displayName])  
+    
+    console.log("GID in cookieClicker: ", gameId)
 
     if(gameOver){
         navigate('/winnerPage')
