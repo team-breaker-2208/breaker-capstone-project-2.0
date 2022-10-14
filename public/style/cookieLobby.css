@@ -1,0 +1,33 @@
+.lobby-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome {
+  color: coral;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.PlayersContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightblue;
+}
+.players {
+  border-style: ridge;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+}
+.infoDiv {
+  border-style: ridge;
+  padding: 10px;
+  background-color: bisque;
+}
