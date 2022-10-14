@@ -23,22 +23,22 @@ export const CookieClicker = () => {
     
     useEffect(()=>{
        
-        const addPlayer = async()=>{
-                if(currentUser.displayName){
-                    await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
-                        uid: currentUser.uid,
-                        displayName:currentUser.displayName,
-                        points:0,
-                        gid: gameId
-                    })
-                }
+        // const addPlayer = async()=>{
+        //         if(currentUser.displayName){
+        //             await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
+        //                 uid: currentUser.uid,
+        //                 displayName:currentUser.displayName,
+        //                 points:0,
+        //                 gid: gameId
+        //             })
+        //         }
 
-                // setPlayerId(currentUser.uid);
-        };
-        addPlayer();
+        //         // setPlayerId(currentUser.uid);
+        // };
+        // addPlayer();
 
         //to get all players in "player" collection
-        const getUsers = async()=>{
+        const getSingleUser = async()=>{
             
             if(currentUser.displayName){
                 let currentPlayerRef = doc(db,"CookieClickerPlayer",currentUser.uid);
@@ -52,7 +52,7 @@ export const CookieClicker = () => {
             }
         }
 
-        getUsers(); 
+        getSingleUser(); 
         
     },[currentUser, gameId])
     
