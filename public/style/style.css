@@ -229,74 +229,82 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
+.mainLobby-container h1 {
+  background-image: linear-gradient(45deg, #3c07cd, #c72707);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-weight: bolder;
+  font-size: 56px;
+  font-family: cursive,serif;
+  margin-bottom: 50px;
+}
 .gamesContainer {
   display: inline-flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px;
   margin-top: 20px;
+  margin-bottom: 50px;
+}
+.eachGame {
+  background-color: #dbecfa;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.eachGame .gameTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.eachGame .gameTitle h2,
+.eachGame .gameTitle h4 {
+  font-family: sans-serif, serif;
 }
 .cookieClicker-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
   width: 300px;
-  box-shadow: 0px 0px 8px 8px white;
-  margin: 5px;
-  border-style: ridge;
-  border-color: #0A1C44;
+  height: 300px;
   background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
   background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
-}
-.cookieClicker-mainLobby-container h2,
-.cookieClicker-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 .gameTwo-mainLobby-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  flex-wrap: wrap;
   width: 300px;
-  box-shadow: 0px 0px 8px 8px white;
-  margin: 5px;
-  border-style: ridge;
-  border-color: #0A1C44;
+  height: 300px;
   background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
   background-size: cover;
-  padding: 20px;
-  border-radius: 5px;
+  border-radius: 20px;
+  margin-bottom: 10px;
   background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
 }
-.gameTwo-mainLobby-container h2,
-.gameTwo-mainLobby-container h4 {
-  color: #c41414;
-  text-shadow: 2px 2px 2px #000000;
-  font-weight: bolder;
-}
 .mainLobby-players-container {
-  border-style: ridge;
-  border-color: #486BBD;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 16px;
+  border: none;
 }
 .single-lobby-player {
-  border-style: ridge;
+  width: 130px;
+  background-color: #8eb5f4;
+  border-radius: 10px;
   padding: 10px;
-  background-color: #1D397A;
-  border-color: #0A1C44;
-  color: white;
+  border: dimgray;
+  background-color: #7aa8f2;
 }
 .main-lobby-player {
-  border-style: ridge;
-  border-color: #0A1C44;
+  width: 130px;
+  background-color: #8eb5f4;
+  border-radius: 10px;
   padding: 10px;
-  color: white;
-  background-color: #486BBD;
+  border: dimgray;
 }
 .cookieClicker-loading-screen {
   display: flex;
@@ -419,11 +427,63 @@ h1 {
     color: var(--color-1);
   }
 }
+.navBar {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #486BBD;
+}
+.navBar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-direction: row;
+}
+.navBar .logo span {
+  font-family: monospace, sans-serif;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.navBar img {
+  height: 90px;
+  width: 140px;
+  border-radius: 50px;
+}
+.navBar .nav-right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  margin-right: 30px;
+}
+.navBar .nav-right .nav-link {
+  text-decoration: none;
+  font-size: 24px;
+  font-family: sans-serif, serif;
+  color: black;
+}
+.footer {
+  background-color: #486BBD;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.footer img {
+  height: 46px;
+}
 body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background-image: linear-gradient(#7C72E0, #3D35A7, #486BBD);
   color: var(--clr-btn);
   padding-right: 10rem;
+  margin: 0;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
 }
