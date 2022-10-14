@@ -1,19 +1,110 @@
-.join-button {
-    height: 30px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: green;
+@import './colors.less';
+
+.join-button{
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.logout-button,
+.login-button{
+    font-size: 1.6em;
+    margin: 1em;
+}
+
+
+button {
+    font-size: 2em;
+    margin: 10px;
+    display:inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    border: @mainLobbyBorders 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.3em;
+    background-color: @User;
+    text-decoration: solid;
+
+    text-shadow: 
+    0 0 0.125em lightgrey,
+    0 0 0.5em @mainLobbyPlayers ;
+    box-shadow: inset
+    0 0 0.5em 0 @mainLobbyPlayers,
+    0 0 0.5em 0 @mainLobbyUser;
+
+    position: relative;
+    border-style: ridge;
+
+    transition: background-color 100ms linear;
   }
   
-  .join-button:disabled {
+button::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background-color: @mainLobbyPlayers;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1.5em);
+    opacity: 0.7;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: black;
+    box-shadow: 0 0 2em 0.5em black;
+    opacity: 0;
+    background-color: @mainLobbyPlayers;
+    z-index: -1;
+    transition: opacity 100ms linear;
+    transition: 1s;
+}
+
+.login-button:hover,
+.login-button:focus,
+.join-button:focus,
+.join-button:hover {
+    color: whitesmoke;
+    text-shadow: none;
+    text-shadow: 
+    0 0 0.125em black,
+    0 0 0.5em currentColor ;
+    box-shadow: inset
+    0 0 0.5em 0 whitesmoke,
+    0 0 0.5em 0 @cookieLobbyBorders;
+    transition: .5s;
+}
+
+button:hover,
+button:focus {
+    color: @cookieLobbyBorders;
+    text-shadow: none;
+    text-shadow: 
+    0 0 0.125em black,
+    0 0 0.5em currentColor ;
+    box-shadow: inset
+    0 0 0.5em 0 @cookieLobbyBorders,
+    0 0 0.5em 0 @cookieLobbyBorders;
+    transition: .75s;
+}
+button:focus::before,
+button:hover::before{
+    opacity: 1;
+}
+button:hover::after,
+button:focus::after{
+    opacity: 1;
+}
+
+button:disabled {
     background-color: grey;
-  }.join-button {
-    height: 30px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: green;
-  }
-  
-  .join-button:disabled {
-    background-color: grey;
-  }
+}
