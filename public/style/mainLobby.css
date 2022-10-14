@@ -18,6 +18,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 300px;
+  box-shadow: #000000;
   margin: 5px;
   border-style: ridge;
   background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
@@ -37,6 +38,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 300px;
+  box-shadow: #000000;
   margin: 5px;
   border-style: ridge;
   background-image: url(https://media.istockphoto.com/vectors/seamless-background-with-cookies-vector-illustration-vector-id481893966?k=20&m=481893966&s=612x612&w=0&h=4jdnCccja5GRg662xzxAKGSDWHns5nciIo2k_HeA5Ag=);
@@ -53,15 +55,19 @@
 }
 .mainLobby-players-container {
   border-style: ridge;
+  border-color: #486BBD;
 }
 .single-lobby-player {
   border-style: ridge;
   padding: 10px;
-  background-color: bisque;
+  background-color: #1D397A;
+  border-color: #0A1C44;
+  color: white;
 }
 .main-lobby-player {
   border-style: ridge;
+  border-color: #0A1C44;
   padding: 10px;
   color: white;
-  background-color: orange;
+  background-color: #486BBD;
 }
