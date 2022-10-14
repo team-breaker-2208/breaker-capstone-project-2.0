@@ -108,7 +108,7 @@ const CookieLobby = () => {
         }
     },[])
 
-    console.log("players for Cookie: ",players);
+    console.log("GID: ", gameId);
 
     const handleNavigateAway = async () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
