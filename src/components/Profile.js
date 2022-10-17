@@ -6,21 +6,25 @@ import { db } from '../server/firebase';
 
 export default function Profile() {
 
-  // const {currentUser} = useContext(AuthContext);
+  const {currentUser} = useContext(AuthContext);
   const [clickEdit,setClickEdit] = useState(false);
   const [user, setUser] = useState({});
 
-//   useEffect(()=>{
-//     const getUser = async()=>{
-//         if(currentUser.displayName){
-//             let currentPlayerRef = doc(db,"users",currentUser.uid);
-//             let currentPlayerSnap = await getDoc(currentPlayerRef);
-//             const stars = currentPlayerSnap.data().star;
-//             setUser({...currentUser,stars:stars})
-//         }
-//     }
-//     getUser();
-//   },[currentUser,user,clickEdit])
+  useEffect(()=>{
+    const getUser = async()=>{
+        if(currentUser.displayName){
+            let currentPlayerRef = doc(db,"users",currentUser.uid);
+            let currentPlayerSnap = await getDoc(currentPlayerRef);
+            const stars = currentPlayerSnap.data().star;
+            console.log("stars",stars);
+            const displayName = currentPlayerSnap.data().displayName;
+            const email = currentUser.email;
+            setUser({displayName:displayName,email:email,stars:stars})
+        }
+    }
+    getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[currentUser])
   
   const handleUpdate = () => {
    setClickEdit(true);

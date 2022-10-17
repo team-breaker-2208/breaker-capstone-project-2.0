@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
-import { updateDoc, doc } from 'firebase/firestore';
+import { updateDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '../server/firebase'; 
 
 export default function EditForm({setClickEdit, setUser}) {
@@ -25,14 +25,16 @@ export default function EditForm({setClickEdit, setUser}) {
     };
 
     const handleUpdate = async(event) => {
-        // event.preventDefault();
-        // if(currentUser.displayName){
-        //     let currentPlayerRef = doc(db,"users",currentUser.uid);
-        //     await updateDoc(currentPlayerRef,{displayName:form.displayName,email:form.email})
-        //     setUser({displayName:form.displayName,email:form.email})
-        // }
-        // setClickEdit(false);
-        // navigate("/profile");
+        event.preventDefault();
+        if(currentUser.displayName){
+            let currentPlayerRef = doc(db,"users",currentUser.uid);
+            let currentPlayerSnap = await getDoc(currentPlayerRef);
+            const stars = currentPlayerSnap.data().star;
+            await updateDoc(currentPlayerRef,{displayName:form.displayName,email:form.email})
+            setUser({displayName:form.displayName,email:form.email,stars:stars})
+        }
+        setClickEdit(false);
+        navigate("/profile");
     }
 
   return (
