@@ -32,7 +32,7 @@ export default function EditForm() {
         <form>
             <div className="form-item">
                 <label htmlFor="displayName" className="form-label">Name</label>
-                <input type="displayName" value={form.userName || ""} onChange={handleChange("displayName")} /> 
+                <input type="displayName" value={form.displayName || ""} onChange={handleChange("displayName")} /> 
             </div>
 
             <div className="form-item">
