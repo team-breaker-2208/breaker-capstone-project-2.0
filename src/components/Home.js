@@ -133,7 +133,7 @@ window.onunload = function(){
 
   return (
     <div className='mainLobby-container'>
-        <h1 className='test'>Weclome to the Games Center</h1>
+        <h1 className='test'>Weclome to the Breaker Games</h1>
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
         <div className='mainLobby-loaded'>
