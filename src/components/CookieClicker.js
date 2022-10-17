@@ -19,7 +19,6 @@ export const CookieClicker = () => {
     const [gameId, setGameId] = useState("")
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
-    const [winnerInfo, setWinnerInfo] = useState([])
     
 
     
@@ -152,9 +151,12 @@ export const CookieClicker = () => {
             if (points.includes(3)) {
                 let index = points.indexOf(3)
                 let winner = playersArr[index].data().displayName
-                let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
-                let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
-                // let losersArr = playersArr.filter(doc=>doc.data().displayName!==winner)
+                // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
+                // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
+                let losersRef = playersArr.filter(doc=>doc.data().displayName!==winner)
+                console.log("losersRef is: ", losersRef)
+                
+                let losers = losersRef.map(loser => loser.data())
                 // console.log(losersArr)
                 // console.log(losersArr.data())
 
@@ -168,21 +170,22 @@ export const CookieClicker = () => {
                     updateUserStar()
                 }
 
-                setWinnerInfo([winner,player2,player2Points])
    
                 const updateGame = async ()=>{
                     await setDoc(doc(db, "cookieClickerGames", gameId), {
                             gid: gameId,
                             gameStatus: false,
                             winner,
-                            player2:{name: player2, points: player2Points}
+                            losers
                         });
                         console.log("updateGame FIRED!")
                         setGameOver(true)
                 }
                 
+                if(losersRef.length === 3){
+                    updateGame()
 
-                 updateGame()
+                }
 
                     
                 // console.log('game done', winner)
@@ -217,7 +220,7 @@ export const CookieClicker = () => {
 
     if(gameOver){
         // navigate('/winnerPage')
-        navigate('/winnerPage', {state:[...winnerInfo]})
+        navigate('/winnerPage', {state:gameId})
     }
 
     // console.log('CookieClicker.js component renders!')
