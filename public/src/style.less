@@ -12,6 +12,7 @@ h1 {
 }
 
 @import './colors.less';
+@import './fonts.less';
 
 @import "./cookie.less";
 @import './buttons.less';
@@ -29,7 +30,7 @@ body {
   width: 100vw;
   display: grid;
   place-items: center;
-  // background-image: linear-gradient(@cookieLobbyBorders, @cookiebg, @cookieLobbyUser);
+  background-image: linear-gradient(@cookieLobbyBorders, @cookiebg, @cookieLobbyBorders);
   color: var(--clr-btn);
   margin: 0;
 }
@@ -45,5 +46,5 @@ html {
 
 .wrapper {
   min-height: 100vh;
-  background-color: green;
+  background-image: linear-gradient(@cookieLobbyBorders, @cookiebg, @cookieLobbyBorders)
 }
