@@ -12,7 +12,7 @@
   flex-direction: row;
 }
 .navBar .logo span {
-  font-family: monospace, sans-serif;
+  font-family: 'Quantum';
   font-weight: bolder;
   font-size: 30px;
 }

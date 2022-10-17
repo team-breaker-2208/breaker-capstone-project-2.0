@@ -1,4 +1,8 @@
 @font-face {
-  font-family: 'hard-brush';
-  src: url(../fonts/Hard\ Brush.ttf);
+  font-family: 'gemstone';
+  src: url(../fonts/Gemstone.ttf);
+}
+@font-face {
+  font-family: 'Quantum';
+  src: url(../fonts/Quantum.otf);
 }
