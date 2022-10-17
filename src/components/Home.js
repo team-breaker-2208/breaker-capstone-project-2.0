@@ -20,7 +20,7 @@ export default function Home() {
     // console.log(currentUser)
     const navigate = useNavigate()
 
-    //dummyData
+    // dummyData
     // const dummyData=[
     //     {displayName:"Mike",
     //     uid:1,

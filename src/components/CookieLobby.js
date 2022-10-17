@@ -136,9 +136,9 @@ const CookieLobby = () => {
         }, "6000")
         return(
             <div className="cookieClicker-loading-screen">
-                <span className="ready">Ready!</span>
-                <span className="set">Set!</span>
-                <span className="go">GO!</span>
+                <h1 className="word ready">Ready!</h1>  
+                <h1 className="word set">Set!!</h1>
+                <h1 className="word go">GO!!!</h1>
             </div>
         )
     }

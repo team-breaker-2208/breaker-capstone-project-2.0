@@ -238,7 +238,7 @@ button:disabled {
   align-items: center;
 }
 .PlayersContainer {
-  height: 70vh;
+  height: 81vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -322,7 +322,7 @@ button:disabled {
   justify-content: space-around;
   gap: 25px;
   border: none;
-  width: 600px;
+  width: 100%;
 }
 .single-lobby-player {
   width: 130px;
@@ -344,101 +344,103 @@ button:disabled {
 }
 .cookieClicker-loading-screen {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('https://samburke.files.wordpress.com/2011/08/ready-set-go-pic-001.png');
+  background-image: url('https://previews.123rf.com/images/milkos/milkos1607/milkos160700253/59484343-cookies-and-sweet-biscuits-at-natural-wood-background-with-copy-space-oatmeal-and-chocolate-drops-co.jpg');
   background-position: center;
-  background-size: cover;
+  background-size: cover ;
   height: 800px;
 }
-.ready,
-.set,
-.go {
+.word {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  line-height: 2.7;
+  text-align: center;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: 70px;
   color: white;
-  visibility: hidden;
-  padding: 25px;
+  text-shadow: 1px 1px 2px black, 0 0 25px #4088B7, 0 0 5px #574FC2;
+  opacity: 0;
   border-radius: 50%;
+  box-shadow: 0px 0px 8px 10px #072A41;
+  margin: 0;
+  margin-right: 20%;
 }
 .ready {
   animation: mymove 2s;
-  margin-top: 50px;
+  background-image: url(https://cdn.drawception.com/drawings/N0NQDqTXLN.png);
+}
+.set {
+  animation: mymove 2s;
+  animation-delay: 2s;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTere_YZatyKujC94GCjeIPkrVhvKPnU85ljYtdiN67WfchFZe5V23NOOngdE6hX9mBHrM&usqp=CAU);
+}
+.go {
+  animation: mymove 2s;
+  animation-delay: 4s;
+  background-image: url('https://cdn.drawception.com/images/panels/2017/8-31/bceEXf27K8-10.png');
 }
 @keyframes mymove {
   from {
-    visibility: hidden;
-    text-shadow: 2px 2px 15px #000000;
+    opacity: 0;
   }
   to {
-    visibility: visible;
-    margin-left: 100px;
-    background-image: url('http://www.nigella.com/assets/uploads/recipes/chocolate-chip-cookies-56388ed4575b0.jpg');
-    background-position: center;
+    margin-left: 20%;
     background-size: cover;
+    width: 270px;
+    height: 270px;
+    line-height: 3.5;
+    opacity: 1;
   }
 }
-.set {
-  animation: mymove2 2s;
-  animation-delay: 2s;
-  margin-top: 50px;
-}
-@keyframes mymove2 {
-  from {
-    font-size: 90px;
-    visibility: hidden;
+@media only screen and (max-width: 850px) {
+  .word {
+    margin: 0;
   }
-  to {
-    font-size: 90px;
-    visibility: visible;
-    margin-left: 100px;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqHTnpzqY1mUn32uQue1PyBzDC69nOhkgmMkGy0Mj_XJSQqRRUnttENainHfB6RzZtSfU&usqp=CAU');
-    background-position: center;
-    background-size: cover;
-  }
-}
-.go {
-  animation: mymove3 2s;
-  animation-delay: 4s;
-  margin-top: 50px;
-}
-@keyframes mymove3 {
-  from {
-    font-size: 110px;
-    visibility: hidden;
-  }
-  to {
-    font-size: 110px;
-    visibility: visible;
-    margin-left: 100px;
-    background-image: url('https://t3.ftcdn.net/jpg/02/19/32/48/360_F_219324829_hyEzNkzKJlQVlyARbPAz9j2REHTPIskq.jpg');
-    background-position: center;
-    background-size: cover;
+  @keyframes mymove {
+    from {
+      opacity: 0;
+    }
+    to {
+      background-position: center;
+      background-size: cover;
+      width: 250px;
+      height: 250px;
+      line-height: 3.5;
+      opacity: 1;
+    }
   }
 }
 .winner-title {
   text-align: center;
   font-weight: 600;
   font-size: 30px;
-  background-image: url('https://cdn.shopify.com/s/files/1/0257/6718/2416/files/Gold_Balloon_Zoom_Background.jpg?v=1595051323');
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  background-image: url('https://t3.ftcdn.net/jpg/03/51/32/50/360_F_351325048_SNzPFn1qGEVtEqqoxw8SANC12IauVSYo.jpg');
   background-position: center;
   background-size: cover;
-  height: 800px;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px 10px #072A41;
+  margin: auto;
+  resize: both;
 }
 .winner-title .title-word {
   animation: color-animation 4s linear infinite;
   font-family: Comic Sans MS, Comic Sans, cursive;
 }
 .winner-title .title-word-1 {
-  padding-top: 200px;
+  padding: 25% 5% 0 5%;
   --color-1: #5553df;
   --color-2: #3D8DAE;
-  --color-3: #E4A9A8;
+  --color-3: #9a47e8;
 }
 .winner-title .title-word-2 {
-  --color-1: #42d753;
-  --color-2: #ACCFCB;
-  --color-3: #17494D;
+  --color-1: #d74291;
+  --color-2: #c4accf;
+  --color-3: #b22fa3;
 }
 @keyframes color-animation {
   0% {
@@ -461,6 +463,47 @@ button:disabled {
   }
   100% {
     color: var(--color-1);
+  }
+}
+.winner-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  .winner-title {
+    font-size: 20px;
+  }
+  .winner-title .title-word-1 {
+    padding-top: 55%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .winner-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+  }
+  .winner-title .title-word-2 {
+    margin-bottom: 30%;
+  }
+}
+@media screen and (max-height: 700px) {
+  .winner-title {
+    font-size: 20px;
+  }
+  .winner-title .title-word-1 {
+    padding: 15% 5% 0 5%;
+  }
+}
+@media screen and (max-height: 700px) and (max-width: 600px) {
+  .winner-title {
+    font-size: 15px;
+  }
+  .winner-title .title-word-1 {
+    padding: 25% 5% 0 5%;
   }
 }
 .navBar {
@@ -504,23 +547,38 @@ button:disabled {
   padding: 5px;
   display: flex;
   justify-content: space-around;
-  position: relative;
-  width: 100%;
+  width: 100vw;
+  position: absolute;
 }
 .footer img {
   height: 46px;
 }
 @media only screen and (max-width: 600px) {
   .navBar {
-    font-size: 20px;
-    width: 100vh;
-  }
-  .mainLobby-container {
-    margin-left: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
+#whack-a-mole {
+  background-color: darkolivegreen;
+  border: solid 20px #000;
+  padding: 20px;
+  width: 440px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.hole {
+  background-image: url("https://i.ebayimg.com/images/g/UVAAAOSwQLhjTNc~/s-l500.png");
+  background-size: contain;
+  width: 110px;
+  height: 123px;
+  margin: 5px;
+}
+.mole {
+  background-image: url("https://i.ebayimg.com/images/g/miwAAOSw6GVjTNc~/s-l500.png");
+}
 body {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: grid;
   place-items: center;
@@ -528,7 +586,14 @@ body {
   color: var(--clr-btn);
   margin: 0;
 }
+html {
+  height: 100%;
+}
 #root {
   width: 100vw;
   height: 100vh;
+}
+.wrapper {
+  min-height: 100vh;
+  background-image: linear-gradient(#7C72E0, #3D35A7, #7C72E0);
 }

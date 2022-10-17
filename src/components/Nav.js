@@ -19,13 +19,13 @@ export default function Nav() {
                 : 
                 null
             }
-            {/* <Link className ="nav-link" to="/" >Home</Link>
+            <Link className ="nav-link" to="/" >Home</Link>
             <a className ="nav-link" href="https://github.com/team-breaker-2208" >Contact</a>
             {currentUser? 
                 <Link className="nav-link" to="/Profile">Profile</Link>
                 : 
                 null
-            }     */}
+            }    
         </div>
         
 
