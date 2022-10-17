@@ -14,11 +14,11 @@ export default function Nav() {
         </div>
 
         <div className="nav-right">
-            {currentUser? 
+            {/* {currentUser? 
                 <span>Hey! {currentUser.displayName}</span>
                 : 
                 null
-            }
+            } */}
             <Link className ="nav-link" to="/" >Home</Link>
             <a className ="nav-link" href="https://github.com/team-breaker-2208" >Contact</a>
             {currentUser? 
