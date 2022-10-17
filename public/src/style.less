@@ -10,6 +10,7 @@
 h1 {
   color: red
 }
+
 @import './colors.less';
 
 @import "./cookie.less";
@@ -20,19 +21,29 @@ h1 {
 @import './loadingPage.less';
 @import './winnerPage.less';
 @import './nav-footer.less';
+@import './whackAMole.less';
 
-
-body{
-  height: 100vh;
+body {
+  // height: 100vh;
+  height: 100%;
   width: 100vw;
   display: grid;
   place-items: center;
   // background-image: linear-gradient(@cookieLobbyBorders, @cookiebg, @cookieLobbyUser);
   color: var(--clr-btn);
-  margin:0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
 }
 
 #root {
-  width:100vw;
-  height:100vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper {
+  min-height: 100vh;
+  background-color: green;
 }

@@ -19,6 +19,8 @@ export const CookieClicker = () => {
     const [gameId, setGameId] = useState("")
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
+    const [winnerInfo, setWinnerInfo] = useState([])
+    
 
     
     useEffect(()=>{
@@ -166,6 +168,7 @@ export const CookieClicker = () => {
                     updateUserStar()
                 }
 
+                setWinnerInfo([winner,player2,player2Points])
    
                 const updateGame = async ()=>{
                     await setDoc(doc(db, "cookieClickerGames", gameId), {
@@ -213,7 +216,8 @@ export const CookieClicker = () => {
     console.log("GID in cookieClicker: ", gameId)
 
     if(gameOver){
-        navigate('/winnerPage')
+        // navigate('/winnerPage')
+        navigate('/winnerPage', {state:[...winnerInfo]})
     }
 
     // console.log('CookieClicker.js component renders!')

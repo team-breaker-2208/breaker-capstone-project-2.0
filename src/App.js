@@ -10,6 +10,7 @@ import WinnerPage from './components/WinnerPage';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
+import WhackAMole from "./components/WhackAMole/WhackAMole";
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -25,17 +26,20 @@ function App() {
   return (
     <BrowserRouter>
     <Nav />
-      <Routes>
-          <Route path="/">
-            <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route exact path="login" element={<Login />} />
-            <Route exact path="register" element={<Register />} />
-            <Route exact path="cookieClicker" element={<CookieClicker />} />
-            <Route exact path="CookieLobby" element={<CookieLobby/>} />
-            <Route exact path='winnerPage' element={<WinnerPage/>}/>
-            <Route exact path='profile' element={<Profile/>}/>
-          </Route>
-      </Routes>
+      <div className="wrapper">
+        <Routes>
+            <Route path="/">
+              <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route exact path="login" element={<Login />} />
+              <Route exact path="register" element={<Register />} />
+              <Route exact path="cookieClicker" element={<CookieClicker />} />
+              <Route exact path="CookieLobby" element={<CookieLobby/>} />
+              <Route exact path='winnerPage' element={<WinnerPage/>}/>
+              <Route exact path='profile' element={<Profile/>}/>
+              <Route exact path="whackAMole" element={<WhackAMole/>}/>
+            </Route>
+        </Routes>
+      </div>
     <Footer />
     </BrowserRouter>
   );
