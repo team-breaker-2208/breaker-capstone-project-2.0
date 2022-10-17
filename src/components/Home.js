@@ -120,14 +120,14 @@ export default function Home() {
       await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-//   const handleNavigateAway = async () => {
-//     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-// }
+  const handleNavigateAway = async () => {
+    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
+}
 
-// window.onunload = function(){
-//     handleNavigateAway();
-//     return 'Are you sure you want to leave?';
-//   };
+window.onunload = function(){
+    handleNavigateAway();
+    return 'Are you sure you want to leave?';
+  };
     
   const gameTwo = []
 
@@ -136,7 +136,7 @@ export default function Home() {
         <h1 className='test'>Weclome to the Games Center</h1>
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
-        <div>
+        <div className='mainLobby-loaded'>
         <div className='gamesContainer'>
             <div className="eachGame">
                 <div className="gameTitle">

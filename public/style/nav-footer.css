@@ -39,9 +39,18 @@
   padding: 5px;
   display: flex;
   justify-content: space-around;
-  position: absolute;
+  position: relative;
   width: 100%;
 }
 .footer img {
   height: 46px;
+}
+@media only screen and (max-width: 600px) {
+  .navBar {
+    font-size: 20px;
+    width: 100vh;
+  }
+  .mainLobby-container {
+    margin-left: 100%;
+  }
 }

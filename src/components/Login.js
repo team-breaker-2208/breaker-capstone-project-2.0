@@ -26,7 +26,7 @@ export default function Login() {
   return (
     <div className="full-screen-container">
             <div className="login-container">
-                <h1 className="login-title">Welcome to Breaker Game!</h1>
+                <h1 className="login-title">Welcome to Breaker Games!</h1>
                 <p className="login-message">Please Register or Login to Enter</p>
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="input-login">
