@@ -19,6 +19,7 @@ export const CookieClicker = () => {
     const [gameId, setGameId] = useState("")
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
+    
 
     
     useEffect(()=>{
@@ -150,9 +151,12 @@ export const CookieClicker = () => {
             if (points.includes(3)) {
                 let index = points.indexOf(3)
                 let winner = playersArr[index].data().displayName
-                let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
-                let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
-                // let losersArr = playersArr.filter(doc=>doc.data().displayName!==winner)
+                // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
+                // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
+                let losersRef = playersArr.filter(doc=>doc.data().displayName!==winner)
+                console.log("losersRef is: ", losersRef)
+                
+                let losers = losersRef.map(loser => loser.data())
                 // console.log(losersArr)
                 // console.log(losersArr.data())
 
@@ -172,14 +176,16 @@ export const CookieClicker = () => {
                             gid: gameId,
                             gameStatus: false,
                             winner,
-                            player2:{name: player2, points: player2Points}
+                            losers
                         });
                         console.log("updateGame FIRED!")
                         setGameOver(true)
                 }
                 
+                if(losersRef.length === 3){
+                    updateGame()
 
-                 updateGame()
+                }
 
                     
                 // console.log('game done', winner)
@@ -213,7 +219,8 @@ export const CookieClicker = () => {
     console.log("GID in cookieClicker: ", gameId)
 
     if(gameOver){
-        navigate('/winnerPage')
+        // navigate('/winnerPage')
+        navigate('/winnerPage', {state:gameId})
     }
 
     // console.log('CookieClicker.js component renders!')

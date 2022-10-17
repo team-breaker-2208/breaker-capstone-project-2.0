@@ -129,16 +129,16 @@ const CookieLobby = () => {
         await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
     }
 
-    if (players.length === 2){
+    if (players.length === 4){
         setTimeout(()=>{
             navigate("/cookieClicker");
 
         }, "6000")
         return(
             <div className="cookieClicker-loading-screen">
-                <span className="ready">Ready!</span>
-                <span className="set">Set!</span>
-                <span className="go">GO!</span>
+                <h1 className="word ready">Ready!</h1>  
+                <h1 className="word set">Set!!</h1>
+                <h1 className="word go">GO!!!</h1>
             </div>
         )
     }
@@ -147,7 +147,7 @@ const CookieLobby = () => {
     <div className="lobbyContainer">
         <div className="welcome">Welcome to Cookie Clicker!</div>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-        <h2 className="infoDiv">Lobby Status:{players.length}/2 Players</h2>
+        <h2 className="infoDiv">Lobby Status:{players.length}/4 Players</h2>
             {players.map((singlePlayer) => {
                 return (
                     <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
@@ -155,7 +155,7 @@ const CookieLobby = () => {
             })}
         
         <div className="infoDiv">Number in lobby: {players.length}</div>
-        <div className="infoDiv">Waiting on {2 - players.length} more</div> 
+        <div className="infoDiv">Waiting on {4 - players.length} more</div> 
         </div>}
 
         

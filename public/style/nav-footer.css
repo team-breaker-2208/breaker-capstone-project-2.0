@@ -12,7 +12,7 @@
   flex-direction: row;
 }
 .navBar .logo span {
-  font-family: monospace, sans-serif;
+  font-family: 'Quantum';
   font-weight: bolder;
   font-size: 30px;
 }
@@ -42,11 +42,8 @@
   background-color: #486BBD;
   display: flex;
   justify-content: space-around;
-  position: relative;
-  margin-bottom: 0;
-  width: 100%;
-  height: 60px;
-  text-align: center;
+  width: 100vw;
+  position: absolute;
 }
 .footer img {
   margin: auto;
@@ -54,6 +51,7 @@
 }
 @media only screen and (max-width: 600px) {
   .navBar {
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 }

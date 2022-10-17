@@ -1,18 +1,89 @@
 .join-button {
-  height: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background-color: green;
+  font-size: 1.2em;
+  font-weight: bolder;
 }
-.join-button:disabled {
-  background-color: grey;
+.logout-button,
+.login-button {
+  font-size: 1.6em;
+  margin: 1em;
 }
-.join-button {
-  height: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background-color: green;
+.logout-button {
+  position: fixed;
+  bottom: 50px;
+  right: 0;
 }
-.join-button:disabled {
+button {
+  font-size: 2em;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  border: #0A1C44 0.125em solid;
+  padding: 0.25em 1em;
+  border-radius: 0.3em;
+  background-color: #175075;
+  text-decoration: solid;
+  text-shadow: 0 0 0.125em lightgrey, 0 0 0.5em #1D397A;
+  box-shadow: inset 0 0 0.5em 0 #1D397A, 0 0 0.5em 0 #486BBD;
+  position: relative;
+  border-style: ridge;
+  transition: background-color 100ms linear;
+}
+button::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background-color: #1D397A;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1.5em);
+  opacity: 0.7;
+}
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: black;
+  box-shadow: 0 0 2em 0.5em black;
+  opacity: 0;
+  background-color: #1D397A;
+  z-index: -1;
+  transition: opacity 100ms linear;
+  transition: 1s;
+}
+.login-button:hover,
+.login-button:focus,
+.join-button:focus,
+.join-button:hover {
+  color: whitesmoke;
+  text-shadow: none;
+  text-shadow: 0 0 0.125em black, 0 0 0.5em currentColor;
+  box-shadow: inset 0 0 0.5em 0 whitesmoke, 0 0 0.5em 0 #7C72E0;
+  transition: 0.5s;
+}
+button:hover,
+button:focus {
+  color: #7C72E0;
+  text-shadow: none;
+  text-shadow: 0 0 0.125em black, 0 0 0.5em currentColor;
+  box-shadow: inset 0 0 0.5em 0 #7C72E0, 0 0 0.5em 0 #7C72E0;
+  transition: 0.75s;
+}
+button:focus::before,
+button:hover::before {
+  opacity: 1;
+}
+button:hover::after,
+button:focus::after {
+  opacity: 1;
+}
+button:disabled {
   background-color: grey;
 }

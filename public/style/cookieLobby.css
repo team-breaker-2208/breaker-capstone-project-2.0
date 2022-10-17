@@ -1,9 +1,11 @@
-.lobby-container {
-  height: 100vh;
+.lobbyContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.lobbyContainer button {
+  margin-left: 0;
 }
 .welcome {
   color: coral;
@@ -15,11 +17,11 @@
   align-items: center;
 }
 .PlayersContainer {
+  height: 81vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: lightblue;
 }
 .players {
   border-style: ridge;

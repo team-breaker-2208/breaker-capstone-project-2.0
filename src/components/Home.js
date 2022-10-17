@@ -20,29 +20,29 @@ export default function Home() {
     // console.log(currentUser)
     const navigate = useNavigate()
 
-    //dummyData
-    const dummyData=[
-        {displayName:"Mike",
-        uid:1,
-        stars:0
-        },
-        {displayName:"Jake",
-        uid:2,
-        stars:5
-        },
-        {displayName:"Lily",
-        uid:3,
-        stars:10
-        },
-        // {displayName:"Lily",
-        // uid:3,
-        // stars:10
-        // },
-        // {displayName:"Lily",
-        // uid:3,
-        // stars:10
-        // },
-    ]
+    // dummyData
+    // const dummyData=[
+    //     {displayName:"Mike",
+    //     uid:1,
+    //     stars:0
+    //     },
+    //     {displayName:"Jake",
+    //     uid:2,
+    //     stars:5
+    //     },
+    //     {displayName:"Lily",
+    //     uid:3,
+    //     stars:10
+    //     },
+    //     {displayName:"Lily",
+    //     uid:3,
+    //     stars:10
+    //     },
+    //     {displayName:"Lily",
+    //     uid:3,
+    //     stars:10
+    //     },
+    // ]
 
     useEffect(()=> {
         
@@ -120,32 +120,32 @@ export default function Home() {
       await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-//   const handleNavigateAway = async () => {
-//     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-// }
+  const handleNavigateAway = async () => {
+    await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
+}
 
-// window.onunload = function(){
-//     handleNavigateAway();
-//     return 'Are you sure you want to leave?';
-//   };
+window.onunload = function(){
+    handleNavigateAway();
+    return 'Are you sure you want to leave?';
+  };
     
   const gameTwo = []
 
   return (
     <div className='mainLobby-container'>
-        <h1 className='test'>Weclome to the Games Center</h1>
+        <h1 className='test'>Weclome to the Breaker Games</h1>
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
-        <div>
+        <div className='mainLobby-loaded'>
         <div className='gamesContainer'>
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 3</h4>
+                    <h4>Players: {cookiePlayers.length} / 4</h4>
                 </div>
                 <div className='cookieClicker-mainLobby-container'>
                 </div>
-                {cookiePlayers.length < 3 ? 
+                {cookiePlayers.length < 4 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
         <h2>Current Players In Lobby:</h2>
         <div className='mainLobby-players-container'>
-            {/* {mainLobbyPlayers.map((singlePlayer) => {
+            {mainLobbyPlayers.map((singlePlayer) => {
                   if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
                     return(
                       <div key={singlePlayer.data().uid} className="main-lobby-player">
@@ -183,16 +183,16 @@ export default function Home() {
                         <h4 >{singlePlayer.data().stars} Stars</h4>
                       </div>
                     )
-            })} */}
+            })}
 
-            {dummyData.map((singlePlayer)=>{
+            {/* {dummyData.map((singlePlayer)=>{
                 return(
                     <div key={singlePlayer.uid} className="main-lobby-player">
                         <h3>{singlePlayer.displayName}</h3>
                         <h4>{singlePlayer.stars} Stars</h4>
                     </div>
                 )
-            })}
+            })} */}
 
         </div>
         <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>
