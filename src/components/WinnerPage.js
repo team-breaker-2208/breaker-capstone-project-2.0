@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { useLocation } from "react-router-dom";
+import { db } from '../server/firebase';
+import { doc, getDoc } from "firebase/firestore"; 
 
 // import { db } from '../server/firebase';
 // import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
@@ -10,6 +12,8 @@ import { useLocation } from "react-router-dom";
 
 const WinnerPage = ()=>{
 
+    const [ winner, setWinner ] = useState("")
+    const [ losers, setLosers ] = useState([])
     // delete all cookieClickerGames documents
     // const deletegames = async()=>{
     //     const querySnapshot = await getDocs(collection(db, "cookieClickerGames"));
@@ -20,9 +24,28 @@ const WinnerPage = ()=>{
     // deletegames()
 
     const location = useLocation();
-    const [winner,player2, player2Points] = location.state
-    // console.log(winner,player2, player2Points)
+    const gameId = location.state
+    console.log("Game ID is: ", gameId)
 
+
+    useEffect(() => {
+        const getGameInfo = async() => {
+            const currentGameRef = doc(db, "cookieClickerGames", gameId)
+            const currentGameSnap = await getDoc(currentGameRef)
+            if (currentGameSnap.exists()) {
+                setLosers(currentGameSnap.data().losers)
+                setWinner(currentGameSnap.data().winner)
+                console.log("losers are: ", losers)
+                console.log("winner is: ", winner)
+            }
+        }
+
+        
+
+        getGameInfo()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+    
     // setTimeout(() => {
     //     navigate('/')
     // }, 3000);
@@ -31,7 +54,13 @@ const WinnerPage = ()=>{
         <>  
             <div className="winner-title">
                 <h1 className="title-word title-word-1">{winner} is the winner, got 5 stars !!!</h1>
-                <h3 className="title-word title-word-2">Not bad {player2}, you got {player2Points} points !</h3>
+                <div className="title-word-2">
+                    {losers.map(loser => {
+                        return(
+                            <h3 key= {loser.uid}>{loser.displayName} got {loser.points} points!</h3>
+                        )
+                    })}
+                </div>
             </div>
 
  

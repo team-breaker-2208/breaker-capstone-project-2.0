@@ -141,11 +141,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 2</h4>
+                    <h4>Players: {cookiePlayers.length} / 4</h4>
                 </div>
                 <div className='cookieClicker-mainLobby-container'>
                 </div>
-                {cookiePlayers.length < 2 ? 
+                {cookiePlayers.length < 4 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
