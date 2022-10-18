@@ -168,7 +168,6 @@ button:disabled {
   justify-content: center;
 }
 .login-container {
-  background-image: linear-gradient(#66ADDB, #072A41);
   box-shadow: 0 0 15px black;
   padding: 40px 30px;
   width: 80%;
@@ -193,9 +192,6 @@ button:disabled {
   gap: 10px;
   color: #FFCB05;
   cursor: pointer;
-}
-.login-container {
-  background-image: linear-gradient(#66ADDB, #072A41);
 }
 .login-title {
   margin: 0;
@@ -233,7 +229,6 @@ button:disabled {
 .input-login input {
   font-size: 1.75rem;
   padding: 0.5em;
-  background-color: #072A41;
   color: white;
   font-weight: 500;
 }
@@ -458,6 +453,10 @@ button:disabled {
   }
 }
 .winner-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
   font-weight: 600;
   font-size: 30px;
@@ -466,7 +465,7 @@ button:disabled {
   background-position: center;
   background-size: cover;
   width: 70%;
-  height: 70%;
+  height: 70vh;
   border-radius: 50%;
   box-shadow: 0px 0px 8px 10px #072A41;
   margin: auto;
@@ -477,13 +476,16 @@ button:disabled {
   font-family: Comic Sans MS, Comic Sans, cursive;
 }
 .winner-title .title-word-1 {
-  padding: 25% 5% 0 5%;
+  padding: 13% 5% 0 5%;
   --color-1: #5553df;
   --color-2: #3D8DAE;
   --color-3: #9a47e8;
 }
 .winner-title .title-word-2 {
   color: orange;
+}
+.winner-title .title-word-2 .losers {
+  margin: 0;
 }
 @keyframes color-animation {
   0% {
@@ -594,7 +596,7 @@ button:disabled {
   text-shadow: 1px 1px grey;
 }
 .navBar .nav-right span {
-  font-family: cursive,serif;
+  font-family: cursive, serif;
   font-size: 24px;
 }
 .footer {
