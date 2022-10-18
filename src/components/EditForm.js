@@ -46,7 +46,7 @@ export default function EditForm({email,stars,setUser,setClickEdit}) {
             </div>
 
             <button onClick={handleCancel} >Cancel</button>
-            <button onClick={handleUpdate}>Edit</button>
+            <button onClick={handleUpdate}>Save Changes</button>
         </form>
     </div>
   )

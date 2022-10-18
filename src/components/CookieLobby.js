@@ -145,7 +145,7 @@ const CookieLobby = () => {
 
   return (
     <div className="lobbyContainer">
-        <div className="welcome">Welcome to Cookie Clicker!</div>
+        <h1 className="welcome">WELCOME TO COOKIE CLICKER LOBBY!</h1>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
         <h2 className="infoDiv">Lobby Status:{players.length}/4 Players</h2>
             {players.map((singlePlayer) => {
