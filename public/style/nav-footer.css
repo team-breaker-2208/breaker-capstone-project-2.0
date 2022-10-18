@@ -12,9 +12,9 @@
   flex-direction: row;
 }
 .navBar .logo span {
-  font-family: 'Quantum';
+  font-family: 'Reglisse_Back';
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 50px;
 }
 .navBar img {
   height: 90px;

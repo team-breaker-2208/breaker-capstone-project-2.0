@@ -6,3 +6,23 @@
   font-family: 'Quantum';
   src: url(../fonts/Quantum.otf);
 }
+@font-face {
+  font-family: 'aAbstractGroovy';
+  src: url(../fonts/aAbstractGroovy.otf);
+}
+@font-face {
+  font-family: 'KeeponTruckin';
+  src: url(../fonts/KeeponTruckin.ttf);
+}
+@font-face {
+  font-family: 'OMEGLE';
+  src: url(../fonts/OMEGLE.otf);
+}
+@font-face {
+  font-family: 'Reglisse_Back';
+  src: url(../fonts/Reglisse_Back.otf);
+}
+@font-face {
+  font-family: 'Milky\ Coffee';
+  src: url(../fonts/Milky\ Coffee.otf);
+}
