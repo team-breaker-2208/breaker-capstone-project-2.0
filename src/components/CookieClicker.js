@@ -8,6 +8,11 @@ import { db } from '../server/firebase';
 // import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
 // import Timer from "./Timer";
+import fullCookie from "../images/fullCookie.png"
+import Munch1 from "../images/Munch1.png"
+import Munch2 from "../images/Munch2.png"
+import Munch3 from "../images/Munch3.png"
+
 
 export const CookieClicker = () => {
 
@@ -20,7 +25,12 @@ export const CookieClicker = () => {
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
     
-
+    const cookeImages = [
+       fullCookie,
+       Munch1,
+       Munch2,
+       Munch3
+    ]
     
     useEffect(()=>{
        
@@ -229,18 +239,18 @@ export const CookieClicker = () => {
     points.indexOf(10) === -1 || !player.points ? 
         <>
         {/* <Timer/> */}
-        <h1>Cookie Clicker!</h1>
+        <h1>COOKIE CLICKER!</h1>
         <div className="cookies-container">
             <div className="cookie-container" >
-                <h2>You {player.displayName}  </h2>
+                <h2>Click as fast as you can {player.displayName}!</h2>
                 <span className="cookieImage">
                 <img 
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDgy71hH1KUez-MRwk195KG_dx2I9-bULNg&usqp=CAU"
+                    src={cookeImages[score]}
                     alt="Cookie" 
                     onClick={()=>handleClick(player)}
                 />
                 </span>
-                <h4>Score: {score}</h4>
+                <h3>Score: {score}</h3>
             </div>
             {/* {dummyUsers.map((user)=>{
                 return(
@@ -260,7 +270,6 @@ export const CookieClicker = () => {
                 )
             })} */}
         </div>
-        <Link to="/">Back to home</Link>
     </>: <div>
             <h1>Max points reached!</h1>
             <Link to="/">Back to home</Link>
