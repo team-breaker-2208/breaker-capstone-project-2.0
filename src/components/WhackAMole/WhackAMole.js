@@ -61,7 +61,7 @@ const WhackAMole = ()=>{
         setInterval(() => {
             let num = Math.floor(Math.random() * 9);
             setIdx(num)
-        }, 1000)
+        }, 500)
     },[])
 
     // const handleClick = ()=>{

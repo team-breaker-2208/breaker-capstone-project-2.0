@@ -1,9 +1,13 @@
 .winner-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
   font-weight: 600;
   font-size: 30px;
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-  background-image: url('https://img.freepik.com/free-vector/colorful-confetti-background_52683-68126.jpg?w=2000');
+  background-image: url('https://t3.ftcdn.net/jpg/03/51/32/50/360_F_351325048_SNzPFn1qGEVtEqqoxw8SANC12IauVSYo.jpg');
   background-position: center;
   background-size: cover;
   width: 70%;
