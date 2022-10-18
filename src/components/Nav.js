@@ -15,7 +15,7 @@ export default function Nav() {
 
         <div className="nav-right">
             {currentUser? 
-                <span>Hey! {currentUser.displayName}</span>
+                <span>Welcome {currentUser.displayName}!</span>
                 : 
                 null
             }

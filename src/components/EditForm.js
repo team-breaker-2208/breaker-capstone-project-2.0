@@ -41,7 +41,7 @@ export default function EditForm() {
             </div>
 
             <button onClick={handleCancel} >Cancel</button>
-            <button onClick={handleUpdate}>Edit</button>
+            <button onClick={handleUpdate}>Save Changes</button>
         </form>
     </div>
   )
