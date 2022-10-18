@@ -13,6 +13,7 @@ export default function Home() {
     const {currentUser} = useContext(AuthContext)
     const [user, setUser] = useState({})
     const [cookiePlayers, setCookiePlayers] = useState([]);
+    const [molePlayers, setMolePlayers] =useState([])
     const [mainLobbyPlayers, setMainLobbyPlayers] = useState([]);
     const [mainLobbyPlayer, setMainLobbyPlayer] = useState({})
     const [mainLobbyPlayerId, setMainLobbyPlayerId] = useState("")
@@ -96,6 +97,19 @@ export default function Home() {
           unsubscribe();
       }
   },[])
+
+    //watching number of players in WhackAMole 
+    useEffect(()=>{
+        const qPlayers = query(collection(db, "whackAMolePlayers"));
+        const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
+            let playersArr = querySnapshot.docs;
+            setMolePlayers(playersArr);
+        });
+        
+        return()=>{
+            unsubscribe();
+        }
+    },[])
     
     //watching number of players in Main Lobby
     useEffect(()=>{
@@ -129,7 +143,6 @@ window.onunload = function(){
     return 'Are you sure you want to leave?';
   };
     
-  const gameTwo = []
 
   return (
     <div className='mainLobby-container'>
@@ -153,16 +166,16 @@ window.onunload = function(){
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Game 2</h2>
-                    <h4>Players: 0 / 2</h4>
+                    <h2>Whack A Mole Game</h2>
+                    <h4>Players: {molePlayers.length} / 2</h4>
                 </div>
                 <div className='gameTwo-mainLobby-container'>
                 </div>
-                    {gameTwo.length < 2 ? 
-                    <Link to="/CookieLobby">
+                    {molePlayers.length < 2 ? 
+                    <Link to="/whackAMoleLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
-                <span>Cookie Clicker Lobby is full</span>}
+                <span>Whack A Mole Lobby is full</span>}
             </div>
         </div>
         <h2>Current Players In Lobby:</h2>

@@ -2,32 +2,26 @@
   font-family: 'kidGames';
   src: url(../fonts/Kid\ Games.ttf);
 }
-
 @font-face {
   font-family: 'Quantum';
   src: url(../fonts/Quantum.otf);
 }
-
 @font-face {
   font-family: "hypik";
   src: url("../fonts/hypik.otf");
 }
-
 @font-face {
   font-family: "surfQuestTidal";
   src: url("../fonts/surfquestspacedsemital.ttf");
 }
-
 @font-face {
   font-family: "surfQuest";
   src: url("../fonts/surfquestspaced.ttf");
 }
-
 @font-face {
   font-family: 'PEOPLEBOOK';
   src: url(../fonts/peopleBook.otf);
 }
-
 @font-face {
   font-family: 'Starborn';
   src: url(../fonts/Starborn.ttf);

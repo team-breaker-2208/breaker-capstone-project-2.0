@@ -13,69 +13,58 @@
   margin: auto;
   resize: both;
 }
-
 .winner-title .title-word {
   animation: color-animation 4s linear infinite;
   font-family: Comic Sans MS, Comic Sans, cursive;
 }
-
 .winner-title .title-word-1 {
   padding: 13% 5% 0 5%;
   --color-1: #5553df;
   --color-2: #3D8DAE;
   --color-3: #9a47e8;
 }
-
 .winner-title .title-word-2 {
   color: orange;
 }
-
+.winner-title .title-word-2 .losers {
+  margin: 0;
+}
 @keyframes color-animation {
   0% {
     color: var(--color-1);
   }
-
   32% {
     color: var(--color-1);
   }
-
   33% {
     color: var(--color-2);
   }
-
   65% {
     color: var(--color-2);
   }
-
   66% {
     color: var(--color-3);
   }
-
   99% {
     color: var(--color-3);
   }
-
   100% {
     color: var(--color-1);
   }
 }
-
 .winner-button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 @media only screen and (max-width: 600px) {
   .winner-title {
     font-size: 20px;
   }
-
   .winner-title .title-word-1 {
     padding-top: 55%;
   }
 }
-
 @media screen and (min-width: 1600px) {
   .winner-title {
     display: flex;
@@ -84,27 +73,22 @@
     align-items: center;
     margin-top: 1%;
   }
-
   .winner-title .title-word-2 {
     margin-bottom: 30%;
   }
 }
-
 @media screen and (max-height: 700px) {
   .winner-title {
     font-size: 20px;
   }
-
   .winner-title .title-word-1 {
     padding: 15% 5% 0 5%;
   }
 }
-
 @media screen and (max-height: 700px) and (max-width: 600px) {
   .winner-title {
     font-size: 15px;
   }
-
   .winner-title .title-word-1 {
     padding: 25% 5% 0 5%;
   }
