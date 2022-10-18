@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
+import { updateDoc, doc } from 'firebase/firestore';
+import { db } from '../server/firebase'; 
 
-export default function EditForm() {
+export default function EditForm({email,stars,setUser,setClickEdit}) {
 
     const {currentUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const [form,setForm] = useState({
         userId:currentUser.uid,
         displayName:"",
-        email:""
     });
 
     const handleCancel = () => {
@@ -22,8 +23,17 @@ export default function EditForm() {
         });
     };
 
-    const handleUpdate = () => {
-        
+    const handleUpdate = async(event) => {
+        event.preventDefault();
+        if(currentUser.displayName){
+            let currentPlayerRef = doc(db,"users",currentUser.uid);
+            // let currentPlayerSnap = await getDoc(currentPlayerRef);
+            // const stars = currentPlayerSnap.data().star;
+            await updateDoc(currentPlayerRef,{displayName:form.displayName})
+            setUser({displayName:form.displayName,email:email,stars:stars})
+        }
+        setClickEdit(false);
+        navigate("/profile");
     }
 
   return (
@@ -31,13 +41,8 @@ export default function EditForm() {
         <div className="form-title">Edit Profile</div>
         <form>
             <div className="form-item">
-                <label htmlFor="displayName" className="form-label">Name</label>
-                <input type="displayName" value={form.displayName || ""} onChange={handleChange("displayName")} /> 
-            </div>
-
-            <div className="form-item">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input type="email" value={form.email || ""} onChange={handleChange("email")} /> 
+                <label htmlFor="displayName" className="form-label">DisplayName</label>
+                <input type="text" value={form.displayName || ""} onChange={handleChange("displayName")} /> 
             </div>
 
             <button onClick={handleCancel} >Cancel</button>
