@@ -72,8 +72,8 @@ export default function Register() {
   return (
     <div className="full-screen-container">
             <div className="login-container">
-                <h1 className="login-title">Breaker Capstone Project</h1>
-                <p className="login-message">Register New User</p>
+                <h1 className="login-title">REGISTER TO PLAY!</h1>
+                <p className="login-message">Register New User!</p>
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="input-login">
                         <label htmlFor="text">Display Name</label>

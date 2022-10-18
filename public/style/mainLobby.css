@@ -5,8 +5,7 @@
   align-items: center;
 }
 .mainLobby-container h1 {
-  background-image: linear-gradient(45deg, #3c07cd, #c72707);
-  color: transparent;
+  color: coral;
   background-clip: text;
   -webkit-background-clip: text;
   font-weight: bolder;
@@ -75,7 +74,8 @@
   border: dimgray;
   box-shadow: 0 0 0.5em 0.5em whitesmoke;
   background-color: #1D397A;
-  box-shadow: 0 0 0.5em 0 black;
+  color: white;
+  box-shadow: 0 0 0.7em 0 black;
 }
 .main-lobby-player {
   width: 130px;
@@ -84,4 +84,7 @@
   padding: 10px;
   border: dimgray;
   box-shadow: 0 0 0.5em 0.5em whitesmoke;
+}
+.eachGame:hover {
+  box-shadow: 0 0 0.5em 0.2em lightcoral;
 }

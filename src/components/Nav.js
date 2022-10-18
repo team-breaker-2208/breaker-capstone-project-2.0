@@ -9,13 +9,12 @@ export default function Nav() {
   return (
     <div className="navBar">
         <div className="logo">
-            {/* <img src="https://t4.ftcdn.net/jpg/04/35/15/31/360_F_435153156_03LSEdcWAimyWoVr8fzRTkypkhK395mz.jpg" alt="logo"/> */}
             <span>BREAKER</span>
         </div>
 
         <div className="nav-right">
             {currentUser? 
-                <span>Hey! {currentUser.displayName}</span>
+                <span>Welcome {currentUser.displayName}!</span>
                 : 
                 null
             }

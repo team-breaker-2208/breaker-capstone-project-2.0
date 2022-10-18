@@ -1,28 +1,34 @@
 @font-face {
-  font-family: 'gemstone';
-  src: url(../fonts/Gemstone.ttf);
+  font-family: 'kidGames';
+  src: url(../fonts/Kid\ Games.ttf);
 }
+
 @font-face {
   font-family: 'Quantum';
   src: url(../fonts/Quantum.otf);
 }
+
 @font-face {
-  font-family: 'aAbstractGroovy';
-  src: url(../fonts/aAbstractGroovy.otf);
+  font-family: "hypik";
+  src: url("../fonts/hypik.otf");
 }
+
 @font-face {
-  font-family: 'KeeponTruckin';
-  src: url(../fonts/KeeponTruckin.ttf);
+  font-family: "surfQuestTidal";
+  src: url("../fonts/surfquestspacedsemital.ttf");
 }
+
 @font-face {
-  font-family: 'OMEGLE';
-  src: url(../fonts/OMEGLE.otf);
+  font-family: "surfQuest";
+  src: url("../fonts/surfquestspaced.ttf");
 }
+
 @font-face {
-  font-family: 'Reglisse_Back';
-  src: url(../fonts/Reglisse_Back.otf);
+  font-family: 'PEOPLEBOOK';
+  src: url(../fonts/peopleBook.otf);
 }
+
 @font-face {
-  font-family: 'Milky\ Coffee';
-  src: url(../fonts/Milky\ Coffee.otf);
+  font-family: 'Starborn';
+  src: url(../fonts/Starborn.ttf);
 }
