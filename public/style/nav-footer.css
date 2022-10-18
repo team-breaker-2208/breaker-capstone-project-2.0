@@ -16,6 +16,11 @@
   font-size: 4em;
   text-shadow: 1px 1px lightgrey;
 }
+.navBar img {
+  height: 90px;
+  width: 140px;
+  border-radius: 50px;
+}
 .navBar .nav-right {
   display: flex;
   justify-content: space-around;

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
-import { updateDoc, doc, getDoc } from 'firebase/firestore';
+import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../server/firebase'; 
 
 export default function EditForm({email,stars,setUser,setClickEdit}) {

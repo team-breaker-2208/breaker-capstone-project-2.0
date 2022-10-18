@@ -309,7 +309,7 @@ button:disabled {
   -webkit-background-clip: text;
   font-weight: bolder;
   font-size: 56px;
-  font-family: Starborn;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 50px;
 }
 .gamesContainer {
@@ -567,6 +567,11 @@ button:disabled {
   font-size: 4em;
   text-shadow: 1px 1px lightgrey;
 }
+.navBar img {
+  height: 90px;
+  width: 140px;
+  border-radius: 50px;
+}
 .navBar .nav-right {
   display: flex;
   justify-content: space-around;
@@ -594,13 +599,13 @@ button:disabled {
 }
 .footer {
   background-color: #486BBD;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
   width: 100vw;
   position: absolute;
 }
 .footer img {
-  margin: auto;
   height: 46px;
 }
 @media only screen and (max-width: 600px) {
