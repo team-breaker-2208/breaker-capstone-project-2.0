@@ -4,14 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { updateDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '../server/firebase'; 
 
-export default function EditForm({setClickEdit, setUser}) {
+export default function EditForm({email,stars,setUser,setClickEdit}) {
 
     const {currentUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const [form,setForm] = useState({
         userId:currentUser.uid,
         displayName:"",
-        email:""
     });
 
     const handleCancel = () => {
@@ -28,10 +27,10 @@ export default function EditForm({setClickEdit, setUser}) {
         event.preventDefault();
         if(currentUser.displayName){
             let currentPlayerRef = doc(db,"users",currentUser.uid);
-            let currentPlayerSnap = await getDoc(currentPlayerRef);
-            const stars = currentPlayerSnap.data().star;
-            await updateDoc(currentPlayerRef,{displayName:form.displayName,email:form.email})
-            setUser({displayName:form.displayName,email:form.email,stars:stars})
+            // let currentPlayerSnap = await getDoc(currentPlayerRef);
+            // const stars = currentPlayerSnap.data().star;
+            await updateDoc(currentPlayerRef,{displayName:form.displayName})
+            setUser({displayName:form.displayName,email:email,stars:stars})
         }
         setClickEdit(false);
         navigate("/profile");
@@ -44,11 +43,6 @@ export default function EditForm({setClickEdit, setUser}) {
             <div className="form-item">
                 <label htmlFor="displayName" className="form-label">DisplayName</label>
                 <input type="text" value={form.displayName || ""} onChange={handleChange("displayName")} /> 
-            </div>
-
-            <div className="form-item">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input type="email" value={form.email || ""} onChange={handleChange("email")} /> 
             </div>
 
             <button onClick={handleCancel} >Cancel</button>

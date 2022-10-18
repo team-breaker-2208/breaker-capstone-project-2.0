@@ -1,12 +1,9 @@
 .profile {
-  margin: 0;
-  padding: 0;
-  background-color: white;
   text-align: center;
-  height: calc(100% - 150px);
 }
 .profile h2 {
   font-weight: bold;
+  margin-top: 20px;
 }
 .editProfile {
   background-color: #8eb5f4;
@@ -31,6 +28,11 @@
 .editProfile .form-item {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+}
+.editProfile .form-item input {
+  height: 40px;
+  border-radius: 5px;
 }

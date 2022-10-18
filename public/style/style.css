@@ -15,6 +15,14 @@ h1 {
   font-family: 'Quantum';
   src: url(../fonts/Quantum.otf);
 }
+@font-face {
+  font-family: 'PEOPLEBOOK';
+  src: url(../fonts/peopleBook.otf);
+}
+@font-face {
+  font-family: 'Starborn';
+  src: url(../fonts/Starborn.ttf);
+}
 .cookies-container {
   display: flex;
   justify-content: center;
@@ -270,13 +278,12 @@ button:disabled {
   align-items: center;
 }
 .mainLobby-container h1 {
-  background-image: linear-gradient(45deg, #3c07cd, #c72707);
-  color: transparent;
+  color: darkblue;
   background-clip: text;
   -webkit-background-clip: text;
   font-weight: bolder;
   font-size: 56px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Starborn;
   margin-bottom: 50px;
 }
 .gamesContainer {
@@ -526,14 +533,9 @@ button:disabled {
   flex-direction: row;
 }
 .navBar .logo span {
-  font-family: 'Quantum';
+  font-family: 'PEOPLEBOOK';
   font-weight: bolder;
   font-size: 30px;
-}
-.navBar img {
-  height: 90px;
-  width: 140px;
-  border-radius: 50px;
 }
 .navBar .nav-right {
   display: flex;
@@ -554,13 +556,13 @@ button:disabled {
 }
 .footer {
   background-color: #486BBD;
-  padding: 5px;
   display: flex;
   justify-content: space-around;
   width: 100vw;
   position: absolute;
 }
 .footer img {
+  margin: auto;
   height: 46px;
 }
 @media only screen and (max-width: 600px) {
@@ -587,20 +589,12 @@ button:disabled {
 .mole {
   background-image: url("https://i.ebayimg.com/images/g/miwAAOSw6GVjTNc~/s-l500.png");
 }
-@media only screen and (max-width: 600px) {
-  .navBar {
-    width: 100%;
-  }
-}
 .profile {
-  margin: 0;
-  padding: 0;
-  background-color: white;
   text-align: center;
-  height: calc(100% - 150px);
 }
 .profile h2 {
   font-weight: bold;
+  margin-top: 20px;
 }
 .editProfile {
   background-color: #8eb5f4;
@@ -625,8 +619,13 @@ button:disabled {
 .editProfile .form-item {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+}
+.editProfile .form-item input {
+  height: 40px;
+  border-radius: 5px;
 }
 body {
   height: 100%;
