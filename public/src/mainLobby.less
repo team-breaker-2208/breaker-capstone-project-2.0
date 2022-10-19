@@ -1,96 +1,117 @@
 @import './colors.less';
 
 .mainLobby-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
-    h1{
-      color: @header;
-      background-clip: text;
-      -webkit-background-clip: text;
-      font-weight:bolder;
-      font-size: 56px;
-      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      margin-bottom: 50px;
-    }
-  }
-  
-  
-  .gamesContainer {
-    display: inline-flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 20px;
+  h1 {
+    color: @header;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-weight: bolder;
+    font-size: 56px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 50px;
-  
   }
+  h2{
+    color: white;
+  }
+}
 
-  .eachGame {
-    background-color: rgb(219, 236, 250);
-    border-radius: 10px;
-    padding:30px;
-    display:flex;
+
+.gamesContainer {
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+}
+
+.eachGame {
+  background-color: rgb(219, 236, 250);
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .gameTitle {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
-    .gameTitle {
-      display:flex;
-      flex-direction: column;
-      align-items: center;
-      h2,h4 {
-        font-family: sans-serif,serif;
-      }
-
+    h2,
+    h4 {
+      font-family: sans-serif, serif;
+      color: black;
     }
-  }
 
-  
-  .cookieClicker-mainLobby-container {
-    width: 300px;
-    height:300px;
-    background-image: url("../images/cookie\ background.jpg");
-    background-size: cover;
-    border-radius: 20px;
-    margin-bottom: 10px;
-  
   }
-  
-  .gameTwo-mainLobby-container {
-    .cookieClicker-mainLobby-container;
-    background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
-  }
+}
 
-  .mainLobby-players-container {
-    display:flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    gap:25px;
-    border:none;
-    width: 100%;
-  }
-  
-  .single-lobby-player {
-    .main-lobby-player;
-    background-color: @mainLobbyPlayers;
-    color: white;
-    box-shadow: 0 0 0.7em 0 black;
-  }
 
-  .main-lobby-player {
-    width:130px;
-    background-color: rgb(142, 181, 244);
-    border-radius: 10px;
-    padding:10px;
-    border:dimgray;
-    box-shadow: 0 0 0.5em .5em whitesmoke;
-  }
+.cookieClicker-mainLobby-container {
+  width: 300px;
+  height: 300px;
+  background-image: url("../images/cookie\ background.jpg");
+  background-size: cover;
+  border-radius: 20px;
+  margin-bottom: 10px;
 
-  .eachGame:hover{
-    box-shadow: 0 0 0.5em .2em lightcoral;
+}
+
+.gameTwo-mainLobby-container {
+  .cookieClicker-mainLobby-container;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
+}
+
+.mainLobby-players-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  border: none;
+  max-width: 900px;
+  width: 100%;
+  margin:70px;
+  h4{
+    color: yellow;
+    text-shadow: 2px 2px black;
   }
+  .avatar{
+    font-size: 2em;
+    text-align: center;
+  }
+}
+
+.single-lobby-player {
+  .main-lobby-player;
+  background-color: @mainLobbyPlayers;
+  color: white;
+  box-shadow: 0 0 0.7em 0 black;
+}
+
+.main-lobby-player {
+  width: 130px;
+  background-color: rgb(142, 181, 244);
+  border-radius: 10px;
+  padding: 10px;
+  border: dimgray;
+  box-shadow: 0 0 0.5em .5em whitesmoke;
+}
+
+.eachGame:hover {
+  box-shadow: 0 0 0.5em .2em lightcoral;
+}
+
+.gameThree-mainLobby-container {
+  .cookieClicker-mainLobby-container;
+  background-image: url("../images/memoryGame.png");
+}

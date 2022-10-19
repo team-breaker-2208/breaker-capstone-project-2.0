@@ -9,6 +9,12 @@
 .login-button{
     font-size: 1.6em;
     margin: 1em;
+    text-shadow: 
+    0 0 0.125em lightgrey,
+    0 0 0.5em @mainLobbyPlayers ;
+    box-shadow: inset
+    0 0 0.5em 0 @mainLobbyPlayers,
+    0 0 0.5em 0 @mainLobbyUser;
 }
 
 .logout-button{
@@ -48,13 +54,13 @@ button::before {
     pointer-events: none;
     content: "";
     position: absolute;
-    background-color: @mainLobbyPlayers;
+    background-color: black;
     top: 120%;
     left: 0;
     width: 100%;
     height: 100%;
 
-    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    transform: perspective(1.5em) rotateX(50deg) scale(.75, 0.35);
     filter: blur(1.5em);
     opacity: 0.7;
 }

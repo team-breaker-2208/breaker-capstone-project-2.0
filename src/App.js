@@ -11,6 +11,12 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import WhackAMole from "./components/WhackAMole/WhackAMole";
+import WhackAMoleLobby from './components/WhackAMole/WhackAMoleLobby';
+import WhackAMoleWinnerPage from './components/WhackAMole/WhackAMoleWinnerPage';
+import Memory  from "./components/Memory/Memory"
+import MemoryLobby from "./components/Memory/MemoryLobby"
+import MemoryWinnerPage from "./components/Memory/MemoryWinnerPage"
+
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -36,7 +42,12 @@ function App() {
               <Route exact path="CookieLobby" element={<CookieLobby/>} />
               <Route exact path='winnerPage' element={<WinnerPage/>}/>
               <Route exact path='profile' element={<Profile/>}/>
+              <Route exact path="whackAMoleLobby" element={<WhackAMoleLobby/>}/>
               <Route exact path="whackAMole" element={<WhackAMole/>}/>
+              <Route exact path="whackAMoleWinnerPage" element={<WhackAMoleWinnerPage/>}/>
+              <Route exact path="memory" element={<Memory />}/>
+              <Route exact path="memoryLobby" element={<MemoryLobby />}/>
+              <Route exact path="memoryWinnerPage" element={<MemoryWinnerPage />}/>
             </Route>
         </Routes>
       </div>
