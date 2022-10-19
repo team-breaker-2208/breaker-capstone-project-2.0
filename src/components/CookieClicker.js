@@ -6,7 +6,7 @@ import { doc, setDoc, getDoc, collection, getDocs, updateDoc, deleteDoc } from "
 import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../server/firebase';
 // import {onDisconnect} from "firebase/database";
-import { Link , useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 // import Timer from "./Timer";
 import fullCookie from "../images/fullCookie.png"
 import Munch1 from "../images/Munch1.png"
