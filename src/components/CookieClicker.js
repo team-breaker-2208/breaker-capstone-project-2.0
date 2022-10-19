@@ -158,8 +158,8 @@ export const CookieClicker = () => {
             let playersArr = querySnapshot.docs
             let points = playersArr.map(doc=>doc.data().points)
    
-            if (points.includes(3)) {
-                let index = points.indexOf(3)
+            if (points.includes(32)) {
+                let index = points.indexOf(32)
                 let winner = playersArr[index].data().displayName
                 // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
@@ -233,10 +233,21 @@ export const CookieClicker = () => {
         navigate('/winnerPage', {state:gameId})
     }
 
-    // console.log('CookieClicker.js component renders!')
+    const cookieScore = () =>{
+        if(score < 8){
+            return 0
+        }
+        if(score > 8 && score < 16){
+            return 1
+        }
+        if(score > 16 && score < 24){
+            return 2
+        }
+        return 3
+    }
     
   return (
-    points.indexOf(10) === -1 || !player.points ? 
+    points.indexOf(40) === -1 || !player.points ? 
         <>
         {/* <Timer/> */}
         <h1>COOKIE CLICKER!</h1>
@@ -245,7 +256,7 @@ export const CookieClicker = () => {
                 <h2>Click as fast as you can {player.displayName}!</h2>
                 <span className="cookieImage">
                 <img 
-                    src={cookeImages[score]}
+                    src={cookeImages[cookieScore()]}
                     alt="Cookie" 
                     onClick={()=>handleClick(player)}
                 />

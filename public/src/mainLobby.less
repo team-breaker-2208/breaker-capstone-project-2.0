@@ -71,10 +71,19 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
-  gap: 25px;
+  justify-content: space-evenly;
+  gap: 20px;
   border: none;
   width: 100%;
+  margin:70px;
+  h4{
+    color: yellow;
+    text-shadow: 2px 2px black;
+  }
+  .avatar{
+    font-size: 2em;
+    text-align: center;
+  }
 }
 
 .single-lobby-player {
@@ -95,4 +104,9 @@
 
 .eachGame:hover {
   box-shadow: 0 0 0.5em .2em lightcoral;
+}
+
+.gameThree-mainLobby-container {
+  .cookieClicker-mainLobby-container;
+  background-image: url("../images/memoryGame.png");
 }
