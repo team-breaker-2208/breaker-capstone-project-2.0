@@ -146,16 +146,16 @@ const MemoryLobby = () => {
   return (
     <div className="lobbyContainer">
         <h1 className="welcome">WELCOME TO MEMORY LOBBY!</h1>
-        {loading ?<div>Loading...</div> : <div className="PlayersContainer">
         <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
+        {loading ?<div>Loading...</div> : <div className="PlayersContainer">
             {players.map((singlePlayer) => {
                 return (
                     <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName.toUpperCase()}</h3>
                 )
             })}
         
-        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
         </div>}
+        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
 
         
         <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>
