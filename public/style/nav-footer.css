@@ -49,6 +49,7 @@
 }
 .footer {
   background-color: #486BBD;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
   width: 100vw;

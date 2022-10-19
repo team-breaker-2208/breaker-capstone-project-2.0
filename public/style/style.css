@@ -694,6 +694,7 @@ a:visited {
 }
 .footer {
   background-color: #486BBD;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
   width: 100vw;
@@ -770,6 +771,9 @@ a:visited {
 .editProfile .form-item input {
   height: 40px;
   border-radius: 5px;
+}
+.editProfile .select {
+  width: 300px;
 }
 * {
   margin: 0;
