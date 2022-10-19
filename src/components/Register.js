@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; 
 import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Register() {
 
@@ -21,17 +22,19 @@ export default function Register() {
     const displayName = e.target[0].value
     const email = e.target[1].value
     const password = e.target[2].value
+    const avatar = e.target[3].value
 
     console.log(displayName)
     console.log(email)
     console.log(password)
+    console.log(avatar)
     
-    if(!displayName || !email || !password ){
-      setEmptyError(true)
+    if(!displayName || !email || !password || !avatar ){
+      return setEmptyError(true)
     } 
     setEmptyError(false)
     if(password.length < 6){
-      setPasswordError(true)
+      return setPasswordError(true)
     }
     
   
@@ -52,6 +55,7 @@ export default function Register() {
               uid: res.user.uid,
               displayName,
               email,
+              avatar,
               star:0
           })
 
@@ -93,6 +97,15 @@ export default function Register() {
                         <input type="password" name="password" id="password" placeholder="New Password" />
                         <span className="msg">Must meet Password criteria</span>
                     </div>
+
+                    <select className='avatar-selector' defaultValue={""} >
+                      <option value="" disabled>Please Choose an Avatar</option>
+                      <option value="cat" >Cat <FontAwesomeIcon icon="cat" /></option>
+                      <option value="dog" >Dog <FontAwesomeIcon icon="dog" /></option>
+                      <option value="poo" >Poo <FontAwesomeIcon icon="poo" /></option>
+                      <option value="coffee" >Coffee <FontAwesomeIcon icon="coffee" /></option>
+                      <option value="rocket" >Rocket <FontAwesomeIcon icon="rocket" /></option>
+                    </select>
 
                     {emptyError && <span className="msg">Fields cannot be left empty!</span>}
                     {error && <span className="msg">Email is already in use!</span>}

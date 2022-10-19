@@ -20,10 +20,7 @@ export default function Home() {
     const [mainLobbyPlayerId, setMainLobbyPlayerId] = useState("")
     const [loading, setLoading] = useState(false)
 
-    const frog = <FontAwesomeIcon icon="frog" bounce />
     const star = <FontAwesomeIcon icon="star" flip />
-    const rocket = <FontAwesomeIcon icon="rocket" bounce />
-    const cat = <FontAwesomeIcon icon="cat" bounce />
     // console.log(currentUser)
     const navigate = useNavigate()
 
@@ -73,13 +70,16 @@ export default function Home() {
           let currentPlayerRef = doc(db,"users",currentUser.uid);
           let currentPlayerSnap = await getDoc(currentPlayerRef);
           const stars = currentPlayerSnap.data().star
+          const avatar = currentPlayerSnap.data().avatar
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
+          console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
                       displayName:currentUser.displayName,
-                      stars: stars
+                      stars: stars,
+                      avatar: avatar
                   })
               }
       };
@@ -216,7 +216,7 @@ window.onunload = function(){
                   if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
                     return(
                       <div key={singlePlayer.data().uid} className="main-lobby-player">
-                        <div className='avatar'>{frog}</div>
+                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
                         <h3 >{singlePlayer.data().displayName}</h3>
                         <h4 className='stars'>{singlePlayer.data().stars} Stars {star}</h4>
                       </div>
@@ -225,7 +225,7 @@ window.onunload = function(){
         
                     return (
                       <div key={singlePlayer.data().uid} className="single-lobby-player">
-                        <div className='avatar'>{cat}</div>
+                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
                         <h3 >{singlePlayer.data().displayName}</h3>
                         <h4 className='stars'>{singlePlayer.data().stars} Stars {star}</h4>
                       </div>
