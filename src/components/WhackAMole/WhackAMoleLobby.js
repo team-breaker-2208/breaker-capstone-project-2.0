@@ -147,15 +147,15 @@ const WhackAMoleLobby = () => {
     <div className="lobbyContainer">
         <h1 className="welcome">WELCOME TO WHACK A MOLE LOBBY!</h1>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-        <h2 className="infoDiv">Lobby Status:{players.length}/2 Players</h2>
+        <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
             {players.map((singlePlayer) => {
                 return (
-                    <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName}</h3>
+                    <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName.toUpperCase()}</h3>
                 )
             })}
         
-        <div className="infoDiv">Number in lobby: {players.length}</div>
-        <div className="infoDiv">Waiting on {2 - players.length} more</div> 
+        
+        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
         </div>}
 
         

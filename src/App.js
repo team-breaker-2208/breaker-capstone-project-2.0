@@ -15,6 +15,9 @@ import WhackAMoleLobby from './components/WhackAMole/WhackAMoleLobby';
 import WhackAMoleWinnerPage from './components/WhackAMole/WhackAMoleWinnerPage';
 import Chart from './components/Chart'
 import SlideGame from './components/SlideGame/SlideGame.js'
+import Memory  from "./components/Memory/Memory"
+import MemoryLobby from "./components/Memory/MemoryLobby"
+import MemoryWinnerPage from "./components/Memory/MemoryWinnerPage"
 
 
 function App() {
@@ -46,6 +49,9 @@ function App() {
               <Route exact path="whackAMoleWinnerPage" element={<WhackAMoleWinnerPage/>}/>
               <Route exact path="chart" element={<Chart/>}/>
               <Route exact path="slideGame" element={<SlideGame/>}/>
+              <Route exact path="memory" element={<Memory />}/>
+              <Route exact path="memoryLobby" element={<MemoryLobby />}/>
+              <Route exact path="memoryWinnerPage" element={<MemoryWinnerPage />}/>
             </Route>
         </Routes>
       </div>
