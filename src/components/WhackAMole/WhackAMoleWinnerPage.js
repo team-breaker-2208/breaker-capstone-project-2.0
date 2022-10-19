@@ -43,6 +43,7 @@ const WhackAMoleWinnerPage = ()=>{
 
     return (
         <>  
+            <div className='empty-space'></div>
             <div className="winner-title">
                 <h2 className="title-word title-word-1">{winner} is the winner, got 5 stars !!!</h2>
                 <div className="title-word-2">
@@ -53,14 +54,16 @@ const WhackAMoleWinnerPage = ()=>{
                     })}
                 </div>
             </div>
-            {/* <div className="winner-title">
-                <h1 className="title-word title-word-1">winner is the winner, got 5 stars !!!</h1>
+            <div className='empty-space'></div>
+
+            {/* <div className='empty-space'></div>
+            <div className="winner-title mole-winner-title">
+                <h2 className="title-word title-word-1">winner is the winner, got 5 stars !!!</h2>
                 <div className="title-word-2">
                     <h3 className='losers' key='1'>aaa got 1 points!</h3>
-                    <h3 className='losers' key='2'>bbb got 1 points!</h3>
-                    <h3 className='losers' key='3'>ccc got 1 points!</h3>
                 </div>
-            </div> */}
+            </div>
+            <div className='empty-space'></div> */}
             
 
             <div className='winner-button'>

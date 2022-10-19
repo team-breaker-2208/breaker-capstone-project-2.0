@@ -9,6 +9,7 @@ import { db } from '../server/firebase';
 
 
 
+
 export default function Home() {
     const {currentUser} = useContext(AuthContext)
     const [user, setUser] = useState({})
@@ -20,6 +21,7 @@ export default function Home() {
     const [loading, setLoading] = useState(false)
     // console.log(currentUser)
     const navigate = useNavigate()
+
 
     // dummyData
     // const dummyData=[
@@ -186,6 +188,7 @@ window.onunload = function(){
                       <div key={singlePlayer.data().uid} className="main-lobby-player">
                         <h3 >{singlePlayer.data().displayName}</h3>
                         <h4 >{singlePlayer.data().stars} Stars</h4>
+
                       </div>
                     )
                   }
