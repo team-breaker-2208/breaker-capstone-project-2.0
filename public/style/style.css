@@ -35,6 +35,10 @@ h1 {
   font-family: 'Starborn';
   src: url(../fonts/Starborn.ttf);
 }
+@font-face {
+  font-family: 'Tourner';
+  src: url(../fonts/Tourner.ttf);
+}
 .cookies-container {
   display: flex;
   justify-content: center;
@@ -272,6 +276,54 @@ form.form button {
   justify-content: center;
   margin-left: 80px;
 }
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0!important;
+  background: #072A41;
+  background-image: none;
+  flex: 1;
+  padding: 0 0.5em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+}
+select::-ms-expand {
+  display: none;
+}
+.select {
+  position: relative;
+  display: flex;
+  width: 29em;
+  height: 3em;
+  line-height: 3;
+  background: #072A41;
+  overflow: hidden;
+  border-radius: 0.25em;
+  justify-content: center;
+}
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #175075;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+}
+.select:hover::after {
+  color: #7C72E0;
+}
+a:visited {
+  color: white;
+}
 .lobbyContainer {
   display: flex;
   justify-content: center;
@@ -371,9 +423,10 @@ form.form button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 20px;
   border: none;
+  max-width: 900px;
   width: 100%;
   margin: 70px;
 }
@@ -599,7 +652,7 @@ form.form button {
   flex-direction: row;
 }
 .navBar .logo span {
-  font-family: 'surfQuestTidal';
+  font-family: 'Tourner';
   font-size: 4em;
   text-shadow: 1px 1px lightgrey;
 }

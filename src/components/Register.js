@@ -98,14 +98,16 @@ export default function Register() {
                         <span className="msg">Must meet Password criteria</span>
                     </div>
 
-                    <select className='avatar-selector' defaultValue={""} >
-                      <option value="" disabled>Please Choose an Avatar</option>
-                      <option value="cat" >Cat <FontAwesomeIcon icon="cat" /></option>
-                      <option value="dog" >Dog <FontAwesomeIcon icon="dog" /></option>
-                      <option value="poo" >Poo <FontAwesomeIcon icon="poo" /></option>
-                      <option value="coffee" >Coffee <FontAwesomeIcon icon="coffee" /></option>
-                      <option value="rocket" >Rocket <FontAwesomeIcon icon="rocket" /></option>
-                    </select>
+                    <div className='select'>
+                      <select className='avatar-selector' defaultValue={""} >
+                        <option value="" disabled>Please Choose an Avatar</option>
+                        <option value="cat" >Cat <FontAwesomeIcon icon="cat" /></option>
+                        <option value="dog" >Dog <FontAwesomeIcon icon="dog" /></option>
+                        <option value="poo" >Poo <FontAwesomeIcon icon="poo" /></option>
+                        <option value="coffee" >Coffee <FontAwesomeIcon icon="coffee" /></option>
+                        <option value="rocket" >Rocket <FontAwesomeIcon icon="rocket" /></option>
+                      </select>
+                    </div>
 
                     {emptyError && <span className="msg">Fields cannot be left empty!</span>}
                     {error && <span className="msg">Email is already in use!</span>}
