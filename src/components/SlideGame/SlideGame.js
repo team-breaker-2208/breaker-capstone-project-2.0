@@ -1,13 +1,12 @@
 import React from 'react'
-import logo from '../../images/slideGame/logo.png'
 
 
 const SlideGame = ()=>{
     return (
        <div>
-            <img id="title" src={logo} alt='logo'/>
+            <h1>PUZZLE SLIDER!</h1>
             <div id="board"></div>
-            <h1>Turns: <span id="turns">0</span></h1>
+            <h2>TURNS: <span id="turns">0</span></h2>
        </div> 
     )
 }
