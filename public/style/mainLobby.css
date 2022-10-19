@@ -13,6 +13,9 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 50px;
 }
+.mainLobby-container h2 {
+  color: white;
+}
 .gamesContainer {
   display: inline-flex;
   justify-content: space-around;
@@ -30,7 +33,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
+.eachGame h2{
+  color: black;
+}
+
 .eachGame .gameTitle {
   display: flex;
   flex-direction: column;

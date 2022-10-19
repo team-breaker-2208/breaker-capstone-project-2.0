@@ -404,6 +404,7 @@ a:visited {
 .eachGame .gameTitle h2,
 .eachGame .gameTitle h4 {
   font-family: sans-serif, serif;
+  color: black;
 }
 .cookieClicker-mainLobby-container {
   width: 300px;

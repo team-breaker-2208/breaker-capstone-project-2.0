@@ -237,10 +237,10 @@ export const CookieClicker = () => {
         if(score < 8){
             return 0
         }
-        if(score > 8 && score < 16){
+        if(score >= 8 && score <= 16){
             return 1
         }
-        if(score > 16 && score < 24){
+        if(score >= 17 && score <= 24){
             return 2
         }
         return 3
