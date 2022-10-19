@@ -14,7 +14,8 @@
 .navBar .logo span {
   font-family: 'Tourner';
   font-size: 4em;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 2px 2px black;
+  color: lightgray;
 }
 .navBar img {
   height: 90px;

@@ -69,9 +69,10 @@ const WhackAMoleLobby = () => {
                     let currentPlayerRef = doc(db,"users",currentUser.uid);
                     let currentPlayerSnap = await getDoc(currentPlayerRef);
                     const avatar = currentPlayerSnap.data().avatar
+                    const displayName = currentPlayerSnap.data().displayName
                     await setDoc(doc(db, "whackAMolePlayers", currentUser.uid),{
                         uid: currentUser.uid,
-                        displayName:currentUser.displayName,
+                        displayName: displayName,
                         points:0,
                         avatar: avatar
                         // gid: gameId

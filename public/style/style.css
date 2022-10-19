@@ -401,11 +401,17 @@ a:visited {
 .lobbyContainer button {
   margin-left: 0;
   position: relative;
+  margin: 40px;
+}
+.lobbyContainer .infoDiv {
+  text-shadow: 2px 2px 2px #574FC2;
+  font-size: 2em;
 }
 .welcome {
   color: coral;
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
+  margin: 40px;
 }
 .PlayersContainer {
   height: 20vh;
@@ -424,6 +430,10 @@ a:visited {
   border-radius: 25px;
   font-family: "kidGames";
   flex-direction: row;
+  text-shadow: 2px 2px 2px #000000;
+}
+.players .avatar {
+  margin-left: 10px;
 }
 .infoDiv {
   border-style: ridge;
@@ -515,7 +525,6 @@ a:visited {
   text-align: center;
 }
 .single-lobby-player {
-  width: 130px;
   background-color: #8eb5f4;
   border-radius: 10px;
   padding: 10px;
@@ -526,7 +535,6 @@ a:visited {
   box-shadow: 0 0 0.7em 0 black;
 }
 .main-lobby-player {
-  width: 130px;
   background-color: #8eb5f4;
   border-radius: 10px;
   padding: 10px;
