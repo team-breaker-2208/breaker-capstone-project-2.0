@@ -204,7 +204,7 @@ window.onunload = function(){
                 </div>
                 <div className='gameThree-mainLobby-container'>
                 </div>
-                    {molePlayers.length < 4 ? 
+                    {memoryPlayers.length < 4 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
