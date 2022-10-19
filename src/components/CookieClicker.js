@@ -272,7 +272,6 @@ export const CookieClicker = () => {
         </div>
     </>: <div>
             <h1>Max points reached!</h1>
-            <Link to="/">Back to home</Link>
          </div>
 
   )

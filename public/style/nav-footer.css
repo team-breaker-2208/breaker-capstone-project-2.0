@@ -39,23 +39,24 @@
   text-decoration: none;
   font-size: 2.5em;
   font-family: "surfQuest";
-  color: black;
+  color: white;
   text-shadow: 1px 1px grey;
 }
 .navBar .nav-right span {
-  font-family: cursive,serif;
+  font-family: fantasy;
   font-size: 24px;
+  color: white;
 }
 .footer {
   background-color: #486BBD;
-  padding: 5px;
   display: flex;
   justify-content: space-around;
   width: 100vw;
   position: absolute;
+  color: white;
 }
-.footer img {
-  height: 46px;
+.footer .footer-github {
+  font-size: 40px;
 }
 @media only screen and (max-width: 600px) {
   .navBar {

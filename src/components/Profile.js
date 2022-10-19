@@ -32,9 +32,9 @@ export default function Profile() {
 
   return (
     <div className="profile">
-       <h2>DisplayName: {user.displayName}</h2> 
-       <h2>Email: {user.email}</h2>
-       <h2>Stars: {user.stars}</h2>
+       <h2>DisplayName :&nbsp;&nbsp;&nbsp;{user.displayName}</h2> 
+       <h2>Email :&nbsp;&nbsp;&nbsp;{user.email}</h2>
+       <h2>Stars :&nbsp;&nbsp;&nbsp;{user.stars}</h2>
        {!clickEdit? <button onClick = {handleUpdate} >Edit Profile</button> : < EditForm email={user.email} stars={user.stars} setUser={setUser} setClickEdit={setClickEdit}/>}
     </div>
   )
