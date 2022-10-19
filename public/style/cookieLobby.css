@@ -6,6 +6,7 @@
 }
 .lobbyContainer button {
   margin-left: 0;
+  position: relative;
 }
 .welcome {
   color: coral;

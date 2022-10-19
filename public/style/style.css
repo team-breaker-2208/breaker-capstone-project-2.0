@@ -981,6 +981,10 @@ body {
 html {
   height: 100%;
 }
+#root {
+  width: 100vw;
+  height: 100vh;
+}
 .wrapper {
   min-height: 100vh;
   background-image: linear-gradient(#7C72E0, #3D35A7, #7C72E0);
