@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { useLocation } from "react-router-dom";
-import { db } from '../server/firebase';
+import { db } from '../../server/firebase';
 import { doc, getDoc } from "firebase/firestore"; 
 
-// import { db } from '../server/firebase';
-// import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-
-// import useWindowSize from 'react-use/lib/useWindowSize'
-// import Confetti from 'react-confetti'
-
-const WinnerPage = ()=>{
+const MemoryWinnerPage = ()=>{
 
     const [ winner, setWinner ] = useState("")
     const [ losers, setLosers ] = useState([])
@@ -30,7 +24,7 @@ const WinnerPage = ()=>{
 
     useEffect(() => {
         const getGameInfo = async() => {
-            const currentGameRef = doc(db, "cookieClickerGames", gameId)
+            const currentGameRef = doc(db, "memoryGames", gameId)
             const currentGameSnap = await getDoc(currentGameRef)
             if (currentGameSnap.exists()) {
                 setLosers(currentGameSnap.data().losers)
@@ -50,7 +44,7 @@ const WinnerPage = ()=>{
     return (
         <>  
             <div className="winner-title">
-                <h1 className="title-word title-word-1">{winner} is the winner, got 5 stars !!!</h1>
+                <h2 className="title-word title-word-1">{winner} is the winner, got 5 stars !!!</h2>
                 <div className="title-word-2">
                     {losers.map(loser => {
                         return(
@@ -68,9 +62,6 @@ const WinnerPage = ()=>{
                 </div>
             </div> */}
             
-            {/* <img src='https://storybodyguard.files.wordpress.com/2011/02/winner-illustration1.jpg' alt='Winner Page'/>
-            <h1>{winner} is the winner and got 5 stars!!!</h1>
-            <h3>Not bad {player2}, you got {player2Points} points!</h3> */}
 
             <div className='winner-button'>
                 <Link to="/"><button >Go back to lobby</button></Link>
@@ -79,4 +70,4 @@ const WinnerPage = ()=>{
     )
 }
 
-export default WinnerPage
+export default MemoryWinnerPage

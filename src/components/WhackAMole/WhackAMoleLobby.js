@@ -1,14 +1,14 @@
 import React, { useContext,useState, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 // import { onAuthStateChanged } from "firebase/auth";
 // import { ref } from "firebase/storage";
 import { doc, setDoc, getDoc, collection, getDocs, addDoc, deleteDoc } from "firebase/firestore"; 
 import { query, onSnapshot } from "firebase/firestore";
-import { db } from '../server/firebase';
+import { db } from '../../server/firebase';
 // import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
 
-const CookieLobby = () => {
+const WhackAMoleLobby = () => {
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -22,7 +22,7 @@ const CookieLobby = () => {
     useEffect(()=>{
         const getGame = async()=>{
             let currentGame = false
-            const gamesCollectionRef = collection(db,"cookieClickerGames")
+            const gamesCollectionRef = collection(db,"whackAMoleGames")
             const data = await getDocs(gamesCollectionRef)
             data.docs.map((game) => { 
                 const gameStatus = game.data().gameStatus
@@ -37,10 +37,10 @@ const CookieLobby = () => {
 
             if(currentGame === false ){
                 const addGame = async()=>{
-                    const gameRef = await addDoc(collection(db, "cookieClickerGames"),{
+                    const gameRef = await addDoc(collection(db, "whackAMoleGames"),{
                         gameStatus: true
                     })
-                    await setDoc(doc(db, "cookieClickerGames", gameRef.id), {
+                    await setDoc(doc(db, "whackAMoleGames", gameRef.id), {
                         gameStatus: true,
                         gid: gameRef.id
                     })
@@ -60,12 +60,12 @@ const CookieLobby = () => {
 
  
     
-    //adding players to CookieClicker lobby
+    //adding players to whackAMoleGames lobby
     useEffect(()=>{
   
         const addPlayer = async()=>{
                 if(currentUser.displayName){
-                    await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
+                    await setDoc(doc(db, "whackAMolePlayers", currentUser.uid),{
                         uid: currentUser.uid,
                         displayName:currentUser.displayName,
                         points:0,
@@ -79,7 +79,7 @@ const CookieLobby = () => {
         const getSinglePlayer = async()=>{
             
             if(currentUser.displayName){
-                let currentPlayerRef = doc(db,"CookieClickerPlayer",currentUser.uid);
+                let currentPlayerRef = doc(db,"whackAMolePlayers",currentUser.uid);
                 let currentPlayerSnap = await getDoc(currentPlayerRef);
                 if (currentPlayerSnap.exists()) {
                         setPlayer(currentPlayerSnap.data());
@@ -103,7 +103,7 @@ const CookieLobby = () => {
       
 
     useEffect(()=>{
-        const qPlayers = query(collection(db, "CookieClickerPlayer"));
+        const qPlayers = query(collection(db, "whackAMolePlayers"));
         const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
             let playersArr = querySnapshot.docs;
             setPlayers(playersArr);
@@ -117,7 +117,7 @@ const CookieLobby = () => {
     console.log("GID: ", gameId);
 
     const handleNavigateAway = async () => {
-        await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
+        await deleteDoc(doc(db, 'whackAMolePlayers', player.uid))
     }
 
     window.onunload = function(){
@@ -126,12 +126,12 @@ const CookieLobby = () => {
       };
 
     const handleClick = async(player)=>{
-        await deleteDoc(doc(db, 'CookieClickerPlayer', player.uid))
+        await deleteDoc(doc(db, 'whackAMolePlayers', player.uid))
     }
 
-    if (players.length === 4){
+    if (players.length === 2){
         setTimeout(()=>{
-            navigate("/cookieClicker");
+            navigate("/whackAMole");
 
         }, "6000")
         return(
@@ -145,16 +145,17 @@ const CookieLobby = () => {
 
   return (
     <div className="lobbyContainer">
-        <h1 className="welcome">WELCOME TO COOKIE CLICKER LOBBY!</h1>
+        <h1 className="welcome">WELCOME TO WHACK A MOLE LOBBY!</h1>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-        <h2 className="infoDiv">LOBBY STATUS:{players.length}/4 PLAYERS</h2>
+        <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
             {players.map((singlePlayer) => {
                 return (
                     <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName.toUpperCase()}</h3>
                 )
             })}
         
-        <div className="infoDiv">WAITING ON {4 - players.length} MORE</div> 
+        
+        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
         </div>}
 
         
@@ -163,4 +164,4 @@ const CookieLobby = () => {
   )
 }
 
-export default CookieLobby;
+export default WhackAMoleLobby;
