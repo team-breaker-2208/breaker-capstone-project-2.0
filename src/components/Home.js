@@ -64,8 +64,6 @@ export default function Home() {
   
       const addPlayer = async()=>{
         
-        
-        
         if(currentUser.displayName){
           let currentPlayerRef = doc(db,"users",currentUser.uid);
           let currentPlayerSnap = await getDoc(currentPlayerRef);
