@@ -71,13 +71,14 @@ export default function Home() {
           let currentPlayerSnap = await getDoc(currentPlayerRef);
           const stars = currentPlayerSnap.data().star
           const avatar = currentPlayerSnap.data().avatar
+          const displayName = currentPlayerSnap.data().displayName
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
           console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
-                      displayName:currentUser.displayName,
+                      displayName: displayName,
                       stars: stars,
                       avatar: avatar
                   })

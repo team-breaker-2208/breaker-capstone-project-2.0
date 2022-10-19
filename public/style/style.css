@@ -778,9 +778,12 @@ a:visited {
 }
 .profile {
   margin: auto;
-  width: 400px;
+  width: 500px;
   text-align: start;
   padding: 20px;
+  box-shadow: 0 0 15px black;
+  border-radius: 20px;
+  background-image: linear-gradient(#072A41, #66ADDB);
 }
 .profile h2 {
   font-weight: bold;
