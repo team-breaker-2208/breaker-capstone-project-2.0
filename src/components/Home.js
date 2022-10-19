@@ -6,7 +6,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
 import { query, onSnapshot, setDoc, doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../server/firebase';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function Home() {
@@ -14,10 +14,13 @@ export default function Home() {
     const [user, setUser] = useState({})
     const [cookiePlayers, setCookiePlayers] = useState([]);
     const [molePlayers, setMolePlayers] =useState([])
+    const [memoryPlayers, setMemoryPlayers] =useState([])
     const [mainLobbyPlayers, setMainLobbyPlayers] = useState([]);
     const [mainLobbyPlayer, setMainLobbyPlayer] = useState({})
     const [mainLobbyPlayerId, setMainLobbyPlayerId] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const star = <FontAwesomeIcon icon="star" flip />
     // console.log(currentUser)
     const navigate = useNavigate()
 
@@ -56,7 +59,7 @@ export default function Home() {
         navigate("/login")
     }
 
-    //adding players to CookieClicker lobby
+    //adding players to Main lobby
     useEffect(()=>{
   
       const addPlayer = async()=>{
@@ -67,13 +70,16 @@ export default function Home() {
           let currentPlayerRef = doc(db,"users",currentUser.uid);
           let currentPlayerSnap = await getDoc(currentPlayerRef);
           const stars = currentPlayerSnap.data().star
+          const avatar = currentPlayerSnap.data().avatar
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
+          console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
                       displayName:currentUser.displayName,
-                      stars: stars
+                      stars: stars,
+                      avatar: avatar
                   })
               }
       };
@@ -85,7 +91,7 @@ export default function Home() {
 
   },[currentUser])
 
-    //watching number of players in CookieClicker
+    //watching number of players in CookieClicker Lobby
     useEffect(()=>{
       const qPlayers = query(collection(db, "CookieClickerPlayer"));
       const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
@@ -98,12 +104,25 @@ export default function Home() {
       }
   },[])
 
-    //watching number of players in WhackAMole 
+    //watching number of players in WhackAMole Lobby
     useEffect(()=>{
         const qPlayers = query(collection(db, "whackAMolePlayers"));
         const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
             let playersArr = querySnapshot.docs;
             setMolePlayers(playersArr);
+        });
+        
+        return()=>{
+            unsubscribe();
+        }
+    },[])
+
+    //watching number of players in Memory Lobby
+    useEffect(()=>{
+        const qPlayers = query(collection(db, "memoryPlayers"));
+        const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
+            let playersArr = querySnapshot.docs;
+            setMemoryPlayers(playersArr);
         });
         
         return()=>{
@@ -177,6 +196,19 @@ window.onunload = function(){
                     </Link>: 
                 <span>Whack A Mole Lobby is full</span>}
             </div>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>Memory Game</h2>
+                    <h4>Players: {memoryPlayers.length} / 2</h4>
+                </div>
+                <div className='gameThree-mainLobby-container'>
+                </div>
+                    {molePlayers.length < 2 ? 
+                    <Link to="/memoryLobby">
+                    <button className='join-button'>Join Game</button>
+                    </Link>: 
+                <span>Memory Lobby is full</span>}
+            </div>
         </div>
         <h2>Current Players In Lobby:</h2>
         <div className='mainLobby-players-container'>
@@ -184,16 +216,18 @@ window.onunload = function(){
                   if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
                     return(
                       <div key={singlePlayer.data().uid} className="main-lobby-player">
+                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
                         <h3 >{singlePlayer.data().displayName}</h3>
-                        <h4 >{singlePlayer.data().stars} Stars</h4>
+                        <h4 className='stars'>{singlePlayer.data().stars} Stars {star}</h4>
                       </div>
                     )
                   }
         
                     return (
                       <div key={singlePlayer.data().uid} className="single-lobby-player">
+                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
                         <h3 >{singlePlayer.data().displayName}</h3>
-                        <h4 >{singlePlayer.data().stars} Stars</h4>
+                        <h4 className='stars'>{singlePlayer.data().stars} Stars {star}</h4>
                       </div>
                     )
             })}

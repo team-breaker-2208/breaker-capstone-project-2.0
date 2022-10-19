@@ -13,6 +13,9 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 50px;
 }
+.mainLobby-container h2 {
+  color: white;
+}
 .gamesContainer {
   display: inline-flex;
   justify-content: space-around;
@@ -30,7 +33,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
+.eachGame h2{
+  color: black;
+}
+
 .eachGame .gameTitle {
   display: flex;
   flex-direction: column;
@@ -61,10 +69,20 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
-  gap: 25px;
+  justify-content: space-between;
+  gap: 20px;
   border: none;
+  max-width: 900px;
   width: 100%;
+  margin: 70px;
+}
+.mainLobby-players-container h4 {
+  color: yellow;
+  text-shadow: 2px 2px black;
+}
+.mainLobby-players-container .avatar {
+  font-size: 2em;
+  text-align: center;
 }
 .single-lobby-player {
   width: 130px;
@@ -87,4 +105,13 @@
 }
 .eachGame:hover {
   box-shadow: 0 0 0.5em 0.2em lightcoral;
+}
+.gameThree-mainLobby-container {
+  width: 300px;
+  height: 300px;
+  background-image: url("../images/cookie\ background.jpg");
+  background-size: cover;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  background-image: url("../images/memoryGame.png");
 }
