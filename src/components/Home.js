@@ -73,11 +73,12 @@ export default function Home() {
           const avatar = currentPlayerSnap.data().avatar
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
+          const displayName = currentPlayerSnap.data().displayName
           console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
-                      displayName:currentUser.displayName,
+                      displayName: displayName,
                       stars: stars,
                       avatar: avatar
                   })
@@ -186,11 +187,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Whack A Mole Game</h2>
-                    <h4>Players: {molePlayers.length} / 2</h4>
+                    <h4>Players: {molePlayers.length} / 4</h4>
                 </div>
                 <div className='gameTwo-mainLobby-container'>
                 </div>
-                    {molePlayers.length < 2 ? 
+                    {molePlayers.length < 4 ? 
                     <Link to="/whackAMoleLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
@@ -199,11 +200,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Memory Game</h2>
-                    <h4>Players: {memoryPlayers.length} / 2</h4>
+                    <h4>Players: {memoryPlayers.length} / 4</h4>
                 </div>
                 <div className='gameThree-mainLobby-container'>
                 </div>
-                    {molePlayers.length < 2 ? 
+                    {molePlayers.length < 4 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 

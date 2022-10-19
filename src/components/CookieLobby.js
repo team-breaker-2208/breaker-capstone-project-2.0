@@ -7,6 +7,7 @@ import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../server/firebase';
 // import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const CookieLobby = () => {
 
@@ -65,10 +66,14 @@ const CookieLobby = () => {
   
         const addPlayer = async()=>{
                 if(currentUser.displayName){
+                    let currentPlayerRef = doc(db,"users",currentUser.uid);
+                    let currentPlayerSnap = await getDoc(currentPlayerRef);
+                    const avatar = currentPlayerSnap.data().avatar
                     await setDoc(doc(db, "CookieClickerPlayer", currentUser.uid),{
                         uid: currentUser.uid,
                         displayName:currentUser.displayName,
                         points:0,
+                        avatar: avatar
                         // gid: gameId
                     })
                 }
@@ -150,7 +155,10 @@ const CookieLobby = () => {
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
             {players.map((singlePlayer) => {
                 return (
-                    <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName.toUpperCase()}</h3>
+                    <h3 className="players" key={singlePlayer.data().uid}>
+                        {singlePlayer.data().displayName.toUpperCase()}
+                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
+                    </h3>
                 )
             })}
         

@@ -95,8 +95,8 @@ const WhackAMole = ()=>{
             let playersArr = querySnapshot.docs
             let points = playersArr.map(doc=>doc.data().points)
 
-            if (points.includes(3)) {
-                let index = points.indexOf(3)
+            if (points.includes(10)) {
+                let index = points.indexOf(10)
                 let winner = playersArr[index].data().displayName
                 // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
