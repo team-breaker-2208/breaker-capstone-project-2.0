@@ -69,8 +69,8 @@ export default function EditForm({email,stars,setUser,setClickEdit}) {
 
             {emptyError && <span className="msg">Fields cannot be left empty!</span>}
 
-            <button onClick={handleCancel} >Cancel</button>
             <button onClick={handleUpdate}>Save Changes</button>
+            <button onClick={handleCancel} >Cancel</button>
         </form>
     </div>
   )

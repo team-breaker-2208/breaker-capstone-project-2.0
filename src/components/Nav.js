@@ -24,7 +24,7 @@ export default function Nav() {
                 null
             }
             <Link className ="nav-link" to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/></Link>
-            
+            <Link className ="nav-link" to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/></Link>
             {currentUser? 
                 <Link className="nav-link" to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/></Link>
                 : 
