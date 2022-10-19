@@ -1,0 +1,19 @@
+.chart {
+  background-color: white;
+  width: 90%;
+  margin: 5%;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 5px white;
+}
+.ranking {
+  text-align: center;
+  font-size: 2.5em;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black, 0 0 25px #dae9eb, 0 0 5px #8b0031;
+  font-family: sans-serif;
+  margin: 0;
+}
+.chart-empty-space {
+  height: 3em;
+}

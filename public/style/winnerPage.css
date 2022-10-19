@@ -1,3 +1,6 @@
+.empty-space {
+  height: 20px;
+}
 .winner-title {
   display: flex;
   justify-content: center;
@@ -5,7 +8,7 @@
   flex-direction: column;
   text-align: center;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 2.3vw;
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   background-image: url('https://t3.ftcdn.net/jpg/03/51/32/50/360_F_351325048_SNzPFn1qGEVtEqqoxw8SANC12IauVSYo.jpg');
   background-position: center;
@@ -22,16 +25,20 @@
   font-family: Comic Sans MS, Comic Sans, cursive;
 }
 .winner-title .title-word-1 {
-  padding: 13% 5% 0 5%;
-  --color-1: #5553df;
-  --color-2: #3D8DAE;
-  --color-3: #9a47e8;
+  padding: 0% 5% 0 5%;
+  --color-1: #df536a;
+  --color-2: #00a9af;
+  --color-3: #e8d047;
 }
 .winner-title .title-word-2 {
   color: orange;
+  font-size: 2vw;
 }
 .winner-title .title-word-2 .losers {
   margin: 0;
+}
+.mole-winner-title {
+  background-image: url('https://img.freepik.com/premium-vector/winner-background-with-signs-first-second-third-place-round-pedestal-vector-winner-pod_220217-4098.jpg');
 }
 @keyframes color-animation {
   0% {
@@ -61,39 +68,11 @@
   justify-content: center;
   align-items: center;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .winner-title {
-    font-size: 20px;
-  }
-  .winner-title .title-word-1 {
-    padding-top: 55%;
-  }
-}
-@media screen and (min-width: 1600px) {
-  .winner-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1%;
+    font-size: 5vw;
   }
   .winner-title .title-word-2 {
-    margin-bottom: 30%;
-  }
-}
-@media screen and (max-height: 700px) {
-  .winner-title {
-    font-size: 20px;
-  }
-  .winner-title .title-word-1 {
-    padding: 15% 5% 0 5%;
-  }
-}
-@media screen and (max-height: 700px) and (max-width: 600px) {
-  .winner-title {
-    font-size: 15px;
-  }
-  .winner-title .title-word-1 {
-    padding: 25% 5% 0 5%;
+    font-size: 4vw;
   }
 }

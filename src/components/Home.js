@@ -9,6 +9,7 @@ import { db } from '../server/firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
+
 export default function Home() {
     const {currentUser} = useContext(AuthContext)
     const [user, setUser] = useState({})
@@ -23,6 +24,7 @@ export default function Home() {
     const star = <FontAwesomeIcon icon="star" flip />
     // console.log(currentUser)
     const navigate = useNavigate()
+
 
     // dummyData
     // const dummyData=[
