@@ -22,12 +22,14 @@
   gap: 1em;
 }
 .players {
+  display: flex;
   border-style: ridge;
   padding: 10px;
   color: white;
   background-color: orange;
   border-radius: 25px;
   font-family: "kidGames";
+  flex-direction: row;
 }
 .infoDiv {
   border-style: ridge;
