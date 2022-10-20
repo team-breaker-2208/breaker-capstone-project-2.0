@@ -12,6 +12,7 @@ export default function Register() {
   const [error, setError] = useState(false)
   const [emptyError, setEmptyError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
+  const [setDisplayNameError, displayNameError] = useState(false)
 
 
   const navigate = useNavigate()
@@ -35,6 +36,10 @@ export default function Register() {
     setEmptyError(false)
     if(password.length < 6){
       return setPasswordError(true)
+    }
+
+    if(displayName.length > 16){
+      return setDisplayNameError(true)
     }
     
   
@@ -110,6 +115,7 @@ export default function Register() {
                     </div>
 
                     {emptyError && <span className="msg">Fields cannot be left empty!</span>}
+                    {displayNameError && <span className="msg">Display Name cannot exceed 16 characters</span>}
                     {error && <span className="msg">Email is already in use!</span>}
 
                     <button disabled={loading} type= "submit" className="login-button">Create User</button>

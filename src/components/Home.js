@@ -162,48 +162,46 @@ window.onunload = function(){
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
         <div className='mainLobby-loaded'>
+            <h2>MULTIPLAYER GAMES:</h2>
         <div className='gamesContainer'>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 2</h4>
+                    <h2>COOKIE CLICKER</h2>
                 </div>
-                <div className='cookieClicker-mainLobby-container'>
-                </div>
+                <div className='cookieClicker-mainLobby-container'></div>
+                <h4>PLAYERS: {cookiePlayers.length} / 2</h4>
                 {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
-                <span>Cookie Clicker Lobby is full</span>}  
+                <span>COOKIE CLICKER LOBBY IS FULL</span>}  
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Whack A Mole Game</h2>
-                    <h4>Players: {molePlayers.length} / 2</h4>
+                    <h2>WHACK A MOLE</h2>
                 </div>
-                <div className='gameTwo-mainLobby-container'>
-                </div>
+                <div className='gameTwo-mainLobby-container'></div>
+                    <h4>PLAYERS: {molePlayers.length} / 2</h4>
                     {molePlayers.length < 2 ? 
                     <Link to="/whackAMoleLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
-                <span>Whack A Mole Lobby is full</span>}
+                <span>WHACK A MOLE LOBBY IS FULL</span>}
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Memory Game</h2>
-                    <h4>Players: {memoryPlayers.length} / 2</h4>
+                    <h2>MEMORY</h2>
                 </div>
-                <div className='gameThree-mainLobby-container'>
-                </div>
+                <div className='gameThree-mainLobby-container'></div>
+                <h4>PLAYERS: {memoryPlayers.length} / 2</h4>
                     {memoryPlayers.length < 2 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
-                <span>Memory Lobby is full</span>}
+                <span>MEMORY LOBBY IS FULL</span>}
             </div>
         </div>
-        <h2>Current Players In Lobby:</h2>
+        <h2>CURRENT PLAYERS IN LOBBY:</h2>
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {
                   if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
