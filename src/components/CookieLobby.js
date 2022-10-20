@@ -151,25 +151,27 @@ const CookieLobby = ({setShowNav}) => {
     }
 
   return (
-    <div className="lobbyContainer">
+    <>
         <h1 className="welcome">WELCOME TO COOKIE CLICKER LOBBY!</h1>
-        <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
-        {loading ?<div>Loading...</div> : <div className="PlayersContainer">
-            {players.map((singlePlayer) => {
-                return (
-                    <h3 className="players" key={singlePlayer.data().uid}>
-                        {singlePlayer.data().displayName.toUpperCase()}
-                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
-                    </h3>
-                )
-            })}
-        
-        </div>}
-        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
+        <div className="lobbyContainer">
+            <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
+            {loading ?<div>Loading...</div> : <div className="PlayersContainer">
+                {players.map((singlePlayer) => {
+                    return (
+                        <h3 className="players" key={singlePlayer.data().uid}>
+                            {singlePlayer.data().displayName.toUpperCase()}
+                            <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
+                        </h3>
+                    )
+                })}
+            
+            </div>}
+            <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
 
-        
-        <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>
-    </div>
+            
+        </div>
+            <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>
+    </>
   )
 }
 

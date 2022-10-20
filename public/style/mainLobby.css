@@ -12,6 +12,7 @@
   font-size: 56px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 .mainLobby-container h2 {
   color: white;
@@ -41,7 +42,6 @@
 }
 .eachGame .gameTitle h2,
 .eachGame .gameTitle h4 {
-  font-family: sans-serif, serif;
   color: black;
 }
 .cookieClicker-mainLobby-container {
