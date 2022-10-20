@@ -135,7 +135,7 @@ const WhackAMoleLobby = () => {
         await deleteDoc(doc(db, 'whackAMolePlayers', player.uid))
     }
 
-    if (players.length === 4){
+    if (players.length === 2){
         setTimeout(()=>{
             navigate("/whackAMole");
 
@@ -152,7 +152,7 @@ const WhackAMoleLobby = () => {
   return (
     <div className="lobbyContainer">
         <h1 className="welcome">WELCOME TO WHACK A MOLE LOBBY!</h1>
-        <h2 className="infoDiv">LOBBY STATUS:{players.length}/4 PLAYERS</h2>
+        <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
             {players.map((singlePlayer) => {
                 return (
@@ -165,7 +165,7 @@ const WhackAMoleLobby = () => {
         
         
         </div>}
-        <div className="infoDiv">WAITING ON {4 - players.length} MORE</div> 
+        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
 
         
         <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>

@@ -174,11 +174,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 4</h4>
+                    <h4>Players: {cookiePlayers.length} / 2</h4>
                 </div>
                 <div className='cookieClicker-mainLobby-container'>
                 </div>
-                {cookiePlayers.length < 4 ? 
+                {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
@@ -187,11 +187,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Whack A Mole Game</h2>
-                    <h4>Players: {molePlayers.length} / 4</h4>
+                    <h4>Players: {molePlayers.length} / 2</h4>
                 </div>
                 <div className='gameTwo-mainLobby-container'>
                 </div>
-                    {molePlayers.length < 4 ? 
+                    {molePlayers.length < 2 ? 
                     <Link to="/whackAMoleLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
@@ -200,11 +200,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Memory Game</h2>
-                    <h4>Players: {memoryPlayers.length} / 4</h4>
+                    <h4>Players: {memoryPlayers.length} / 2</h4>
                 </div>
                 <div className='gameThree-mainLobby-container'>
                 </div>
-                    {memoryPlayers.length < 4 ? 
+                    {memoryPlayers.length < 2 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
