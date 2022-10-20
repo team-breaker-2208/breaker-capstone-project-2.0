@@ -6,7 +6,7 @@ import { db } from '../../server/firebase';
 import { useNavigate} from "react-router-dom";
 
 
-const WhackAMole = ()=>{
+const WhackAMole = ({setShowNav})=>{
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     // const [points, setPoints] = useState([])
@@ -61,32 +61,28 @@ const WhackAMole = ()=>{
         setInterval(() => {
             let num = Math.floor(Math.random() * 9);
             setIdx(num)
-        }, 1000)
+        }, 650)
     },[])
 
     // const handleClick = ()=>{
     //     setScore(score+1)
     // }
-    let disableMole = false
 
     const handleClick=async(e, player)=>{
         const playerRef = doc(db,'whackAMolePlayers',player.uid);
         let mole = e.target
-
+        
+        if(mole.classList.contains('mole')){
+            await updateDoc(playerRef,{points:player.points+=1});
+            console.log("points: ",player.points);
+            setScore(player.points);
+        }
+        
         if(mole){
             mole.classList.remove("mole")
             mole.classList.add("hit")
         }
-
-        if(!disableMole){
-            await updateDoc(playerRef,{points:player.points+=1});
-            console.log("points: ",player.points);
-            setScore(player.points);
-            disableMole = true
-        }
-
-        
-
+    
         // let playersCollectionRef = collection(db,"whackAMolePlayers")
         // const data = await getDocs(playersCollectionRef);
 
@@ -160,6 +156,7 @@ const WhackAMole = ()=>{
 
     if(gameOver){
         // navigate('/winnerPage')
+        setShowNav(true)
         navigate('/whackAMoleWinnerPage', {state:gameId})
     }
 
