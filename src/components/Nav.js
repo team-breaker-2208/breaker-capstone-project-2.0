@@ -1,15 +1,34 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from '../server/firebase';
+import {signOut} from 'firebase/auth'
+import { auth } from '../server/firebase'
 
 export default function Nav() {
 
     const {currentUser} = useContext(AuthContext);
+    const navigate = useNavigate()
+
+    const handleClick = async() =>{
+        await deleteDoc(doc(db, 'whackAMolePlayers', currentUser.uid))
+        await deleteDoc(doc(db, 'CookieClickerPlayer', currentUser.uid))
+        await deleteDoc(doc(db, 'memoryPlayers', currentUser.uid))
+    }
+
+    const handleLogout = async() =>{
+        await deleteDoc(doc(db, 'MainLobbyPlayer', currentUser.uid))
+        await deleteDoc(doc(db, 'whackAMolePlayers', currentUser.uid))
+        await deleteDoc(doc(db, 'CookieClickerPlayer', currentUser.uid))
+        await deleteDoc(doc(db, 'memoryPlayers', currentUser.uid))
+        signOut(auth);
+        navigate('/')
+      }
 
   return (
     <div className="navBar">
@@ -23,14 +42,19 @@ export default function Nav() {
                 : 
                 null
             }
-            <Link className ="nav-link" to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/></Link>
-            <Link className ="nav-link" to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/></Link>
+            <Link onClick={handleClick} className="nav-link" to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/></Link>
+            <Link onClick={handleClick} className ="nav-link" to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/></Link>
             {currentUser? 
-                <Link className="nav-link" to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/></Link>
+                <Link onClick={handleClick} className="nav-link" to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/></Link>
                 : 
                 null
             } 
-            <a className ="nav-link" href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/></a>   
+            <a onClick={handleClick} className ="nav-link" href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/></a>   
+            {currentUser? 
+                <button className='logout-home-button' onClick={()=> handleLogout()}>Logout</button>
+                : 
+                null
+            } 
         </div>
         
 
