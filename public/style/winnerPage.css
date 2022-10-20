@@ -22,7 +22,8 @@
 }
 .winner-title .title-word {
   animation: color-animation 4s linear infinite;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'kidGames';
+  font-weight: lighter;
 }
 .winner-title .title-word-1 {
   padding: 0% 5% 0 5%;

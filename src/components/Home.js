@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {signOut} from 'firebase/auth'
-import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
@@ -148,12 +146,6 @@ export default function Home() {
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-  const handleLogout = async() =>{
-    signOut(auth);
-    console.log("main player Id", mainLobbyPlayerId)
-      await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-  }
-
   const handleNavigateAway = async () => {
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
 }
@@ -243,7 +235,6 @@ window.onunload = function(){
             })} */}
 
         </div>
-        <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>
     </div>}
     </div>       
   )

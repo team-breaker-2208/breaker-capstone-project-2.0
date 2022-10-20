@@ -31,34 +31,24 @@
 }
 .navBar .nav-right span {
   text-decoration: none;
-  font-size: 2em;
-  font-family: "surfQuest";
-  color: black;
+  font-size: 24px;
+  color: white;
   text-shadow: 1px 1px grey;
 }
 .navBar .nav-right .nav-link {
   text-decoration: none;
   font-size: 2.5em;
-  font-family: "surfQuest";
   color: white;
-  text-shadow: 1px 1px grey;
-}
-.navBar .nav-right span {
-  font-family: fantasy;
-  font-size: 24px;
-  color: white;
+  text-shadow: 1px 1px black;
 }
 .footer {
   background-color: #486BBD;
   padding: 5px;
   display: flex;
-  justify-content: space-around;
   width: 100vw;
   position: absolute;
   color: white;
-}
-.footer .footer-github {
-  font-size: 40px;
+  height: 50px;
 }
 @media only screen and (max-width: 600px) {
   .navBar {

@@ -3,9 +3,11 @@ import {Link} from 'react-router-dom'
 import { useLocation } from "react-router-dom";
 import { db } from '../../server/firebase';
 import { doc, getDoc } from "firebase/firestore"; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MemoryWinnerPage = ()=>{
 
+    const star = <FontAwesomeIcon className='winner-star' icon="star" flip />
     const [ winner, setWinner ] = useState("")
     const [ losers, setLosers ] = useState([])
     // delete all cookieClickerGames documents
@@ -44,11 +46,11 @@ const MemoryWinnerPage = ()=>{
     return (
         <>  
             <div className="winner-title">
-                <h2 className="title-word title-word-1">{winner} is the winner, got 5 stars !!!</h2>
+                <h2 className="title-word title-word-1">{winner.toUpperCase()} IS THE WINNER, GAINED 5 STARS {star}!</h2>
                 <div className="title-word-2">
                     {losers.map(loser => {
                         return(
-                            <h3 key= {loser.uid}>{loser.displayName} got {loser.points} points!</h3>
+                            <h3 key= {loser.uid}>{loser.displayName} GOT {loser.points} POINTS!</h3>
                         )
                     })}
                 </div>
