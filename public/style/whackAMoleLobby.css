@@ -1,0 +1,37 @@
+.lobbyContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.lobbyContainer button {
+  margin-left: 0;
+}
+.welcome {
+  color: coral;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.PlayersContainer {
+  height: 81vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.players {
+  border-style: ridge;
+  padding: 10px;
+  color: white;
+  background-color: orange;
+  border-radius: 25px;
+}
+.infoDiv {
+  border-style: ridge;
+  padding: 10px;
+  background-color: bisque;
+  border-radius: 25px;
+}
