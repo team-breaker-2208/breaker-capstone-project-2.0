@@ -1,31 +1,43 @@
 .lobbyContainer {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 5vh;
 }
 .lobbyContainer button {
   margin-left: 0;
+  position: relative;
 }
 .welcome {
   color: coral;
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
 }
 .PlayersContainer {
-  height: 81vh;
+  height: 20vh;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 10vh;
+  gap: 1em;
 }
 .players {
+  display: flex;
   border-style: ridge;
   padding: 10px;
   color: white;
   background-color: orange;
+  border-radius: 25px;
+  font-family: "kidGames";
+  flex-direction: row;
 }
+<<<<<<< HEAD
+=======
+.infoDiv {
+  border-style: ridge;
+  padding: 10px;
+  background-color: bisque;
+  border-radius: 25px;
+  font-family: "kidGames";
+}
+>>>>>>> main

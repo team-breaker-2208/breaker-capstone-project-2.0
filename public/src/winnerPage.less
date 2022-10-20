@@ -1,3 +1,7 @@
+.empty-space {
+    height: 20px;
+}
+
 .winner-title {
     display: flex;
     justify-content: center;
@@ -5,7 +9,7 @@
     flex-direction: column;
     text-align: center;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 2.3vw;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 
     // background-image: url('https://cdn.shopify.com/s/files/1/0257/6718/2416/files/Gold_Balloon_Zoom_Background.jpg?v=1595051323');
@@ -17,24 +21,26 @@
     height: 70vh;
     border-radius: 50%;
     box-shadow: 0px 0px 8px 10px #072A41;
+    // margin: 20px auto auto auto;
     margin: auto;
     resize: both;
 
-
     .title-word {
         animation: color-animation 4s linear infinite;
-        font-family: Comic Sans MS, Comic Sans, cursive;
+        font-family: 'kidGames';
+        font-weight: lighter;
     }
 
     .title-word-1 {
-        padding: 13% 5% 0 5%;
-        --color-1: #5553df;
-        --color-2: #3D8DAE;
-        --color-3: #9a47e8;
+        padding: 0% 5% 0 5%;
+        --color-1: #df536a;
+        --color-2: #00a9af;
+        --color-3: #e8d047;
     }
 
     .title-word-2 {
         color: orange;
+        font-size: 2vw;
 
         .losers {
             margin: 0;
@@ -43,6 +49,9 @@
 
 }
 
+.mole-winner-title {
+    background-image: url('https://img.freepik.com/premium-vector/winner-background-with-signs-first-second-third-place-round-pedestal-vector-winner-pod_220217-4098.jpg');
+}
 
 
 @keyframes color-animation {
@@ -82,48 +91,48 @@
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
     .winner-title {
-        font-size: 20px;
-
-        .title-word-1 {
-            padding-top: 55%;
-
-        }
-    }
-}
-
-@media screen and (min-width: 1600px) {
-    .winner-title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1%;
+        font-size: 5vw;
 
         .title-word-2 {
-            margin-bottom: 30%;
-            // background-color: red;
+            font-size: 4vw;
         }
+
     }
 }
 
-@media screen and (max-height: 700px) {
-    .winner-title {
-        font-size: 20px;
+// @media screen and (min-width: 1600px) {
+//     .winner-title {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         margin-top: 1%;
 
-        .title-word-1 {
-            padding: 15% 5% 0 5%;
-        }
-    }
-}
+//         .title-word-2 {
+//             margin-bottom: 30%;
+//             // background-color: red;
+//         }
+//     }
+// }
 
-@media screen and (max-height: 700px) and (max-width: 600px) {
-    .winner-title {
-        font-size: 15px;
+// @media screen and (max-height: 700px) {
+//     .winner-title {
+//         font-size: 20px;
 
-        .title-word-1 {
-            padding: 25% 5% 0 5%;
-        }
-    }
-}
+//         .title-word-1 {
+//             padding: 15% 5% 0 5%;
+//         }
+//     }
+// }
+
+// @media screen and (max-height: 700px) and (max-width: 600px) {
+//     .winner-title {
+//         font-size: 15px;
+
+//         .title-word-1 {
+//             padding: 25% 5% 0 5%;
+//         }
+//     }
+// }

@@ -7,8 +7,9 @@ import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../../server/firebase';
 // import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const MemoryLobby = () => {
+const MemoryLobby = ({setShowNav}) => {
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -65,10 +66,15 @@ const MemoryLobby = () => {
   
         const addPlayer = async()=>{
                 if(currentUser.displayName){
+                    let currentPlayerRef = doc(db,"users",currentUser.uid);
+                    let currentPlayerSnap = await getDoc(currentPlayerRef);
+                    const avatar = currentPlayerSnap.data().avatar
+                    const displayName = currentPlayerSnap.data().displayName
                     await setDoc(doc(db, "memoryPlayers", currentUser.uid),{
                         uid: currentUser.uid,
-                        displayName:currentUser.displayName,
+                        displayName: displayName,
                         points:0,
+                        avatar: avatar
                         // gid: gameId
                     })
                 }
@@ -130,6 +136,7 @@ const MemoryLobby = () => {
     }
 
     if (players.length === 2){
+        setShowNav(false)
         setTimeout(()=>{
             navigate("/memory");
 
@@ -144,22 +151,25 @@ const MemoryLobby = () => {
     }
 
   return (
+    <>
+    <h1 className="welcome">WELCOME TO MEMORY LOBBY!</h1>
     <div className="lobbyContainer">
-        <h1 className="welcome">WELCOME TO MEMORY LOBBY!</h1>
-        {loading ?<div>Loading...</div> : <div className="PlayersContainer">
         <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
+        {loading ?<div>Loading...</div> : <div className="PlayersContainer">
             {players.map((singlePlayer) => {
                 return (
-                    <h3 className="players" key={singlePlayer.data().uid}>{singlePlayer.data().displayName.toUpperCase()}</h3>
+                    <h3 className="players" key={singlePlayer.data().uid}>
+                        {singlePlayer.data().displayName.toUpperCase()}
+                        <div className='avatar'><FontAwesomeIcon icon={singlePlayer.data().avatar} bounce /></div>
+                    </h3>
                 )
             })}
         
-        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
         </div>}
-
-        
-        <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>
+        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div> 
     </div>
+        <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>
+    </>
   )
 }
 

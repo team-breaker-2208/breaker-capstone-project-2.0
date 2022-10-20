@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {signOut} from 'firebase/auth'
-import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
 import { query, onSnapshot, setDoc, doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../server/firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 export default function Home() {
@@ -23,6 +22,7 @@ export default function Home() {
     const star = <FontAwesomeIcon icon="star" flip />
     // console.log(currentUser)
     const navigate = useNavigate()
+
 
     // dummyData
     // const dummyData=[
@@ -64,8 +64,6 @@ export default function Home() {
   
       const addPlayer = async()=>{
         
-        
-        
         if(currentUser.displayName){
           let currentPlayerRef = doc(db,"users",currentUser.uid);
           let currentPlayerSnap = await getDoc(currentPlayerRef);
@@ -73,11 +71,12 @@ export default function Home() {
           const avatar = currentPlayerSnap.data().avatar
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
+          const displayName = currentPlayerSnap.data().displayName
           console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,
-                      displayName:currentUser.displayName,
+                      displayName: displayName,
                       stars: stars,
                       avatar: avatar
                   })
@@ -147,12 +146,6 @@ export default function Home() {
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-  const handleLogout = async() =>{
-    signOut(auth);
-    console.log("main player Id", mainLobbyPlayerId)
-      await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-  }
-
   const handleNavigateAway = async () => {
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
 }
@@ -173,11 +166,11 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 4</h4>
+                    <h4>Players: {cookiePlayers.length} / 2</h4>
                 </div>
                 <div className='cookieClicker-mainLobby-container'>
                 </div>
-                {cookiePlayers.length < 4 ? 
+                {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
@@ -203,7 +196,7 @@ window.onunload = function(){
                 </div>
                 <div className='gameThree-mainLobby-container'>
                 </div>
-                    {molePlayers.length < 2 ? 
+                    {memoryPlayers.length < 2 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
@@ -242,7 +235,6 @@ window.onunload = function(){
             })} */}
 
         </div>
-        <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>
     </div>}
     </div>       
   )

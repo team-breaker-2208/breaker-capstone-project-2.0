@@ -89,3 +89,6 @@ button:focus::after {
 button:disabled {
   background-color: grey;
 }
+.logout-home-button {
+  font-size: 1em;
+}
