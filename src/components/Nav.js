@@ -75,25 +75,36 @@ export default function Nav() {
         }
 
         <div className="dropdown">
-            <button >Menu</button>
+            <button className="menu-button"><FontAwesomeIcon icon="bars" style={{color:"white"}}/></button>
             <div className="dropdown-content">
-                    <div>
-                    <Link onClick={handleClick}  to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/> Home</Link>
-                    </div>
-                    <Link onClick={handleClick}  to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/> Ranking</Link>
-                    <div>
+
+                <div className="menu-item">
+                    <Link  className="links" onClick={handleClick} to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/> Home</Link>
+                </div>
+
+                <div className="menu-item" >
+                    <Link className="links" onClick={handleClick}  to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/> Ranking</Link>
+                </div>
+
+                <div className="menu-item" >
+                    <a className="links" onClick={handleClick}  href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/> GitHub</a>   
+                </div>
+
+                <div className="menu-item" >
                     {currentUser? 
-                        <Link onClick={handleClick}  to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/> Profile</Link>
+                        <Link className="links" onClick={handleClick}  to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/> Profile</Link>
                         : 
                         null
                     }
-                    </div> 
-                    <a onClick={handleClick}  href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/> GitHub</a>   
+                </div> 
+
+                <div>
                     {currentUser? 
-                        <button onClick={()=> handleLogout()}>Logout</button>
+                        <span className="links" onClick={()=> handleLogout()}><FontAwesomeIcon icon="sign-out-alt" style={{color:"white"}}/> Logout</span>
                         : 
                         null
                     } 
+                </div>
             </div>     
         </div>
     </div>
