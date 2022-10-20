@@ -15,7 +15,7 @@ import img7 from "./images/img7.png"
 import img8 from "./images/img8.png"
 
 
-const Memory = () => {
+const Memory = ({setShowNav}) => {
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     const [gameId, setGameId] = useState("")
@@ -177,6 +177,7 @@ const Memory = () => {
 
     if(gameOver){
         // navigate('/winnerPage')
+        setShowNav(true)
         navigate('/memoryWinnerPage', {state:gameId})
     }
 

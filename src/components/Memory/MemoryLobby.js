@@ -9,7 +9,7 @@ import { db } from '../../server/firebase';
 import { Link , useNavigate} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const MemoryLobby = () => {
+const MemoryLobby = ({setShowNav}) => {
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -136,6 +136,7 @@ const MemoryLobby = () => {
     }
 
     if (players.length === 2){
+        setShowNav(false)
         setTimeout(()=>{
             navigate("/memory");
 

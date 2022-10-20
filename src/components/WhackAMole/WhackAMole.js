@@ -6,7 +6,7 @@ import { db } from '../../server/firebase';
 import { useNavigate} from "react-router-dom";
 
 
-const WhackAMole = ()=>{
+const WhackAMole = ({setShowNav})=>{
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     // const [points, setPoints] = useState([])
@@ -61,20 +61,28 @@ const WhackAMole = ()=>{
         setInterval(() => {
             let num = Math.floor(Math.random() * 9);
             setIdx(num)
-        }, 500)
+        }, 650)
     },[])
 
     // const handleClick = ()=>{
     //     setScore(score+1)
     // }
 
-    const handleClick=async(player)=>{
+    const handleClick=async(e, player)=>{
         const playerRef = doc(db,'whackAMolePlayers',player.uid);
-
-        await updateDoc(playerRef,{points:player.points+=1});
-        console.log("points: ",player.points);
-        setScore(player.points);
-
+        let mole = e.target
+        
+        if(mole.classList.contains('mole')){
+            await updateDoc(playerRef,{points:player.points+=1});
+            console.log("points: ",player.points);
+            setScore(player.points);
+        }
+        
+        if(mole){
+            mole.classList.remove("mole")
+            mole.classList.add("hit")
+        }
+    
         // let playersCollectionRef = collection(db,"whackAMolePlayers")
         // const data = await getDocs(playersCollectionRef);
 
@@ -148,6 +156,7 @@ const WhackAMole = ()=>{
 
     if(gameOver){
         // navigate('/winnerPage')
+        setShowNav(true)
         navigate('/whackAMoleWinnerPage', {state:gameId})
     }
 
@@ -162,7 +171,7 @@ const WhackAMole = ()=>{
             <div id="whack-a-mole">
                 {arr.map((elm,index)=>{
                     if (index===idx) {
-                        return (<div key={index} onClick={()=>handleClick(player)} className="mole hole"></div>)
+                        return (<div key={index} onClick={(e)=>handleClick(e, player)} className="mole hole"></div>)
                     } else {
                         return (<div key={index} className="hole"></div>)
                     }

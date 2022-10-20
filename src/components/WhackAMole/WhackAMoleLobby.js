@@ -9,7 +9,7 @@ import { db } from '../../server/firebase';
 import { Link , useNavigate} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const WhackAMoleLobby = () => {
+const WhackAMoleLobby = ({setShowNav}) => {
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -136,6 +136,7 @@ const WhackAMoleLobby = () => {
     }
 
     if (players.length === 2){
+        setShowNav(false)
         setTimeout(()=>{
             navigate("/whackAMole");
 
