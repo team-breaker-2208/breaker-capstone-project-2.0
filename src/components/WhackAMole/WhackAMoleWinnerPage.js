@@ -45,11 +45,11 @@ const WhackAMoleWinnerPage = ()=>{
         <>  
             <div className='empty-space'></div>
             <div className="winner-title">
-                <h2 className="title-word title-word-1">{winner} is the winner, got 5 stars !!!</h2>
+                <h2 className="title-word title-word-1">{winner} IS THE WINNER, THEY GOT 5 STARS !!!</h2>
                 <div className="title-word-2">
                     {losers.map(loser => {
                         return(
-                            <h3 key= {loser.uid}>{loser.displayName} got {loser.points} points!</h3>
+                            <h3 key= {loser.uid}>{loser.displayName} GOT {loser.points} POINTS!</h3>
                         )
                     })}
                 </div>
