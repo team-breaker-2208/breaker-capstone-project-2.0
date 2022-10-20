@@ -169,9 +169,6 @@ button:focus::after {
 button:disabled {
   background-color: grey;
 }
-.logout-home-button {
-  font-size: 1em;
-}
 .full-screen-container {
   display: flex;
   justify-content: center;
@@ -734,29 +731,13 @@ a:visited {
   text-shadow: 2px 2px black;
   color: lightgray;
 }
-.navBar img {
-  height: 90px;
-  width: 140px;
-  border-radius: 50px;
-}
-.navBar .nav-right {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 30px;
-  margin-right: 30px;
-}
-.navBar .nav-right span {
+.navBar span {
   text-decoration: none;
   font-size: 24px;
   color: white;
   text-shadow: 1px 1px grey;
-}
-.navBar .nav-right .nav-link {
-  text-decoration: none;
-  font-size: 2.5em;
-  color: white;
-  text-shadow: 1px 1px black;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .footer {
   background-color: #486BBD;
@@ -772,6 +753,48 @@ a:visited {
     display: flex;
     flex-wrap: wrap;
   }
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown .menu-button {
+  margin-right: 20px;
+  width: 120px;
+  font-size: 24px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.dropdown-content .menu-item {
+  height: 40px;
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
+.dropdown-content .links {
+  padding: 6px;
+  border-radius: 6px;
+}
+.dropdown-content .links:link {
+  text-decoration: none;
+  color: white;
+}
+.dropdown-content .links:hover {
+  color: #ffffff;
+  background-color: #486BBD;
+  cursor: pointer;
+}
+.dropdown-content .link:visited {
+  color: white;
+  text-decoration: none;
 }
 #whack-a-mole {
   background-color: darkolivegreen;
