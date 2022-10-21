@@ -202,6 +202,18 @@ window.onunload = function(){
                 <span>MEMORY LOBBY IS FULL</span>}
             </div>
         </div>
+        <h2>SINGLE PLAYER GAMES:</h2>
+        <div className='gamesContainer'>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>COOKIE CLICKER</h2>
+                </div>
+                <div className='cookieClicker-mainLobby-container'></div> 
+                <Link to="/cookieClickerSingle">
+                <button onClick={handleClick} className='join-button'>Join Game</button>
+                </Link>
+            </div>
+        </div>
         <h2>CURRENT PLAYERS IN LOBBY:</h2>
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {
