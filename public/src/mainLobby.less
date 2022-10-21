@@ -19,7 +19,7 @@
   h2{
     color: white;
     font-family: "kidGames";
-    text-shadow: 2px 2px 2px #000000;
+    text-shadow: 3px 3px 3px #000000;
     font-weight: lighter;
     margin: 20px;
   }
@@ -31,10 +31,11 @@
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
   box-shadow: 0 0 0.7em 0 black;
   border-radius: 20px;
   margin-bottom: 30px;
+  background-image: linear-gradient(@cookiebg, @cookieLobbyBorders, @cookiebg);
 }
 
 .eachGame {
@@ -45,7 +46,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 250px;
+  width: 250px;
   margin: 20px;
   h4 {
     color: @cookieLobbyFont;
@@ -99,14 +100,14 @@
 .mainLobby-players-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
   border: none;
-  max-width: 900px;
-  width: 100%;
   box-shadow: 0 0 0.7em 0 black;
   border-radius: 20px;
   margin-bottom: 30px;
-  max-height: 400px;
+  max-width: 910px;
+  height: 400px;
+  background-image: linear-gradient(@cookiebg, @cookieLobbyBorders, @cookiebg);
   h4{
     color: yellow;
     text-shadow: 2px 2px black;
@@ -115,6 +116,12 @@
     font-size: 2em;
     text-align: center;
   }
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.mainLobby-players-container::-webkit-scrollbar {
+  display: none;
 }
 
 .single-lobby-player {
@@ -122,6 +129,7 @@
   background-color: @mainLobbyPlayers;
   color: white;
   box-shadow: 0 0 0.7em 0 black;
+  order: 2;
 }
 
 .main-lobby-player {
@@ -134,17 +142,64 @@
   border: dimgray;
   box-shadow: 0 0 0.5em .5em whitesmoke;
   margin: 20px;
-  width: 420px;
+  width: 410px;
+  order: 1;
   h3{
     margin: 20px;
   }
 }
 
 .eachGame:hover {
-  box-shadow: 0 0 0.5em .2em lightcoral;
+  box-shadow: 0 0 0.5em .1em black;
 }
 
 .gameThree-mainLobby-container {
   .cookieClicker-mainLobby-container;
   background-image: url("../images/memoryGame.png");
+}
+
+@media only screen and (max-width: 750px) {
+  .mainLobby-container{
+    .test{
+      font-size: 45px;
+    }
+  }
+  .mainLobby-players-container{
+    font-size: 9px;
+    height: 200px;
+  }
+  .main-lobby-player {
+    width: 180px;
+    display: flex;
+    margin: 7px;
+    padding: 7px;
+    h3{
+      margin: 7px;
+    }
+  }
+  .single-lobby-player{
+    .main-lobby-player
+  }
+  .gamesContainer{
+    max-height: 340px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  .cookieClicker-mainLobby-container{
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+    .join-button{
+      font-size: 10px;
+    }
+    h2{
+      margin: 5px;
+    }
+  }
+  .gameThree-mainLobby-container{
+    .cookieClicker-mainLobby-container
+  }
+  .gameTwo-mainLobby-container{
+    .cookieClicker-mainLobby-container
+  }
 }

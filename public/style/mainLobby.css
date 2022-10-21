@@ -5,7 +5,7 @@
   align-items: center;
 }
 .mainLobby-container h1 {
-  color: coral;
+  color: white;
   background-clip: text;
   -webkit-background-clip: text;
   font-weight: bolder;
@@ -16,6 +16,10 @@
 }
 .mainLobby-container h2 {
   color: white;
+  font-family: "kidGames";
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: lighter;
+  margin: 20px;
 }
 .gamesContainer {
   display: inline-flex;
@@ -23,54 +27,78 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  margin-bottom: 30px;
 }
 .eachGame {
   background-color: #dbecfa;
   border-radius: 10px;
-  padding: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 250px;
+  margin: 20px;
+}
+.eachGame h4 {
+  color: #574FC2;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "kidGames";
+  font-weight: lighter;
+  font-size: 1.25em;
+  text-align: center;
+}
+.eachGame span {
+  color: darkred;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "kidGames";
+  font-weight: lighter;
+  font-size: 1.25em;
+  text-align: center;
 }
 .eachGame .gameTitle {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.eachGame .gameTitle h2,
-.eachGame .gameTitle h4 {
-  color: black;
+.eachGame .gameTitle h2 {
+  color: #574FC2;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "kidGames";
+  font-weight: lighter;
+  font-size: 1.5em;
+  text-align: center;
 }
 .cookieClicker-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin: 20px;
 }
 .gameTwo-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin: 20px;
   background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
 }
 .mainLobby-players-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
   border: none;
   max-width: 900px;
   width: 100%;
-  margin: 70px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  max-height: 400px;
 }
 .mainLobby-players-container h4 {
   color: yellow;
@@ -81,31 +109,47 @@
   text-align: center;
 }
 .single-lobby-player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: #8eb5f4;
   border-radius: 10px;
   padding: 10px;
   border: dimgray;
   box-shadow: 0 0 0.5em 0.5em whitesmoke;
+  margin: 20px;
+  width: 420px;
   background-color: #1D397A;
   color: white;
   box-shadow: 0 0 0.7em 0 black;
 }
+.single-lobby-player h3 {
+  margin: 20px;
+}
 .main-lobby-player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: #8eb5f4;
   border-radius: 10px;
   padding: 10px;
   border: dimgray;
   box-shadow: 0 0 0.5em 0.5em whitesmoke;
+  margin: 20px;
+  width: 420px;
+}
+.main-lobby-player h3 {
+  margin: 20px;
 }
 .eachGame:hover {
   box-shadow: 0 0 0.5em 0.2em lightcoral;
 }
 .gameThree-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin: 20px;
   background-image: url("../images/memoryGame.png");
 }

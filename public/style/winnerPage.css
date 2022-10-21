@@ -32,11 +32,16 @@
   --color-3: #e8d047;
 }
 .winner-title .title-word-2 {
-  color: orange;
+  color: white;
+  font-family: "kidGames";
   font-size: 2vw;
 }
 .winner-title .title-word-2 .losers {
   margin: 0;
+  font-family: "kidGames";
+}
+.winner-title .title-word-2 h3 {
+  font-family: "kidGames";
 }
 .mole-winner-title {
   background-image: url('https://img.freepik.com/premium-vector/winner-background-with-signs-first-second-third-place-round-pedestal-vector-winner-pod_220217-4098.jpg');
