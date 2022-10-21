@@ -18,7 +18,7 @@ import SlideGame from './components/SlideGame/SlideGame.js'
 import Memory  from "./components/Memory/Memory"
 import MemoryLobby from "./components/Memory/MemoryLobby"
 import MemoryWinnerPage from "./components/Memory/MemoryWinnerPage"
-
+import CookieClickerSingle from "./components/SinglePlayerGames/CookieClickerSingle"
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -42,6 +42,7 @@ function App() {
               <Route exact path="login" element={<Login />} />
               <Route exact path="register" element={<Register />} />
               <Route exact path="cookieClicker" element={<CookieClicker setShowNav={setShowNav} />} />
+              <Route exact path="cookieClickerSingle" element={<CookieClickerSingle setShowNav={setShowNav} />} />
               <Route exact path="CookieLobby" element={<CookieLobby setShowNav={setShowNav} />} />
               <Route exact path='winnerPage' element={<WinnerPage/>}/>
               <Route exact path='profile' element={<Profile/>}/>
