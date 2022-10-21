@@ -143,9 +143,9 @@ const WhackAMoleLobby = ({setShowNav}) => {
         }, "6000")
         return(
             <div className="cookieClicker-loading-screen">
-                <h1 className="word ready">READY!</h1>  
-                <h1 className="word set">SET!!</h1>
-                <h1 className="word go">GO!!!</h1>
+                <h1 className="word mole-ready">READY!</h1>  
+                <h1 className="word mole-set">SET!!</h1>
+                <h1 className="word mole-go">GO!!!</h1>
             </div>
         )
     }

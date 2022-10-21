@@ -68,28 +68,23 @@ const WhackAMole = ({setShowNav})=>{
     //     setScore(score+1)
     // }
 
-    const handleClick=async(e, player)=>{
+    const handleClick= (e, player)=>{
         const playerRef = doc(db,'whackAMolePlayers',player.uid);
         let mole = e.target
-        
-        if(mole.classList.contains('mole')){
-            await updateDoc(playerRef,{points:player.points+=1});
-            console.log("points: ",player.points);
-            setScore(player.points);
+
+        if(mole.classList.contains('mole')) {
+            const handleScore = async()=>{
+                await updateDoc(playerRef,{points:player.points+=1});
+                // console.log("points: ",player.points);
+                setScore(player.points);
+            }  
+            handleScore()
         }
-        
+
         if(mole){
             mole.classList.remove("mole")
             mole.classList.add("hit")
         }
-    
-        // let playersCollectionRef = collection(db,"whackAMolePlayers")
-        // const data = await getDocs(playersCollectionRef);
-
-        // setPoints(data.docs.map((player) => { 
-        //     return player.data().points
-        // }))
-        
     }
 
     //firebase realtime listening
@@ -103,8 +98,8 @@ const WhackAMole = ({setShowNav})=>{
             let playersArr = querySnapshot.docs
             let points = playersArr.map(doc=>doc.data().points)
 
-            if (points.includes(10)) {
-                let index = points.indexOf(10)
+            if (points.includes(5)) {
+                let index = points.indexOf(5)
                 let winner = playersArr[index].data().displayName
                 // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
