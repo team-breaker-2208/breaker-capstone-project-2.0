@@ -31,6 +31,8 @@
   font-family: "kidGames";
   flex-direction: row;
 }
+<<<<<<< HEAD
+=======
 .infoDiv {
   border-style: ridge;
   padding: 10px;
@@ -38,3 +40,4 @@
   border-radius: 25px;
   font-family: "kidGames";
 }
+>>>>>>> main

@@ -32,11 +32,16 @@
   --color-3: #e8d047;
 }
 .winner-title .title-word-2 {
-  color: orange;
+  color: white;
+  font-family: "kidGames";
   font-size: 2vw;
 }
 .winner-title .title-word-2 .losers {
   margin: 0;
+  font-family: "kidGames";
+}
+.winner-title .title-word-2 h3 {
+  font-family: "kidGames";
 }
 .winner-star {
   filter: drop-shadow(0 0 10px darkblue);

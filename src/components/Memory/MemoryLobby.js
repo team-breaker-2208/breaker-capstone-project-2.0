@@ -154,7 +154,7 @@ const MemoryLobby = ({setShowNav}) => {
     <>
     <h1 className="welcome">WELCOME TO MEMORY LOBBY!</h1>
     <div className="lobbyContainer">
-        <h2 className="infoDiv">LOBBY STATUS:{players.length}/2 PLAYERS</h2>
+        <h2 className="infoDiv">LOBBY STATUS: {players.length}/2 PLAYERS</h2>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
             {players.map((singlePlayer) => {
                 return (

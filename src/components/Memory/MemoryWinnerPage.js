@@ -50,7 +50,7 @@ const MemoryWinnerPage = ()=>{
                 <div className="title-word-2">
                     {losers.map(loser => {
                         return(
-                            <h3 key= {loser.uid}>{loser.displayName} GOT {loser.points} POINTS!</h3>
+                            <h3 key= {loser.uid}>{loser.displayName.toUpperCase()} GOT {loser.points} POINTS!</h3>
                         )
                     })}
                 </div>

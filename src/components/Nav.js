@@ -13,7 +13,12 @@ import { auth } from '../server/firebase'
 export default function Nav() {
 
     const {currentUser} = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    // const [open,setOpen] = useState(false);
+
+    // const handleOpen = () => {
+    //     setOpen(!open);
+    // }
 
     const handleClick = async() =>{
         await deleteDoc(doc(db, 'whackAMolePlayers', currentUser.uid))
@@ -31,33 +36,71 @@ export default function Nav() {
       }
 
   return (
+    // <div className="navBar">
+    //     <div className="logo">
+    //         <span>BREAKER</span>
+    //     </div>
+
+    //     <div className="nav-right">
+    //         {currentUser? 
+    //             <span>Welcome {currentUser.displayName} !</span>
+    //             : 
+    //             null
+    //         }
+    //         <Link onClick={handleClick} className="nav-link" to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/></Link>
+    //         <Link onClick={handleClick} className ="nav-link" to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/></Link>
+    //         {currentUser? 
+    //             <Link onClick={handleClick} className="nav-link" to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/></Link>
+    //             : 
+    //             null
+    //         } 
+    //         <a onClick={handleClick} className ="nav-link" href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/></a>   
+    //         {currentUser? 
+    //             <button className='logout-home-button' onClick={()=> handleLogout()}>Logout</button>
+    //             : 
+    //             null
+    //         } 
+    //     </div>
+    // </div>
+
     <div className="navBar">
         <div className="logo">
             <span>BREAKER</span>
         </div>
 
-        <div className="nav-right">
-            {currentUser? 
-                <span>Welcome {currentUser.displayName} !</span>
-                : 
-                null
-            }
-            <Link onClick={handleClick} className="nav-link" to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/></Link>
-            <Link onClick={handleClick} className ="nav-link" to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/></Link>
-            {currentUser? 
-                <Link onClick={handleClick} className="nav-link" to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/></Link>
-                : 
-                null
-            } 
-            <a onClick={handleClick} className ="nav-link" href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/></a>   
-            {currentUser? 
-                <button className='logout-home-button' onClick={()=> handleLogout()}>Logout</button>
-                : 
-                null
-            } 
-        </div>
-        
+        <div className="dropdown">
+            <button className="menu-button"><FontAwesomeIcon icon="bars" style={{color:"white"}}/></button>
+            <div className="dropdown-content">
 
+                <div className="menu-item">
+                    <Link  className="links" onClick={handleClick} to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/> Home</Link>
+                </div>
+
+                <div className="menu-item" >
+                    <Link className="links" onClick={handleClick}  to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/> Ranking</Link>
+                </div>
+
+                <div className="menu-item" >
+                    <a className="links" onClick={handleClick}  href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/> GitHub</a>   
+                </div>
+
+                <div className="menu-item" >
+                    {currentUser? 
+                        <Link className="links" onClick={handleClick}  to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/> Profile</Link>
+                        : 
+                        null
+                    }
+                </div> 
+
+                <div>
+                    {currentUser? 
+                        <span className="links" onClick={()=> handleLogout()}><FontAwesomeIcon icon="sign-out-alt" style={{color:"white"}}/> Logout</span>
+                        : 
+                        null
+                    } 
+                </div>
+            </div>     
+        </div>
     </div>
   )
 }
