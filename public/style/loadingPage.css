@@ -85,7 +85,7 @@
 @media only screen and (max-width: 850px) {
   .word {
     margin: 0;
-    font-size: 60px;
+    font-size: 50px;
   }
   @keyframes mymove {
     from {
@@ -96,7 +96,7 @@
       background-size: cover;
       width: 280px;
       height: 280px;
-      line-height: 3;
+      line-height: 3.2;
       opacity: 1;
     }
   }

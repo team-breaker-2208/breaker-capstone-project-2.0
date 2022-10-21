@@ -34,7 +34,7 @@ const WhackAMoleWinnerPage = ()=>{
     return (
         <>  
             <div className='empty-space'></div>
-            <div className="winner-title mole-winner-title">
+            <div className="winner-title">
                 <h2 className="title-word title-word-1">{winner.toUpperCase()} IS THE WINNER, GAINED 5 STARS {star}!</h2>
                 <div className="title-word-2">
                     {losers.map(loser => {
