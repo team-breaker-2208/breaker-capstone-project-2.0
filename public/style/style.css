@@ -669,11 +669,6 @@ a:visited {
   .single-lobby-player h3 {
     margin: 7px;
   }
-  .gamesContainer {
-    max-height: 340px;
-    overflow: scroll;
-    overflow-x: hidden;
-  }
   .cookieClicker-mainLobby-container {
     height: 80px;
     width: 80px;
