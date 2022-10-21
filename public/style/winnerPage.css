@@ -38,8 +38,14 @@
 .winner-title .title-word-2 .losers {
   margin: 0;
 }
+.winner-star {
+  filter: drop-shadow(0 0 10px darkblue);
+}
 .mole-winner-title {
   background-image: url('https://img.freepik.com/premium-vector/winner-background-with-signs-first-second-third-place-round-pedestal-vector-winner-pod_220217-4098.jpg');
+}
+.memory-winner-title {
+  background-image: url('https://img.freepik.com/free-vector/celebration-confetti-with-podium-platform-white-background_1017-32928.jpg?w=2000');
 }
 @keyframes color-animation {
   0% {
