@@ -70,7 +70,7 @@ const Memory = ({setShowNav}) => {
 
     const flipCard = (e) => {
         let clickedCard = e.target
-        if(clickedCard !== cardOne && !disableDeck){
+        if(clickedCard !== cardOne && !disableDeck && !clickedCard.classList.contains("complete")){
             clickedCard.classList.add("flip")
             if(!cardOne){
                 return cardOne = clickedCard
@@ -90,20 +90,23 @@ const Memory = ({setShowNav}) => {
             console.log(matchedCard)
             const playerRef = doc(db,'memoryPlayers',player.uid);
 
-            await updateDoc(playerRef,{points:player.points+=1});
-            console.log("points: ",player.points);
-            setScore(player.points);
+            if(!cardOne.classList.contains("complete") && !cardTwo.classList.contains("complete")){
 
-            cardOne.onClick = null
-            cardTwo.onClick = null
-            cardOne = cardTwo = ""
-            return disableDeck = false;
+                await updateDoc(playerRef,{points:player.points+=1});
+                console.log("points: ",player.points);
+                setScore(player.points);
+     
+                cardOne.classList.add("complete")
+                cardTwo.classList.add("complete")
+                cardOne = cardTwo = ""
+                return disableDeck = false;
+            }
         }
 
         setTimeout(()=> {
             cardOne.classList.add("shake")
             cardTwo.classList.add("shake")
-        }, 400)
+        }, 500)
 
         setTimeout(()=> {
             cardOne.classList.remove("shake", "flip")

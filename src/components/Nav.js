@@ -68,12 +68,6 @@ export default function Nav() {
             <span>BREAKER</span>
         </div>
 
-        {currentUser? 
-            <span>Welcome {currentUser.displayName} !</span>
-            : 
-            null
-        }
-
         <div className="dropdown">
             <button className="menu-button"><FontAwesomeIcon icon="bars" style={{color:"white"}}/></button>
             <div className="dropdown-content">
