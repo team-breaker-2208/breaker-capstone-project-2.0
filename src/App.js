@@ -19,6 +19,7 @@ import Memory  from "./components/Memory/Memory"
 import MemoryLobby from "./components/Memory/MemoryLobby"
 import MemoryWinnerPage from "./components/Memory/MemoryWinnerPage"
 import CookieClickerSingle from "./components/SinglePlayerGames/CookieClickerSingle"
+import MemorySinglePlayer from "./components/SinglePlayerGames/MemorySinglePlayer";
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -52,6 +53,7 @@ function App() {
               <Route exact path="chart" element={<Chart/>}/>
               <Route exact path="slideGame" element={<SlideGame setShowNav={setShowNav} />}/>
               <Route exact path="memory" element={<Memory setShowNav={setShowNav} />}/>
+              <Route exact path="memorySingle" element={<MemorySinglePlayer setShowNav={setShowNav} />}/>
               <Route exact path="memoryLobby" element={<MemoryLobby setShowNav={setShowNav} />}/>
               <Route exact path="memoryWinnerPage" element={<MemoryWinnerPage />}/>
             </Route>
