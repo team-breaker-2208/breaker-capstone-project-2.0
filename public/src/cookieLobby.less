@@ -5,14 +5,25 @@
     button{
       margin-left: 0;
       position: relative;
+      margin: 40px;
     }
-    margin-top: 5vh;
+    margin: 40px;
+    box-shadow: 0 0 0.7em 0 black;
+    border-radius: 20px;
+    background-color: rgb(219, 236, 250);
+    padding: 20px;
+    .infoDiv{
+      text-shadow: 2px 2px 2px @cookieLobbyFont;
+      font-size: 2em;
+
+    }
 }
 
 .welcome {
-    color: coral;
+    color: white;
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
+  margin: 40px;
 }
 
 .PlayersContainer {
@@ -21,23 +32,35 @@
   flex-direction: column;
   align-items: center;
   margin-top: 10vh;
-  gap: 1em
+  gap: 1em;
 }
 
 .players {
+    display: flex;
     border-style: ridge;
     padding: 10px;
     color: white;
-    background-color: orange;
+    background-color: #2E51A0;;
     border-radius: 25px;
     font-family: "kidGames";
+    flex-direction: row;
+    box-shadow: 0 0 0.7em 0 black;
+    text-shadow: 2px 2px 2px #000000;
+    .avatar {
+      margin-left: 10px;
+    }
     
 }
 
 .infoDiv {
     border-style: ridge;
     padding: 10px;
-    background-color: bisque;
+    color: white;
+    background-color: #2E51A0;
     border-radius: 25px;
+    box-shadow: 0 0 0.7em 0 black;
+    text-shadow: 3px 3px 3px #000000;
     font-family: "kidGames";
+    font-weight: normal;
 }
+

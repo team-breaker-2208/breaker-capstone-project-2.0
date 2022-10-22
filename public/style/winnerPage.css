@@ -22,7 +22,8 @@
 }
 .winner-title .title-word {
   animation: color-animation 4s linear infinite;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'kidGames';
+  font-weight: lighter;
 }
 .winner-title .title-word-1 {
   padding: 0% 5% 0 5%;
@@ -31,14 +32,25 @@
   --color-3: #e8d047;
 }
 .winner-title .title-word-2 {
-  color: orange;
+  color: white;
+  font-family: "kidGames";
   font-size: 2vw;
 }
 .winner-title .title-word-2 .losers {
   margin: 0;
+  font-family: "kidGames";
+}
+.winner-title .title-word-2 h3 {
+  font-family: "kidGames";
+}
+.winner-star {
+  filter: drop-shadow(0 0 10px darkblue);
 }
 .mole-winner-title {
   background-image: url('https://img.freepik.com/premium-vector/winner-background-with-signs-first-second-third-place-round-pedestal-vector-winner-pod_220217-4098.jpg');
+}
+.memory-winner-title {
+  background-image: url('https://img.freepik.com/free-vector/celebration-confetti-with-podium-platform-white-background_1017-32928.jpg?w=2000');
 }
 @keyframes color-animation {
   0% {

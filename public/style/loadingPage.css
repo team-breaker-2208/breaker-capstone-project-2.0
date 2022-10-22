@@ -4,18 +4,22 @@
   align-items: center;
   background-image: url('https://previews.123rf.com/images/milkos/milkos1607/milkos160700253/59484343-cookies-and-sweet-biscuits-at-natural-wood-background-with-copy-space-oatmeal-and-chocolate-drops-co.jpg');
   background-position: center;
-  background-size: cover ;
+  background-size: cover;
   height: 800px;
+}
+.wrapper .word {
+  font-size: 90px;
 }
 .word {
   position: absolute;
   width: 220px;
   height: 220px;
-  line-height: 2.7;
+  line-height: 2.5;
   text-align: center;
   font-family: Comic Sans MS, Comic Sans, cursive;
-  font-size: 70px;
-  color: white;
+  font-size: 90px;
+  font-weight: lighter;
+  color: #cb3131;
   text-shadow: 1px 1px 2px black, 0 0 25px #4088B7, 0 0 5px #574FC2;
   opacity: 0;
   border-radius: 50%;
@@ -27,15 +31,43 @@
   animation: mymove 2s;
   background-image: url(https://cdn.drawception.com/drawings/N0NQDqTXLN.png);
 }
+.mole-ready {
+  animation: mymove 2s;
+  background-image: url(https://studio.code.org/media?u=http%3A%2F%2Freputatus.com%2Fimages%2Ficon_256-034.png);
+}
+.memory-ready {
+  animation: mymove 2s;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/2665/2665630.png);
+}
 .set {
   animation: mymove 2s;
   animation-delay: 2s;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTere_YZatyKujC94GCjeIPkrVhvKPnU85ljYtdiN67WfchFZe5V23NOOngdE6hX9mBHrM&usqp=CAU);
 }
+.mole-set {
+  animation: mymove 2s;
+  animation-delay: 2s;
+  background-image: url(https://www.pngitem.com/pimgs/m/137-1377268_whack-a-mole-mole-hd-png-download.png);
+}
+.memory-set {
+  animation: mymove 2s;
+  animation-delay: 2s;
+  background-image: url(https://image.winudf.com/v2/image1/Y29tLnNtaWxlcmxlZS5qZXdlbHNfaWNvbl8xNTY2ODkyMjcxXzAzNQ/icon.png?fakeurl=1&h=240&type=webp);
+}
 .go {
   animation: mymove 2s;
   animation-delay: 4s;
   background-image: url('https://cdn.drawception.com/images/panels/2017/8-31/bceEXf27K8-10.png');
+}
+.mole-go {
+  animation: mymove 2s;
+  animation-delay: 4s;
+  background-image: url('https://www.kindpng.com/picc/m/659-6596677_whack-a-mole-mole-hd-png-download.png');
+}
+.memory-go {
+  animation: mymove 2s;
+  animation-delay: 4s;
+  background-image: url('https://www.thegreatapps.com/application/upload/Apps/2018/10/cover-art-animals-memory-game-for-kids-65.png');
 }
 @keyframes mymove {
   from {
@@ -44,15 +76,16 @@
   to {
     margin-left: 20%;
     background-size: cover;
-    width: 270px;
-    height: 270px;
-    line-height: 3.5;
+    width: 370px;
+    height: 370px;
+    line-height: 3.7;
     opacity: 1;
   }
 }
 @media only screen and (max-width: 850px) {
   .word {
     margin: 0;
+    font-size: 50px;
   }
   @keyframes mymove {
     from {
@@ -61,9 +94,9 @@
     to {
       background-position: center;
       background-size: cover;
-      width: 250px;
-      height: 250px;
-      line-height: 3.5;
+      width: 280px;
+      height: 280px;
+      line-height: 3.2;
       opacity: 1;
     }
   }

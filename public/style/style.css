@@ -285,7 +285,7 @@ button:disabled {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 .input-login {
   display: flex;
@@ -342,7 +342,8 @@ form.form button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 80px;
+  align-self: center;
+  margin-bottom: 20px;
 }
 select {
   -webkit-appearance: none;
@@ -392,20 +393,57 @@ select::-ms-expand {
 a:visited {
   color: white;
 }
+@media only screen and (max-width: 750px) {
+  .wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .login-container {
+    max-width: 400px;
+    margin: 25px;
+  }
+  .login-container .login-title {
+    font-size: 40px;
+  }
+  .login-container .form {
+    gap: 5px;
+  }
+  .login-container input {
+    height: 40px;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  div.select {
+    max-width: 300px;
+  }
+  .avatar-selector {
+    max-width: 300px;
+  }
+}
 .lobbyContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5vh;
+  margin: 40px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  background-color: #dbecfa;
+  padding: 20px;
 }
 .lobbyContainer button {
   margin-left: 0;
   position: relative;
+  margin: 40px;
+}
+.lobbyContainer .infoDiv {
+  text-shadow: 2px 2px 2px #574FC2;
+  font-size: 2em;
 }
 .welcome {
-  color: coral;
+  color: white;
   text-shadow: 2px 2px 2px #000000;
   font-weight: bolder;
+  margin: 40px;
 }
 .PlayersContainer {
   height: 20vh;
@@ -416,19 +454,30 @@ a:visited {
   gap: 1em;
 }
 .players {
+  display: flex;
   border-style: ridge;
   padding: 10px;
   color: white;
-  background-color: orange;
+  background-color: #2E51A0;
   border-radius: 25px;
   font-family: "kidGames";
+  flex-direction: row;
+  box-shadow: 0 0 0.7em 0 black;
+  text-shadow: 2px 2px 2px #000000;
+}
+.players .avatar {
+  margin-left: 10px;
 }
 .infoDiv {
   border-style: ridge;
   padding: 10px;
-  background-color: bisque;
+  color: white;
+  background-color: #2E51A0;
   border-radius: 25px;
+  box-shadow: 0 0 0.7em 0 black;
+  text-shadow: 3px 3px 3px #000000;
   font-family: "kidGames";
+  font-weight: normal;
 }
 .mainLobby-container {
   display: flex;
@@ -437,72 +486,103 @@ a:visited {
   align-items: center;
 }
 .mainLobby-container h1 {
-  color: coral;
+  color: white;
   background-clip: text;
   -webkit-background-clip: text;
   font-weight: bolder;
   font-size: 56px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 .mainLobby-container h2 {
   color: white;
+  font-family: "kidGames";
+  text-shadow: 3px 3px 3px #000000;
+  font-weight: lighter;
+  margin: 20px;
 }
 .gamesContainer {
   display: inline-flex;
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  gap: 20px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  background-image: linear-gradient(#3D35A7, #7C72E0, #3D35A7);
 }
 .eachGame {
   background-color: #dbecfa;
   border-radius: 10px;
-  padding: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 250px;
+  margin: 20px;
+}
+.eachGame h4 {
+  color: #574FC2;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "kidGames";
+  font-weight: lighter;
+  font-size: 1.25em;
+  text-align: center;
+}
+.eachGame span {
+  color: darkred;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "kidGames";
+  font-weight: lighter;
+  font-size: 1.25em;
+  text-align: center;
 }
 .eachGame .gameTitle {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.eachGame .gameTitle h2,
-.eachGame .gameTitle h4 {
-  font-family: sans-serif, serif;
-  color: black;
+.eachGame .gameTitle h2 {
+  color: #574FC2;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "kidGames";
+  font-weight: lighter;
+  font-size: 1.5em;
+  text-align: center;
 }
 .cookieClicker-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin: 20px;
 }
 .gameTwo-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin: 20px;
   background-image: url(https://static.vecteezy.com/system/resources/previews/000/170/873/original/whack-a-mole-gopher-arcade-game-free-vector.jpg);
 }
 .mainLobby-players-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
   border: none;
-  max-width: 900px;
-  width: 100%;
-  margin: 70px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  max-width: 910px;
+  height: 400px;
+  background-image: linear-gradient(#3D35A7, #7C72E0, #3D35A7);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .mainLobby-players-container h4 {
   color: yellow;
@@ -512,36 +592,116 @@ a:visited {
   font-size: 2em;
   text-align: center;
 }
+.mainLobby-players-container::-webkit-scrollbar {
+  display: none;
+}
 .single-lobby-player {
-  width: 130px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: #8eb5f4;
   border-radius: 10px;
   padding: 10px;
   border: dimgray;
   box-shadow: 0 0 0.5em 0.5em whitesmoke;
+  margin: 20px;
+  width: 410px;
+  order: 1;
   background-color: #1D397A;
   color: white;
   box-shadow: 0 0 0.7em 0 black;
+  order: 2;
+}
+.single-lobby-player h3 {
+  margin: 20px;
 }
 .main-lobby-player {
-  width: 130px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: #8eb5f4;
   border-radius: 10px;
   padding: 10px;
   border: dimgray;
   box-shadow: 0 0 0.5em 0.5em whitesmoke;
+  margin: 20px;
+  width: 410px;
+  order: 1;
+}
+.main-lobby-player h3 {
+  margin: 20px;
 }
 .eachGame:hover {
-  box-shadow: 0 0 0.5em 0.2em lightcoral;
+  box-shadow: 0 0 0.5em 0.1em black;
 }
 .gameThree-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin: 20px;
   background-image: url("../images/memoryGame.png");
+}
+@media only screen and (max-width: 750px) {
+  .mainLobby-container .test {
+    font-size: 45px;
+  }
+  .mainLobby-players-container {
+    font-size: 9px;
+    height: 200px;
+  }
+  .main-lobby-player {
+    width: 180px;
+    display: flex;
+    margin: 7px;
+    padding: 7px;
+  }
+  .main-lobby-player h3 {
+    margin: 7px;
+  }
+  .single-lobby-player {
+    width: 180px;
+    display: flex;
+    margin: 7px;
+    padding: 7px;
+  }
+  .single-lobby-player h3 {
+    margin: 7px;
+  }
+  .cookieClicker-mainLobby-container {
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+  }
+  .cookieClicker-mainLobby-container .join-button {
+    font-size: 10px;
+  }
+  .cookieClicker-mainLobby-container h2 {
+    margin: 5px;
+  }
+  .gameThree-mainLobby-container {
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+  }
+  .gameThree-mainLobby-container .join-button {
+    font-size: 10px;
+  }
+  .gameThree-mainLobby-container h2 {
+    margin: 5px;
+  }
+  .gameTwo-mainLobby-container {
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+  }
+  .gameTwo-mainLobby-container .join-button {
+    font-size: 10px;
+  }
+  .gameTwo-mainLobby-container h2 {
+    margin: 5px;
+  }
 }
 .cookieClicker-loading-screen {
   display: flex;
@@ -549,18 +709,22 @@ a:visited {
   align-items: center;
   background-image: url('https://previews.123rf.com/images/milkos/milkos1607/milkos160700253/59484343-cookies-and-sweet-biscuits-at-natural-wood-background-with-copy-space-oatmeal-and-chocolate-drops-co.jpg');
   background-position: center;
-  background-size: cover ;
+  background-size: cover;
   height: 800px;
+}
+.wrapper .word {
+  font-size: 90px;
 }
 .word {
   position: absolute;
   width: 220px;
   height: 220px;
-  line-height: 2.7;
+  line-height: 2.5;
   text-align: center;
   font-family: Comic Sans MS, Comic Sans, cursive;
-  font-size: 70px;
-  color: white;
+  font-size: 90px;
+  font-weight: lighter;
+  color: #cb3131;
   text-shadow: 1px 1px 2px black, 0 0 25px #4088B7, 0 0 5px #574FC2;
   opacity: 0;
   border-radius: 50%;
@@ -572,15 +736,43 @@ a:visited {
   animation: mymove 2s;
   background-image: url(https://cdn.drawception.com/drawings/N0NQDqTXLN.png);
 }
+.mole-ready {
+  animation: mymove 2s;
+  background-image: url(https://studio.code.org/media?u=http%3A%2F%2Freputatus.com%2Fimages%2Ficon_256-034.png);
+}
+.memory-ready {
+  animation: mymove 2s;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/2665/2665630.png);
+}
 .set {
   animation: mymove 2s;
   animation-delay: 2s;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTere_YZatyKujC94GCjeIPkrVhvKPnU85ljYtdiN67WfchFZe5V23NOOngdE6hX9mBHrM&usqp=CAU);
 }
+.mole-set {
+  animation: mymove 2s;
+  animation-delay: 2s;
+  background-image: url(https://www.pngitem.com/pimgs/m/137-1377268_whack-a-mole-mole-hd-png-download.png);
+}
+.memory-set {
+  animation: mymove 2s;
+  animation-delay: 2s;
+  background-image: url(https://image.winudf.com/v2/image1/Y29tLnNtaWxlcmxlZS5qZXdlbHNfaWNvbl8xNTY2ODkyMjcxXzAzNQ/icon.png?fakeurl=1&h=240&type=webp);
+}
 .go {
   animation: mymove 2s;
   animation-delay: 4s;
   background-image: url('https://cdn.drawception.com/images/panels/2017/8-31/bceEXf27K8-10.png');
+}
+.mole-go {
+  animation: mymove 2s;
+  animation-delay: 4s;
+  background-image: url('https://www.kindpng.com/picc/m/659-6596677_whack-a-mole-mole-hd-png-download.png');
+}
+.memory-go {
+  animation: mymove 2s;
+  animation-delay: 4s;
+  background-image: url('https://www.thegreatapps.com/application/upload/Apps/2018/10/cover-art-animals-memory-game-for-kids-65.png');
 }
 @keyframes mymove {
   from {
@@ -589,15 +781,16 @@ a:visited {
   to {
     margin-left: 20%;
     background-size: cover;
-    width: 270px;
-    height: 270px;
-    line-height: 3.5;
+    width: 370px;
+    height: 370px;
+    line-height: 3.7;
     opacity: 1;
   }
 }
 @media only screen and (max-width: 850px) {
   .word {
     margin: 0;
+    font-size: 50px;
   }
   @keyframes mymove {
     from {
@@ -606,9 +799,9 @@ a:visited {
     to {
       background-position: center;
       background-size: cover;
-      width: 250px;
-      height: 250px;
-      line-height: 3.5;
+      width: 280px;
+      height: 280px;
+      line-height: 3.2;
       opacity: 1;
     }
   }
@@ -637,7 +830,8 @@ a:visited {
 }
 .winner-title .title-word {
   animation: color-animation 4s linear infinite;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'kidGames';
+  font-weight: lighter;
 }
 .winner-title .title-word-1 {
   padding: 0% 5% 0 5%;
@@ -646,14 +840,25 @@ a:visited {
   --color-3: #e8d047;
 }
 .winner-title .title-word-2 {
-  color: orange;
+  color: white;
+  font-family: "kidGames";
   font-size: 2vw;
 }
 .winner-title .title-word-2 .losers {
   margin: 0;
+  font-family: "kidGames";
+}
+.winner-title .title-word-2 h3 {
+  font-family: "kidGames";
+}
+.winner-star {
+  filter: drop-shadow(0 0 10px darkblue);
 }
 .mole-winner-title {
   background-image: url('https://img.freepik.com/premium-vector/winner-background-with-signs-first-second-third-place-round-pedestal-vector-winner-pod_220217-4098.jpg');
+}
+.memory-winner-title {
+  background-image: url('https://img.freepik.com/free-vector/celebration-confetti-with-podium-platform-white-background_1017-32928.jpg?w=2000');
 }
 @keyframes color-animation {
   0% {
@@ -696,6 +901,7 @@ a:visited {
   display: flex;
   justify-content: space-between;
   background-color: #486BBD;
+  width: 100vw;
 }
 .navBar .logo {
   display: flex;
@@ -705,58 +911,95 @@ a:visited {
   flex-direction: row;
 }
 .navBar .logo span {
-  font-family: 'Tourner';
+  font-family: 'kidGames';
   font-size: 4em;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 3px 3px white;
+  color: #574FC2;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  -webkit-text-stroke: 0.2px #3e0781;
 }
-.navBar img {
-  height: 90px;
-  width: 140px;
-  border-radius: 50px;
-}
-.navBar .nav-right {
+.navBar .logo-title {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 30px;
-  margin-right: 30px;
-}
-.navBar .nav-right span {
   text-decoration: none;
-  font-size: 2em;
-  font-family: "surfQuest";
-  color: black;
-  text-shadow: 1px 1px grey;
-}
-.navBar .nav-right .nav-link {
-  text-decoration: none;
-  font-size: 2.5em;
-  font-family: "surfQuest";
-  color: white;
-  text-shadow: 1px 1px grey;
-}
-.navBar .nav-right span {
-  font-family: fantasy;
   font-size: 24px;
   color: white;
+  text-shadow: 2px 2px black;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: bolder;
+  text-align: center;
 }
 .footer {
   background-color: #486BBD;
   padding: 5px;
   display: flex;
-  justify-content: space-around;
   width: 100vw;
   position: absolute;
   color: white;
-}
-.footer .footer-github {
-  font-size: 40px;
+  height: 50px;
 }
 @media only screen and (max-width: 600px) {
   .navBar {
     display: flex;
     flex-wrap: wrap;
   }
+  .dropdown:hover .dropdown-content {
+    left: 0;
+  }
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+  background-color: #486BBD;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.dropdown .menu-button {
+  margin-right: 20px;
+  width: 120px;
+  font-size: 24px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: #486BBD;
+  border-radius: 5px;
+  margin-right: 30px;
+  right: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 190px;
+  overflow: hidden;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin-right: 30px;
+}
+.dropdown-content .menu-item {
+  height: 40px;
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+  margin: 9px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.dropdown-content .links {
+  padding: 6px;
+  border-radius: 6px;
+  margin: 5px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.dropdown-content .links:link {
+  text-decoration: none;
+  color: white;
+}
+.dropdown-content .links:hover {
+  color: #ffffff;
+  background-color: #486BBD;
+  cursor: pointer;
+}
+.dropdown-content .link:visited {
+  color: white;
+  text-decoration: none;
 }
 #whack-a-mole {
   background-color: darkolivegreen;
@@ -775,6 +1018,9 @@ a:visited {
 }
 .mole {
   background-image: url("https://i.ebayimg.com/images/g/miwAAOSw6GVjTNc~/s-l500.png");
+}
+.hit {
+  background-image: url("https://studio.code.org/v3/assets/o7BkGtOAPgv4W1PcGfEY_zg3RZBXqekP7ovkgKtrYx0/pic5abfb8c76243f4_512x-_51645367.png");
 }
 .profile {
   margin: auto;
@@ -826,6 +1072,24 @@ a:visited {
 .editProfile .select {
   width: 300px;
 }
+@media only screen and (max-width: 750px) {
+  .profile {
+    max-width: 380px;
+    font-size: 10px;
+  }
+  .editProfile {
+    width: 300px;
+  }
+  .editProfile button {
+    font-size: 15px;
+  }
+  div.select {
+    max-width: 200px;
+  }
+  .avatar-selector {
+    max-width: 200px;
+  }
+}
 .chart {
   background-color: white;
   width: 90%;
@@ -839,7 +1103,6 @@ a:visited {
   color: white;
   font-weight: bold;
   text-shadow: 1px 1px 2px black, 0 0 25px #dae9eb, 0 0 5px #8b0031;
-  font-family: sans-serif;
   margin: 0;
 }
 .chart-empty-space {
@@ -959,6 +1222,13 @@ body {
   }
 }
 @media screen and (max-width: 530px) {
+  .memoryWrapper {
+    display: flex;
+    align-items: center;
+  }
+  .memory-wrapper {
+    max-width: 370px;
+  }
   .cards {
     height: 300px;
     width: 300px;
@@ -1000,6 +1270,8 @@ body {
 }
 html {
   height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 #root {
   width: 100vw;
@@ -1017,6 +1289,7 @@ html {
   justify-content: center;
   font-family: "kidGames";
   font-size: 4em;
-  text-shadow: 3px 3px black;
+  text-shadow: 4px 4px black;
   text-align: center;
+  font-weight: normal;
 }

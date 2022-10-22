@@ -6,7 +6,7 @@ import { db } from '../../server/firebase';
 import { useNavigate} from "react-router-dom";
 
 
-const WhackAMole = ()=>{
+const WhackAMole = ({setShowNav})=>{
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
     // const [points, setPoints] = useState([])
@@ -61,27 +61,30 @@ const WhackAMole = ()=>{
         setInterval(() => {
             let num = Math.floor(Math.random() * 9);
             setIdx(num)
-        }, 500)
+        }, 650)
     },[])
 
     // const handleClick = ()=>{
     //     setScore(score+1)
     // }
 
-    const handleClick=async(player)=>{
+    const handleClick= (e, player)=>{
         const playerRef = doc(db,'whackAMolePlayers',player.uid);
+        let mole = e.target
 
-        await updateDoc(playerRef,{points:player.points+=1});
-        console.log("points: ",player.points);
-        setScore(player.points);
+        if(mole.classList.contains('mole')) {
+            const handleScore = async()=>{
+                await updateDoc(playerRef,{points:player.points+=1});
+                // console.log("points: ",player.points);
+                setScore(player.points);
+            }  
+            handleScore()
+        }
 
-        // let playersCollectionRef = collection(db,"whackAMolePlayers")
-        // const data = await getDocs(playersCollectionRef);
-
-        // setPoints(data.docs.map((player) => { 
-        //     return player.data().points
-        // }))
-        
+        if(mole){
+            mole.classList.remove("mole")
+            mole.classList.add("hit")
+        }
     }
 
     //firebase realtime listening
@@ -95,8 +98,8 @@ const WhackAMole = ()=>{
             let playersArr = querySnapshot.docs
             let points = playersArr.map(doc=>doc.data().points)
 
-            if (points.includes(3)) {
-                let index = points.indexOf(3)
+            if (points.includes(5)) {
+                let index = points.indexOf(5)
                 let winner = playersArr[index].data().displayName
                 // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
                 // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
@@ -148,6 +151,7 @@ const WhackAMole = ()=>{
 
     if(gameOver){
         // navigate('/winnerPage')
+        setShowNav(true)
         navigate('/whackAMoleWinnerPage', {state:gameId})
     }
 
@@ -162,7 +166,7 @@ const WhackAMole = ()=>{
             <div id="whack-a-mole">
                 {arr.map((elm,index)=>{
                     if (index===idx) {
-                        return (<div key={index} onClick={()=>handleClick(player)} className="mole hole"></div>)
+                        return (<div key={index} onClick={(e)=>handleClick(e, player)} className="mole hole"></div>)
                     } else {
                         return (<div key={index} className="hole"></div>)
                     }

@@ -14,7 +14,7 @@ import Munch2 from "../images/Munch2.png"
 import Munch3 from "../images/Munch3.png"
 
 
-export const CookieClicker = () => {
+export const CookieClicker = ({setShowNav}) => {
 
     const {currentUser} = useContext(AuthContext)
     const [player, setPlayer] = useState({});
@@ -192,7 +192,7 @@ export const CookieClicker = () => {
                         setGameOver(true)
                 }
                 
-                if(losersRef.length === 3){
+                if(losersRef.length === 1){
                     updateGame()
 
                 }
@@ -230,6 +230,7 @@ export const CookieClicker = () => {
 
     if(gameOver){
         // navigate('/winnerPage')
+        setShowNav(true)
         navigate('/winnerPage', {state:gameId})
     }
 

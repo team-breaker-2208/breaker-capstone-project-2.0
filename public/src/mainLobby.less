@@ -7,16 +7,21 @@
   align-items: center;
 
   h1 {
-    color: @header;
+    color: white;
     background-clip: text;
     -webkit-background-clip: text;
     font-weight: bolder;
     font-size: 56px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 50px;
+    margin-top: 50px;
   }
   h2{
     color: white;
+    font-family: "kidGames";
+    text-shadow: 3px 3px 3px #000000;
+    font-weight: lighter;
+    margin: 20px;
   }
 }
 
@@ -26,44 +31,65 @@
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-
+  gap: 20px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  background-image: linear-gradient(@cookiebg, @cookieLobbyBorders, @cookiebg);
 }
 
 .eachGame {
   background-color: rgb(219, 236, 250);
   border-radius: 10px;
-  padding: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 250px;
+  margin: 20px;
+  h4 {
+    color: @cookieLobbyFont;
+    text-shadow: 2px 2px 2px #000000;
+    font-family: "kidGames";
+    font-weight: lighter;
+    font-size: 1.25em;
+    text-align: center;
+  }
+  span {
+    color: darkred;
+    text-shadow: 2px 2px 2px #000000;
+    font-family: "kidGames";
+    font-weight: lighter;
+    font-size: 1.25em;
+    text-align: center;
+  }
 
   .gameTitle {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    h2,
-    h4 {
-      font-family: sans-serif, serif;
-      color: black;
+    h2{
+      color: @cookieLobbyFont;
+      text-shadow: 2px 2px 2px #000000;
+      font-family: "kidGames";
+      font-weight: lighter;
+      font-size: 1.5em;
+      text-align: center;
     }
-
+    
   }
 }
 
 
 .cookieClicker-mainLobby-container {
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-image: url("../images/cookie\ background.jpg");
   background-size: cover;
   border-radius: 20px;
-  margin-bottom: 10px;
-
+  margin: 20px;
 }
 
 .gameTwo-mainLobby-container {
@@ -75,12 +101,13 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
   border: none;
-  max-width: 900px;
-  width: 100%;
-  margin:70px;
+  box-shadow: 0 0 0.7em 0 black;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  max-width: 910px;
+  height: 400px;
+  background-image: linear-gradient(@cookiebg, @cookieLobbyBorders, @cookiebg);
   h4{
     color: yellow;
     text-shadow: 2px 2px black;
@@ -89,6 +116,12 @@
     font-size: 2em;
     text-align: center;
   }
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.mainLobby-players-container::-webkit-scrollbar {
+  display: none;
 }
 
 .single-lobby-player {
@@ -96,22 +129,73 @@
   background-color: @mainLobbyPlayers;
   color: white;
   box-shadow: 0 0 0.7em 0 black;
+  order: 2;
 }
 
 .main-lobby-player {
-  width: 130px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: rgb(142, 181, 244);
   border-radius: 10px;
   padding: 10px;
   border: dimgray;
   box-shadow: 0 0 0.5em .5em whitesmoke;
+  margin: 20px;
+  width: 410px;
+  order: 1;
+  h3{
+    margin: 20px;
+  }
 }
 
 .eachGame:hover {
-  box-shadow: 0 0 0.5em .2em lightcoral;
+  box-shadow: 0 0 0.5em .1em black;
 }
 
 .gameThree-mainLobby-container {
   .cookieClicker-mainLobby-container;
   background-image: url("../images/memoryGame.png");
+}
+
+@media only screen and (max-width: 750px) {
+  .mainLobby-container{
+    .test{
+      font-size: 45px;
+    }
+  }
+  .mainLobby-players-container{
+    font-size: 9px;
+    height: 200px;
+  }
+  .main-lobby-player {
+    width: 180px;
+    display: flex;
+    margin: 7px;
+    padding: 7px;
+    h3{
+      margin: 7px;
+    }
+  }
+  .single-lobby-player{
+    .main-lobby-player
+  }
+
+  .cookieClicker-mainLobby-container{
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+    .join-button{
+      font-size: 10px;
+    }
+    h2{
+      margin: 5px;
+    }
+  }
+  .gameThree-mainLobby-container{
+    .cookieClicker-mainLobby-container
+  }
+  .gameTwo-mainLobby-container{
+    .cookieClicker-mainLobby-container
+  }
 }

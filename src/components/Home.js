@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {signOut} from 'firebase/auth'
-import { auth } from '../server/firebase'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
@@ -74,6 +72,7 @@ export default function Home() {
           const displayName = currentPlayerSnap.data().displayName
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
+          const displayName = currentPlayerSnap.data().displayName
           console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
@@ -148,12 +147,6 @@ export default function Home() {
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
   }
 
-  const handleLogout = async() =>{
-    signOut(auth);
-    console.log("main player Id", mainLobbyPlayerId)
-      await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
-  }
-
   const handleNavigateAway = async () => {
     await deleteDoc(doc(db, 'MainLobbyPlayer', mainLobbyPlayerId))
 }
@@ -167,51 +160,80 @@ window.onunload = function(){
   return (
     <div className='mainLobby-container'>
         <h1 className='test'>WELCOME TO BREAKER GAMES!</h1>
+        {/* <h2 className='welcome-user'>WELCOME {mainLobbyPlayer.displayName.toUpperCase()} !</h2> */}
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
         <div className='mainLobby-loaded'>
+            <h2>MULTIPLAYER GAMES:</h2>
         <div className='gamesContainer'>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Cookie Clicker Game</h2>
-                    <h4>Players: {cookiePlayers.length} / 4</h4>
+                    <h2>COOKIE CLICKER</h2>
                 </div>
-                <div className='cookieClicker-mainLobby-container'>
-                </div>
-                {cookiePlayers.length < 4 ? 
+                <div className='cookieClicker-mainLobby-container'></div>
+                <h4>PLAYERS: {cookiePlayers.length} / 2</h4>
+                {cookiePlayers.length < 2 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
-                <span>Cookie Clicker Lobby is full</span>}  
+                <span>COOKIE CLICKER LOBBY IS FULL</span>}  
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Whack A Mole Game</h2>
-                    <h4>Players: {molePlayers.length} / 2</h4>
+                    <h2>WHACK A MOLE</h2>
                 </div>
-                <div className='gameTwo-mainLobby-container'>
-                </div>
+                <div className='gameTwo-mainLobby-container'></div>
+                    <h4>PLAYERS: {molePlayers.length} / 2</h4>
                     {molePlayers.length < 2 ? 
                     <Link to="/whackAMoleLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
-                <span>Whack A Mole Lobby is full</span>}
+                <span>WHACK A MOLE LOBBY IS FULL</span>}
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>Memory Game</h2>
-                    <h4>Players: {memoryPlayers.length} / 2</h4>
+                    <h2>MEMORY</h2>
                 </div>
-                <div className='gameThree-mainLobby-container'>
-                </div>
-                    {molePlayers.length < 2 ? 
+                <div className='gameThree-mainLobby-container'></div>
+                <h4>PLAYERS: {memoryPlayers.length} / 2</h4>
+                    {memoryPlayers.length < 2 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
-                <span>Memory Lobby is full</span>}
+                <span>MEMORY LOBBY IS FULL</span>}
             </div>
         </div>
-        <h2>Current Players In Lobby:</h2>
+        <h2>SINGLE PLAYER GAMES:</h2>
+        <div className='gamesContainer'>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>COOKIE CLICKER</h2>
+                </div>
+                <div className='cookieClicker-mainLobby-container'></div> 
+                <Link to="/cookieClickerSingle">
+                <button onClick={handleClick} className='join-button'>Join Game</button>
+                </Link>
+            </div>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>WHACK A MOLE</h2>
+                </div>
+                <div className='gameTwo-mainLobby-container'></div>
+                <Link to="/whackAMoleSingle">
+                <button onClick={handleClick} className='join-button'>Join Game</button>
+                </Link>: 
+            </div>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>MEMORY</h2>
+                </div>
+                <div className='gameThree-mainLobby-container'></div> 
+                <Link to="/memorySingle">
+                <button onClick={handleClick} className='join-button'>Join Game</button>
+                </Link>
+            </div>
+        </div>
+        <h2>CURRENT PLAYERS IN LOBBY:</h2>
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {
                   if(singlePlayer.data().displayName === mainLobbyPlayer.displayName){
@@ -243,7 +265,6 @@ window.onunload = function(){
             })} */}
 
         </div>
-        <button className='logout-button' onClick={()=> handleLogout()}>Logout</button>
     </div>}
     </div>       
   )
