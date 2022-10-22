@@ -215,6 +215,15 @@ window.onunload = function(){
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
+                    <h2>WHACK A MOLE</h2>
+                </div>
+                <div className='gameTwo-mainLobby-container'></div>
+                <Link to="/whackAMoleSingle">
+                <button onClick={handleClick} className='join-button'>Join Game</button>
+                </Link>: 
+            </div>
+            <div className="eachGame">
+                <div className="gameTitle">
                     <h2>MEMORY</h2>
                 </div>
                 <div className='gameThree-mainLobby-container'></div> 
