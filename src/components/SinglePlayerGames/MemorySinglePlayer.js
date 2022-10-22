@@ -1,90 +1,59 @@
-import React, { useContext,useState, useEffect } from 'react'
-import { AuthContext } from "../../context/AuthContext";
-import { doc, setDoc, getDoc, collection, getDocs, updateDoc, deleteDoc } from "firebase/firestore"; 
-import { query, onSnapshot } from "firebase/firestore";
-import { db } from '../../server/firebase';
-import { useNavigate} from "react-router-dom";
+import React, { useEffect } from 'react'
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import img1 from "./images/img1.png"
-import img2 from "./images/img2.png"
-import img3 from "./images/img3.png"
-import img4 from "./images/img4.png"
-import img5 from "./images/img5.png"
-import img6 from "./images/img6.png"
-import img7 from "./images/img7.png"
-import img8 from "./images/img8.png"
+import img1 from "../Memory/images/img1.png"
+import img2 from "../Memory/images/img2.png"
+import img3 from "../Memory/images/img3.png"
+import img4 from "../Memory/images/img4.png"
+import img5 from "../Memory/images/img5.png"
+import img6 from "../Memory/images/img6.png"
+import img7 from "../Memory/images/img7.png"
+import img8 from "../Memory/images/img8.png"
 
-
-const Memory = ({setShowNav}) => {
-    const {currentUser} = useContext(AuthContext)
-    const [player, setPlayer] = useState({});
-    const [gameId, setGameId] = useState("")
-    const [gameOver, setGameOver] = useState(false)
-    const navigate = useNavigate()
-    const [score, setScore] = useState(0)
+const MemorySinglePlayer = () => {
     const question = <FontAwesomeIcon icon="circle-question" />
-
-    useEffect(()=>{
-
-        //to get all players in "player" collection
-        const getSingleUser = async()=>{
-            
-            if(currentUser.displayName){
-                let currentPlayerRef = doc(db,"memoryPlayers",currentUser.uid);
-                let currentPlayerSnap = await getDoc(currentPlayerRef);
-                if (currentPlayerSnap.exists()) {
-                        setPlayer(currentPlayerSnap.data());
-                }
-            }
-        }
-
-        getSingleUser(); 
-        
-    },[currentUser, gameId])
-
-    useEffect(()=>{
-        const getGame = async()=>{
-            let currentGame = false
-            const gamesCollectionRef = collection(db,"memoryGames")
-            const data = await getDocs(gamesCollectionRef)
-            data.docs.map((game) => { 
-                const gameStatus = game.data().gameStatus
-                if(gameStatus){
-                    console.log("GID in getGame", game.data().gid)
-                    preShuffle()
-                    setGameId(game.data().gid)
-                    currentGame = true
-                }
-                return currentGame
-            })
-        }
-        getGame()
-        return () => {
-            console.log('game add/get useEffect FIRED!')
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
 
     let matchedCard = 0
     let cardOne, cardTwo;
     let disableDeck = false
 
-    function preShuffle() {
-        if(matchedCard === 0){
+    
 
-            const cards = document.querySelectorAll(".card")
-            disableDeck = false;
-            cardOne = cardTwo = ""
-            let arr = [img1, img2, img3, img4, img5, img6, img7, img8, img1, img2, img3, img4, img5, img6, img7, img8]
-            arr.sort(() => Math.random() > 0.5 ? 1 : -1)
-            cards.forEach((card, i) => {
-                let imgTag = card.querySelector(".back-view img")
-                console.log(imgTag)
-                imgTag.src = arr[i]
-            });
+    useEffect(()=> {
+        function preShuffle() {
+            if(matchedCard === 0){
+                const cards = document.querySelectorAll(".card")
+                let arr = [img1, img2, img3, img4, img5, img6, img7, img8, img1, img2, img3, img4, img5, img6, img7, img8]
+                arr.sort(() => Math.random() > 0.5 ? 1 : -1)
+                console.log("shuffling")
+                cards.forEach((card, i) => {
+                    let imgTag = card.querySelector(".back-view img")
+                    imgTag.src = arr[i]
+                });
+            }
         }
+
+        preShuffle()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+
+    function shuffleCard() {
+        const cards = document.querySelectorAll(".card")
+        matchedCard = 0;
+        disableDeck = false;
+        cardOne = cardTwo = ""
+        let arr = [img1, img2, img3, img4, img5, img6, img7, img8, img1, img2, img3, img4, img5, img6, img7, img8]
+        arr.sort(() => Math.random() > 0.5 ? 1 : -1)
+        cards.forEach((card, i) => {
+            card.classList.remove("flip")
+            card.classList.remove("complete")
+            let imgTag = card.querySelector(".back-view img")
+            console.log(imgTag)
+            imgTag.src = arr[i]
+        });
     }
+    
 
     const flipCard = (e) => {
         let clickedCard = e.target
@@ -102,18 +71,18 @@ const Memory = ({setShowNav}) => {
        
     }
 
-    const matchCards = async(img1, img2) => {
+    const matchCards = (img1, img2) => {
         if(img1 === img2){
             matchedCard++
-            console.log(matchedCard)
-            const playerRef = doc(db,'memoryPlayers',player.uid);
+            console.log('matchedCard', matchedCard)
+            if(matchedCard === 8) {
+                setTimeout(() => {
+                    return shuffleCard();
+                }, 1000);
+            }
 
             if(!cardOne.classList.contains("complete") && !cardTwo.classList.contains("complete")){
-
-                await updateDoc(playerRef,{points:player.points+=1});
-                console.log("points: ",player.points);
-                setScore(player.points);
-     
+   
                 cardOne.classList.add("complete")
                 cardTwo.classList.add("complete")
                 cardOne = cardTwo = ""
@@ -134,78 +103,12 @@ const Memory = ({setShowNav}) => {
         }, 1200)
     }
 
-    //firebase realtime listening
-    useEffect(()=>{
-
-        const q = query(collection(db, "memoryPlayers"));
-        // where("gid", "==", gameId)
-
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            // console.log('firebase realtime listening')
-            let playersArr = querySnapshot.docs
-            let points = playersArr.map(doc=>doc.data().points)
-
-            if (points.includes(8)) {
-                let index = points.indexOf(8)
-                let winner = playersArr[index].data().displayName
-                // let player2 = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().displayName
-                // let player2Points = playersArr.filter(doc=>doc.data().displayName!==winner)[0].data().points
-                let losersRef = playersArr.filter(doc=>doc.data().displayName!==winner)
-                console.log("losersRef is: ", losersRef)
-                
-                let losers = losersRef.map(loser => loser.data())
-
-                //increment that user's star property by 5! (which is winner)
-                const updateUserStar = async ()=>{
-                    const userRef = doc(db,'users', playersArr[index].data().uid);
-                    let user = await getDoc(userRef);
-                    await updateDoc(userRef,{star:(user.data().star+5)})
-                }
-                if (player.displayName === winner) {                   
-                    updateUserStar()
-                }
-
-                const updateGame = async ()=>{
-                    await setDoc(doc(db, "memoryGames", gameId), {
-                            gid: gameId,
-                            gameStatus: false,
-                            winner,
-                            losers
-                        });
-                        console.log("updateGame FIRED!")
-                        setGameOver(true)
-                }
-                
-                if(losersRef.length === 1){
-                    updateGame()
-                }
-
-                //delete all pleyers in firebase!
-                let uidArr = [...playersArr.map(doc=>doc.data().uid)]
-                uidArr.forEach(async(uid)=>{
-                    await deleteDoc(doc(db, 'memoryPlayers', uid ))
-                })
-                
-            }   
-            console.log("unsubscribe FIRED!")      
-        }); 
-        return () => {
-            unsubscribe()
-            console.log("game update useEffect FIRED!")
-        }
-
-    },[gameId, player.displayName])
-
-    if(gameOver){
-        // navigate('/winnerPage')
-        setShowNav(true)
-        navigate('/memoryWinnerPage', {state:gameId})
-    }
+   
 
   return (
     <div className='memoryWrapper'>
         <h1>MEMORY!</h1>
-        <h2 id="score">Total Pairs Matched: {score}</h2>
+       
     <div className='memory-wrapper'>
         <ul className='cards' onClick={(e)=>{flipCard(e)}}>
             <li className='card'>
@@ -338,8 +241,9 @@ const Memory = ({setShowNav}) => {
             </li>
         </ul>
     </div>
+    <Link to="/"><button >Return to Game Select</button></Link>
     </div>
   )
 }
 
-export default Memory
+export default MemorySinglePlayer
