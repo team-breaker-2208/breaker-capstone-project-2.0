@@ -39,6 +39,10 @@
   animation: mymove 2s;
   background-image: url(https://cdn-icons-png.flaticon.com/512/2665/2665630.png);
 }
+.slide-ready {
+  animation: mymove 2s;
+  background-image: url(https://play-lh.googleusercontent.com/3WmU2VWi9SJDJA_OACS0tQ0TejcmVr91ICmyvyW1hS5SLbQCk9G1_ogYRxLWVbUylQ);
+}
 .set {
   animation: mymove 2s;
   animation-delay: 2s;
@@ -54,6 +58,11 @@
   animation-delay: 2s;
   background-image: url(https://image.winudf.com/v2/image1/Y29tLnNtaWxlcmxlZS5qZXdlbHNfaWNvbl8xNTY2ODkyMjcxXzAzNQ/icon.png?fakeurl=1&h=240&type=webp);
 }
+.slide-set {
+  animation: mymove 2s;
+  animation-delay: 2s;
+  background-image: url(https://blgiftsimports.com/images/Toys-Novelties/Games/TR14162-Smile-Face-Slide-Puzzle.jpg);
+}
 .go {
   animation: mymove 2s;
   animation-delay: 4s;
@@ -68,6 +77,11 @@
   animation: mymove 2s;
   animation-delay: 4s;
   background-image: url('https://www.thegreatapps.com/application/upload/Apps/2018/10/cover-art-animals-memory-game-for-kids-65.png');
+}
+.slide-go {
+  animation: mymove 2s;
+  animation-delay: 4s;
+  background-image: url('https://content.instructables.com/ORIG/FIE/1R9M/ICG28DTQ/FIE1R9MICG28DTQ.jpg?auto=webp');
 }
 @keyframes mymove {
   from {

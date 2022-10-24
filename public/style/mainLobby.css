@@ -162,6 +162,15 @@
   margin: 20px;
   background-image: url("../images/memoryGame.png");
 }
+.gameFour-mainLobby-container {
+  width: 150px;
+  height: 150px;
+  background-image: url("../images/cookie\ background.jpg");
+  background-size: cover;
+  border-radius: 20px;
+  margin: 20px;
+  background-image: url("../images/10.jpg");
+}
 @media only screen and (max-width: 750px) {
   .mainLobby-container .test {
     font-size: 45px;
