@@ -14,11 +14,6 @@ export default function Nav() {
 
     const {currentUser} = useContext(AuthContext);
     const navigate = useNavigate();
-    // const [open,setOpen] = useState(false);
-
-    // const handleOpen = () => {
-    //     setOpen(!open);
-    // }
 
     const handleClick = async() =>{
         await deleteDoc(doc(db, 'whackAMolePlayers', currentUser.uid))
@@ -36,33 +31,6 @@ export default function Nav() {
       }
 
   return (
-    // <div className="navBar">
-    //     <div className="logo">
-    //         <span>BREAKER</span>
-    //     </div>
-
-    //     <div className="nav-right">
-    //         {currentUser? 
-    //             <span>Welcome {currentUser.displayName} !</span>
-    //             : 
-    //             null
-    //         }
-    //         <Link onClick={handleClick} className="nav-link" to="/" ><FontAwesomeIcon icon={faHouse} style={{color:"white"}}/></Link>
-    //         <Link onClick={handleClick} className ="nav-link" to="/chart" ><FontAwesomeIcon icon='chart-simple' style={{color:"white"}}/></Link>
-    //         {currentUser? 
-    //             <Link onClick={handleClick} className="nav-link" to="/Profile"><FontAwesomeIcon icon={faUser} style={{color:"white"}}/></Link>
-    //             : 
-    //             null
-    //         } 
-    //         <a onClick={handleClick} className ="nav-link" href="https://github.com/team-breaker-2208" ><FontAwesomeIcon icon={faGithub} style={{color:"white"}}/></a>   
-    //         {currentUser? 
-    //             <button className='logout-home-button' onClick={()=> handleLogout()}>Logout</button>
-    //             : 
-    //             null
-    //         } 
-    //     </div>
-    // </div>
-
     <div className="navBar">
         <div className="logo">
             <span>BREAKER</span>
