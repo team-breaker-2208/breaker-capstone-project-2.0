@@ -33,7 +33,7 @@ export default function Nav() {
   return (
     <div className="navBar">
         <div className="logo">
-            <span>BREAKER</span>
+            <span className='logo-title'>BREAKER</span>
         </div>
 
         <div className="dropdown">
@@ -60,7 +60,7 @@ export default function Nav() {
                     }
                 </div> 
 
-                <div>
+                <div className="menu-item" >
                     {currentUser? 
                         <span className="links" onClick={()=> handleLogout()}><FontAwesomeIcon icon="sign-out-alt" style={{color:"white"}}/> Logout</span>
                         : 
