@@ -1248,7 +1248,7 @@ body {
   height: 150px;
   width: 400px;
 }
-#board {
+.board {
   width: 360px;
   height: 360px;
   background-color: lightblue;
@@ -1256,7 +1256,7 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-#board img {
+.board img {
   width: 118px;
   height: 118px;
   border: 1px solid #0c67ae;
