@@ -57,7 +57,7 @@ const CookieClickerSingle = () => {
             <Link to="/"><button >Return to Game Select</button></Link>
             </div>
         </div>
-    </>: <div>
+    </>: <div className="winnerSingle">
             <h1>MAX POINTS REACHED!</h1>
             <button onClick={handleRefresh} >Play Again</button>
             <Link to="/"><button >Return to Game Select</button></Link>

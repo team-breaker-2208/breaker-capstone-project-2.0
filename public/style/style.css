@@ -521,7 +521,7 @@ a:visited {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 260px;
   margin: 20px;
 }
 .eachGame h4 {
@@ -552,6 +552,26 @@ a:visited {
   font-weight: lighter;
   font-size: 1.5em;
   text-align: center;
+}
+.eachGame .gameTitle .veryHard {
+  color: red;
+  font-size: 20px;
+}
+.eachGame .gameTitle .easy {
+  color: yellow;
+  font-size: 20px;
+}
+.eachGame .gameTitle .medium {
+  color: orange;
+  font-size: 20px;
+}
+.eachGame .gameTitle .hard {
+  color: darkred;
+  font-size: 20px;
+}
+.eachGame .gameTitle .star {
+  color: #574FC2;
+  font-size: 20px;
 }
 .cookieClicker-mainLobby-container {
   width: 150px;
@@ -650,7 +670,7 @@ a:visited {
   background-size: cover;
   border-radius: 20px;
   margin: 20px;
-  background-image: url("../images/10.jpg");
+  background-image: url("../images//slide\ puzzle\ pic.png");
 }
 @media only screen and (max-width: 750px) {
   .mainLobby-container .test {
@@ -1289,6 +1309,9 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+#board {
+  margin: 40px;
+}
 #board img {
   width: 113px;
   height: 113px;
@@ -1325,4 +1348,18 @@ html {
   text-shadow: 4px 4px black;
   text-align: center;
   font-weight: normal;
+  color: white;
+}
+.winnerSingle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.winnerSingle h1 {
+  margin-bottom: 3em;
+}
+.winnerSingle button {
+  width: 300px;
 }

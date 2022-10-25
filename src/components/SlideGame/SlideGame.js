@@ -164,7 +164,7 @@ const SlideGame = ({setShowNav})=>{
                         setGameOver(true)
                 }
                 
-                if(losersRef.length === 1){
+                if(losersRef.length === 3){
                     updateGame()
                 }
 
@@ -195,14 +195,14 @@ const SlideGame = ({setShowNav})=>{
             <h1>SLIDE GAME</h1>
             <div id="board">
                 <img id="0-0" onClick={handleClick} src={img1} alt='img1'/>
-                <img id="0-2" onClick={handleClick} src={img3} alt='img3'/>
-                <img id="0-1" onClick={handleClick} src={img2} alt='img2'/>
-                <img id="1-0" onClick={handleClick} src={img4} alt='img4'/>
                 <img id="1-1" onClick={handleClick} src={img5} alt='img5'/>
-                <img id="1-2" onClick={handleClick} src={img6} alt='img6'/>
-                <img id="2-0" onClick={handleClick} src={img7} alt='img7'/>
+                <img id="0-2" onClick={handleClick} src={img3} alt='img3'/>
+                <img id="1-0" onClick={handleClick} src={img4} alt='img4'/>
                 <img id="2-1" onClick={handleClick} src={img8} alt='img8'/>
+                <img id="0-1" onClick={handleClick} src={img2} alt='img2'/>
+                <img id="2-0" onClick={handleClick} src={img7} alt='img7'/>
                 <img id="2-2" onClick={handleClick} src={img9} alt='img9'/>
+                <img id="1-2" onClick={handleClick} src={img6} alt='img6'/>
             </div>
             <h1>TURNS: <span id="turns">{count}</span></h1>
 
