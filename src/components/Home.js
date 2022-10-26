@@ -148,7 +148,7 @@ window.onunload = function(){
 
   return (
     <div className='mainLobby-container'>
-        <h1 className='test'>WELCOME TO BREAKER GAMES!</h1>
+        <h1 className='test'><span className='welcome'>WELCOME </span> <span className='welcome'>TO </span><span className='breaker'>BREAKER </span><span className='welcome'>GAMES!</span></h1>
         {/* <h2 className='welcome-user'>WELCOME {mainLobbyPlayer.displayName.toUpperCase()} !</h2> */}
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
