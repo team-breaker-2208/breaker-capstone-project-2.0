@@ -16,9 +16,6 @@ export default function ChatRoom() {
     const [messages,setMessages] = useState([]);
     const [formMessage,setFormMessage] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
     const sendMessage = async(e) => {
         e.preventDefault();
 
@@ -95,7 +92,7 @@ export default function ChatRoom() {
         </div>
 
         <div className="input-form">
-             <form onSubmit={handleSubmit}>
+             <form onSubmit={sendMessage}>
                 <input placeholder=" type here......" value = {formMessage} onChange={(e) => setFormMessage(e.target.value)}/>
                 <span><FontAwesomeIcon icon={faPaperPlane} onClick={sendMessage}/></span>
             </form>
