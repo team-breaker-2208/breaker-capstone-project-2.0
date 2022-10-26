@@ -1,5 +1,3 @@
-
-
 .chatHeader {
     color:white;
     font-size: 40px;
@@ -10,7 +8,7 @@
 .chatRoom {
     // height:600px;
     background-color: rgb(219,236,250);
-    max-width: 700px;
+    // max-width: 700px;
     max-height:600px;
     line-height: 22px;
     padding: 20px;
@@ -26,16 +24,13 @@
     display:flex;
     flex-direction: column;
     background-image: linear-gradient(@cookiebg, @cookieLobbyBorders, @cookiebg);
-    max-width: 700px;
-    max-height:800px;
     line-height: 22px;
-    padding: 2px;
+    padding: 20px;
     border-radius: 25px;
     position: relative;
     color: white;
     text-align: center;
-    box-shadow: 0 0 0.7em 0 black;
-    
+    box-shadow: 0 0 0.7em 0 black;    
 }
 
 .chatRoom::-webkit-scrollbar {
@@ -68,7 +63,7 @@
     display:flex;
     align-items: flex-end;
     .text{
-        background-color: rgb(75, 8, 201);
+        background-color: @cookieLobbyFont;
         padding: 10px 20px;
         border-radius: 8px 0px 8px 8px;
 }
@@ -76,11 +71,11 @@
 
  form span {
     font-size: 24px;
-    color: rgb(3, 134, 177);
+    color: rgb(142, 181, 244);
  }
  
  input {
-    width:500px;
+    width:800px;
     height:44px;
     outline: none;
     font-size: 18px;
