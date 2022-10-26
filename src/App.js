@@ -21,6 +21,7 @@ import MemoryWinnerPage from "./components/Memory/MemoryWinnerPage"
 import CookieClickerSingle from "./components/SinglePlayerGames/CookieClickerSingle"
 import MemorySinglePlayer from "./components/SinglePlayerGames/MemorySinglePlayer";
 import WhackAMoleSingle from "./components/SinglePlayerGames/WhackAMoleSingle";
+import ChatRoom from "./components/ChatRoom";
 
 function App() {
   const currentUser = useContext(AuthContext)
@@ -58,6 +59,7 @@ function App() {
               <Route exact path="memorySingle" element={<MemorySinglePlayer setShowNav={setShowNav} />}/>
               <Route exact path="memoryLobby" element={<MemoryLobby setShowNav={setShowNav} />}/>
               <Route exact path="memoryWinnerPage" element={<MemoryWinnerPage />}/>
+              <Route exact path="chatRoom" element={<ChatRoom />}/>
             </Route>
         </Routes>
       </div>

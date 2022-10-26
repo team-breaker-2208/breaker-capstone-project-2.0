@@ -1253,6 +1253,21 @@ body {
   color: #574FC2;
   font-size: 4em;
 }
+.chatRoom {
+  border: white;
+}
+.message {
+  display: flex;
+  align-items: center;
+}
+.message-sent {
+  flex-direction: row-reverse;
+}
+.message-sent p {
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
 body {
   height: 100%;
   width: 100vw;
