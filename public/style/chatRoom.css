@@ -1,0 +1,59 @@
+.chatHeader {
+  color: white;
+  font-size: 40px;
+  padding: 20px;
+  font-family: "kidGames";
+}
+.chatRoom {
+  background-color: white;
+  max-width: 700px;
+  line-height: 22px;
+  padding: 20px;
+  border-radius: 25px;
+  position: relative;
+  color: black;
+  text-align: center;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  margin: 8px;
+}
+.message .text {
+  background-color: lightblue;
+  border-radius: 0px 8px 8px 8px;
+  padding: 10px 20px;
+}
+.message .time {
+  font-size: 10px;
+}
+.message-sent {
+  align-self: flex-end;
+  display: flex;
+  align-items: flex-end;
+}
+.message-sent .text {
+  background-color: lightblue;
+  padding: 10px 20px;
+  border-radius: 8px 0px 8px 8px;
+}
+form span {
+  font-size: 24px;
+  color: #0386b1;
+}
+input {
+  width: 90%;
+  height: 44px;
+  outline: none;
+  font-size: 18px;
+  color: black;
+  margin-right: 10px;
+  margin-top: 30px;
+  border-radius: 5px;
+  border-color: #0386b1;
+}
+input::placeholder {
+  color: lightgrey;
+}

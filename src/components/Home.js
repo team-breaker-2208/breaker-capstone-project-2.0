@@ -4,7 +4,8 @@ import { useNavigate, Link } from 'react-router-dom'
 import { collection } from "firebase/firestore"; 
 import { query, onSnapshot, setDoc, doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from '../server/firebase';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ChatRoom from './ChatRoom';
 
 
 
@@ -23,31 +24,6 @@ export default function Home() {
     const star = <FontAwesomeIcon icon="star" flip />
     // console.log(currentUser)
     const navigate = useNavigate()
-
-
-    // dummyData
-    // const dummyData=[
-    //     {displayName:"Mike",
-    //     uid:1,
-    //     stars:0
-    //     },
-    //     {displayName:"Jake",
-    //     uid:2,
-    //     stars:5
-    //     },
-    //     {displayName:"Lily",
-    //     uid:3,
-    //     stars:10
-    //     },
-    //     {displayName:"Lily",
-    //     uid:3,
-    //     stars:10
-    //     },
-    //     {displayName:"Lily",
-    //     uid:3,
-    //     stars:10
-    //     },
-    // ]
 
     useEffect(()=> {
         
@@ -281,6 +257,9 @@ window.onunload = function(){
                 </Link>
             </div>
         </div>
+
+        <ChatRoom />               
+
         <h2>CURRENT PLAYERS IN LOBBY:</h2>
         <div className='mainLobby-players-container'>
             {mainLobbyPlayers.map((singlePlayer) => {

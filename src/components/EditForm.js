@@ -37,8 +37,6 @@ export default function EditForm({email,stars,setUser,setClickEdit}) {
 
         if(currentUser.displayName){
                 let currentPlayerRef = doc(db,"users",currentUser.uid);
-                // let currentPlayerSnap = await getDoc(currentPlayerRef);
-                // const stars = currentPlayerSnap.data().star;
                 await updateDoc(currentPlayerRef,{displayName:form.displayName,avatar:form.avatar})
                 setUser({displayName:form.displayName,email:email,stars:stars})
             }
