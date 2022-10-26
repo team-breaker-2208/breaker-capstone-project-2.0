@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState, useContext, useRef} from 'react';
 import { collection } from "firebase/firestore"; 
 import { query, onSnapshot, addDoc, orderBy, limit, serverTimestamp, doc, getDoc  } from "firebase/firestore";
 import { db } from '../server/firebase';
@@ -11,6 +11,7 @@ export default function ChatRoom() {
 
     const {currentUser} = useContext(AuthContext);
     
+    const dummy = useRef();
 
     const [messages,setMessages] = useState([]);
     const [formMessage,setFormMessage] = useState("");
@@ -37,7 +38,7 @@ export default function ChatRoom() {
         }
 
         setFormMessage("");
-
+        dummy.current.scrollIntoView({behavior:"smooth"});
     }
 
       //watching messages in chatRoom
@@ -67,15 +68,7 @@ export default function ChatRoom() {
 
         let date;
         if(createdAt){
-            // time= createdAt.toDate().toLocaleTimeString();
-            // date = createdAt.toDate().toLocaleDateString();
-            // date = moment(date, 'MM/DD/YYYY').fromNow();
-            // time = moment(time, "HH:mm:ss").fromNow();
-            // time= createdAt.toDate();
-            // date = createdAt.toDate();
-            // console.log("date",date);
-            date = moment(createdAt.toDate()).fromNow();
-            console.log("date",date);   
+            date = moment(createdAt.toDate()).fromNow();  
         }
         return(
             <div className="oneMessage">
@@ -98,6 +91,7 @@ export default function ChatRoom() {
                     <ChatMessage key={message.data().createdAt} message={message} />
                 )
             })}
+            <div ref={dummy}></div>
         </div>
 
         <div className="input-form">
