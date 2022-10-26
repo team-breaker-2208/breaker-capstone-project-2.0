@@ -1294,6 +1294,92 @@ body {
   height: 113px;
   border: 1px solid #0c67ae;
 }
+.chatHeader {
+  color: white;
+  font-size: 40px;
+  padding: 20px;
+  font-family: "kidGames";
+}
+.chatRoom {
+  background-color: #dbecfa;
+  max-height: 600px;
+  line-height: 22px;
+  padding: 20px;
+  border-radius: 25px;
+  position: relative;
+  color: black;
+  text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(#3D35A7, #7C72E0, #3D35A7);
+  line-height: 22px;
+  padding: 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 0.7em 0 black;
+}
+.chatRoom::-webkit-scrollbar {
+  display: none;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  margin: 8px;
+}
+.message .text {
+  background-color: #6643a8;
+  border-radius: 0px 8px 8px 8px;
+  padding: 10px 20px;
+  color: white;
+}
+.message .time {
+  font-size: 10px;
+}
+.message-sent {
+  align-self: flex-end;
+  display: flex;
+  align-items: flex-end;
+}
+.message-sent .text {
+  background-color: #574FC2;
+  padding: 10px 20px;
+  border-radius: 8px 0px 8px 8px;
+}
+form span {
+  font-size: 24px;
+  color: #8eb5f4;
+}
+input {
+  width: 800px;
+  height: 44px;
+  outline: none;
+  font-size: 18px;
+  color: black;
+  margin-right: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border-color: #0386b1;
+  margin-bottom: 15px;
+}
+input::placeholder {
+  color: lightgrey;
+}
+@media only screen and (max-width: 750px) {
+  .chatContainer {
+    max-width: 380px;
+  }
+  input {
+    max-width: 320px;
+  }
+}
 body {
   height: 100%;
   width: 100vw;
