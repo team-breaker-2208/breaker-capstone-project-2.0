@@ -1,17 +1,108 @@
-.chatRoom {
-    border:white;
+
+
+.chatHeader {
+    color:white;
+    font-size: 40px;
+    padding:20px;
+    font-family:"kidGames";;
 }
+
+.chatRoom {
+    // height:600px;
+    background-color: rgb(219,236,250);
+    max-width: 700px;
+    max-height:600px;
+    line-height: 22px;
+    padding: 20px;
+    border-radius: 25px;
+    position: relative;
+    color: black;
+    text-align: center;
+    // box-shadow: 0 0 0.7em 0 black;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.chatContainer {
+    display:flex;
+    flex-direction: column;
+    background-image: linear-gradient(@cookiebg, @cookieLobbyBorders, @cookiebg);
+    max-width: 700px;
+    max-height:800px;
+    line-height: 22px;
+    padding: 2px;
+    border-radius: 25px;
+    position: relative;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 0.7em 0 black;
+    
+}
+
+.chatRoom::-webkit-scrollbar {
+    display: none;
+  }
+
 .message {
     display:flex;
+    flex-direction: column;
     align-items: center;
+    align-items: flex-start;
+    margin:8px;
+    
+
+    .text {
+        background-color: rgb(102, 67, 168);
+        border-radius: 0px 8px 8px 8px;
+        padding: 10px 20px;
+        color:white;
+    }
+
+    .time {
+        font-size: 10px;
+    }
 }
+
 
 .message-sent {
-    flex-direction: row-reverse;
+    align-self: flex-end;
+    display:flex;
+    align-items: flex-end;
+    .text{
+        background-color: rgb(75, 8, 201);
+        padding: 10px 20px;
+        border-radius: 8px 0px 8px 8px;
+}
+  }
+
+ form span {
+    font-size: 24px;
+    color: rgb(3, 134, 177);
+ }
+ 
+ input {
+    width:500px;
+    height:44px;
+    outline: none;
+    font-size: 18px;
+    color: black;
+    margin-right: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-color: rgb(3, 134, 177);
+    margin-bottom: 15px;
+
+    &::placeholder {
+        color: lightgrey;
+    }
 }
 
-.message-sent p {
-    color: white;
-    background: #0b93f6;
-    align-self: flex-end;
-  }
+@media only screen and (max-width: 750px) {
+    .chatContainer {
+        max-width: 380px;
+    }
+
+    input {
+        max-width: 320px;
+    }
+ }
+

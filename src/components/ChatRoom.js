@@ -5,6 +5,7 @@ import { db } from '../server/firebase';
 import { AuthContext } from "../context/AuthContext";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+const moment = require('moment');
 
 export default function ChatRoom() {
 
@@ -35,15 +36,13 @@ export default function ChatRoom() {
             });
         }
 
-
         setFormMessage("");
 
     }
 
       //watching messages in chatRoom
     useEffect(()=>{
-        let messageRef = query(collection(db,"messages"),orderBy("createdAt","desc"),limit(10));
-        // messageRef = query(messageRef,orderBy("createdAt"),limit(10));
+        let messageRef = query(collection(db,"messages"),orderBy("createdAt","desc"),limit(20));
         
         //get the message array from db
         const unsubscribe = onSnapshot(messageRef, (querySnapshot) => {
@@ -65,28 +64,33 @@ export default function ChatRoom() {
 
         const {userId, text, displayName,createdAt, avatar} = props.message.data();
         const className = userId === currentUser.uid? "message-sent":"message-received";
-        let time;
+
         let date;
         if(createdAt){
-            time= createdAt.toDate().toLocaleTimeString();
-            date = createdAt.toDate().toLocaleDateString();
+            // time= createdAt.toDate().toLocaleTimeString();
+            // date = createdAt.toDate().toLocaleDateString();
+            // date = moment(date, 'MM/DD/YYYY').fromNow();
+            // time = moment(time, "HH:mm:ss").fromNow();
+            // time= createdAt.toDate();
+            // date = createdAt.toDate();
+            // console.log("date",date);
+            date = moment(createdAt.toDate()).fromNow();
+            console.log("date",date);   
         }
         return(
             <div className="oneMessage">
                 <div key = {props.message} className={`message ${className}`}>
-                    <h3>{displayName}<FontAwesomeIcon icon={avatar} /></h3>
-                    <p>{text}</p>
-                    <p>{date} {time}</p>
+                    <h3><FontAwesomeIcon icon={avatar} /> {displayName}</h3>
+                    <p className="text">{text}</p>
+                    <p className="time">{date} </p>
                 </div>
             </div>
         )
     }
- 
-
 
   return (
-    <>
-        <h2>ChatRoom</h2>
+    <div className="chatContainer">
+        <h2 className="chatHeader">CHAT ROOM</h2>
         <div className="chatRoom">
 
             {messages && messages.map((message)=>{
@@ -94,13 +98,15 @@ export default function ChatRoom() {
                     <ChatMessage key={message.data().createdAt} message={message} />
                 )
             })}
-
-            <form onSubmit={handleSubmit}>
-                <input value = {formMessage} onChange={(e) => setFormMessage(e.target.value)}/>
-                <FontAwesomeIcon icon={faPaperPlane} onClick={sendMessage}/>
-            </form>
-
         </div>
-    </>
+
+        <div className="input-form">
+             <form onSubmit={handleSubmit}>
+                <input placeholder=" type here......" value = {formMessage} onChange={(e) => setFormMessage(e.target.value)}/>
+                <span><FontAwesomeIcon icon={faPaperPlane} onClick={sendMessage}/></span>
+            </form>
+        </div>
+
+    </div>
   )
 }
