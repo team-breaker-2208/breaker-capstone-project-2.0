@@ -15,6 +15,7 @@ export default function Home() {
     const [cookiePlayers, setCookiePlayers] = useState([]);
     const [molePlayers, setMolePlayers] =useState([])
     const [memoryPlayers, setMemoryPlayers] =useState([])
+    const [slideGamePlayers, setSlideGamePlayers] =useState([])
     const [mainLobbyPlayers, setMainLobbyPlayers] = useState([]);
     const [mainLobbyPlayer, setMainLobbyPlayer] = useState({})
     const [mainLobbyPlayerId, setMainLobbyPlayerId] = useState("")
@@ -104,6 +105,19 @@ export default function Home() {
             unsubscribe();
         }
     },[])
+
+        //watching number of players in Slide Game Lobby
+        useEffect(()=>{
+            const qPlayers = query(collection(db, "slideGamePlayers"));
+            const unsubscribe = onSnapshot(qPlayers, (querySnapshot) => {
+                let playersArr = querySnapshot.docs;
+                setSlideGamePlayers(playersArr);
+            });
+            
+            return()=>{
+                unsubscribe();
+            }
+        },[])
     
     //watching number of players in Main Lobby
     useEffect(()=>{
@@ -177,6 +191,18 @@ window.onunload = function(){
                     </Link>: 
                 <span>MEMORY LOBBY IS FULL</span>}
             </div>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>SLIDE GAME</h2>
+                </div>
+                <div className='gameFour-mainLobby-container'></div>
+                <h4>PLAYERS: {slideGamePlayers.length} / 2</h4>
+                    {slideGamePlayers.length < 2 ? 
+                    <Link to="/slideGameLobby">
+                    <button className='join-button'>Join Game</button>
+                    </Link>: 
+                <span>SLIDE GAME LOBBY IS FULL</span>}
+            </div>
         </div>
         <h2>SINGLE PLAYER GAMES:</h2>
         <div className='gamesContainer'>
@@ -204,6 +230,15 @@ window.onunload = function(){
                 </div>
                 <div className='gameThree-mainLobby-container'></div> 
                 <Link to="/memorySingle">
+                <button onClick={handleClick} className='join-button'>Join Game</button>
+                </Link>
+            </div>
+            <div className="eachGame">
+                <div className="gameTitle">
+                    <h2>SLIDE GAME</h2>
+                </div>
+                <div className='gameFour-mainLobby-container'></div> 
+                <Link to="/slideGameSingle">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>
             </div>

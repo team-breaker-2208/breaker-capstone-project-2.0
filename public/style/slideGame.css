@@ -1,0 +1,18 @@
+#title {
+  height: 150px;
+  width: 400px;
+}
+#board {
+  width: 359px;
+  height: 360px;
+  background-color: lightblue;
+  border: 10px solid #0c67ae;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+#board img {
+  width: 113px;
+  height: 113px;
+  border: 1px solid #0c67ae;
+}

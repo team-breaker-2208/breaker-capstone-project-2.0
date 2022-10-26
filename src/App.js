@@ -14,7 +14,10 @@ import WhackAMole from "./components/WhackAMole/WhackAMole";
 import WhackAMoleLobby from './components/WhackAMole/WhackAMoleLobby';
 import WhackAMoleWinnerPage from './components/WhackAMole/WhackAMoleWinnerPage';
 import Chart from './components/Chart'
-import SlideGame from './components/SlideGame/SlideGame.js'
+import SlideGameSingle from './components/SinglePlayerGames/SlideGameSingle.js'
+import SlideGameLobby from "./components/SlideGame/SlideGameLobby.js";
+import SlideGame from "./components/SlideGame/SlideGame";
+import SlideGameWinnerPage from "./components/SlideGame/SlideGameWinnerPage";
 import Memory  from "./components/Memory/Memory"
 import MemoryLobby from "./components/Memory/MemoryLobby"
 import MemoryWinnerPage from "./components/Memory/MemoryWinnerPage"
@@ -54,7 +57,10 @@ function App() {
               <Route exact path="whackAMoleSingle" element={<WhackAMoleSingle setShowNav={setShowNav} />}/>
               <Route exact path="whackAMoleWinnerPage" element={<WhackAMoleWinnerPage/>}/>
               <Route exact path="chart" element={<Chart/>}/>
+              <Route exact path="slideGameSingle" element={<SlideGameSingle setShowNav={setShowNav} />}/>
               <Route exact path="slideGame" element={<SlideGame setShowNav={setShowNav} />}/>
+              <Route exact path="slideGameLobby" element={<SlideGameLobby setShowNav={setShowNav} />}/>
+              <Route exact path="slideGameWinner" element={<SlideGameWinnerPage />}/>
               <Route exact path="memory" element={<Memory setShowNav={setShowNav} />}/>
               <Route exact path="memorySingle" element={<MemorySinglePlayer setShowNav={setShowNav} />}/>
               <Route exact path="memoryLobby" element={<MemoryLobby setShowNav={setShowNav} />}/>
