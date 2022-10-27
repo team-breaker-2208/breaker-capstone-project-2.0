@@ -49,7 +49,6 @@ export default function Home() {
           setMainLobbyPlayerId(currentPlayerSnap.data().uid);
           setMainLobbyPlayer(currentPlayerSnap.data())
           const displayName = currentPlayerSnap.data().displayName
-          console.log(avatar)
           
           await setDoc(doc(db, "MainLobbyPlayer", currentUser.uid),{
                       uid: currentUser.uid,

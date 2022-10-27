@@ -6,6 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const moment = require('moment');
+const Filter =  require('bad-words');
 
 export default function ChatRoom() {
 
@@ -13,12 +14,11 @@ export default function ChatRoom() {
     
     const dummy = useRef();
 
+    const filter = new Filter();
+
     const [messages,setMessages] = useState([]);
     const [formMessage,setFormMessage] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
     const sendMessage = async(e) => {
         e.preventDefault();
 
@@ -30,7 +30,8 @@ export default function ChatRoom() {
             const avatar = currentPlayerSnap.data().avatar
             await addDoc(collection(db, "messages"),{
                 userId:currentUser.uid,
-                text:formMessage,
+                // text:formMessage,
+                text:filter.clean(formMessage),
                 createdAt: serverTimestamp(),
                 displayName:currentUser.displayName,
                 avatar:avatar
@@ -43,7 +44,7 @@ export default function ChatRoom() {
 
       //watching messages in chatRoom
     useEffect(()=>{
-        let messageRef = query(collection(db,"messages"),orderBy("createdAt","desc"),limit(20));
+        let messageRef = query(collection(db,"messages"),orderBy("createdAt","desc"),limit(50));
         
         //get the message array from db
         const unsubscribe = onSnapshot(messageRef, (querySnapshot) => {
@@ -95,7 +96,7 @@ export default function ChatRoom() {
         </div>
 
         <div className="input-form">
-             <form onSubmit={handleSubmit}>
+             <form onSubmit={sendMessage}>
                 <input placeholder=" type here......" value = {formMessage} onChange={(e) => setFormMessage(e.target.value)}/>
                 <span><FontAwesomeIcon icon={faPaperPlane} onClick={sendMessage}/></span>
             </form>
