@@ -345,6 +345,12 @@ form.form button {
   align-self: center;
   margin-bottom: 20px;
 }
+form.form input {
+  max-width: 464px;
+}
+form.form div.select-edit {
+  width: 350px;
+}
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -408,16 +414,22 @@ a:visited {
   .login-container .form {
     gap: 5px;
   }
-  .login-container input {
+  .login-container .form input {
+    max-width: 300px;
+  }
+  .login-container .form .avatar-selector {
+    width: 300px;
+  }
+  .login-container .form div.select {
+    width: 300px;
+  }
+  input {
     height: 40px;
     margin-bottom: 15px;
     font-size: 20px;
   }
-  div.select {
-    max-width: 300px;
-  }
-  .avatar-selector {
-    max-width: 300px;
+  select {
+    width: 300px;
   }
 }
 .lobbyContainer {
@@ -488,6 +500,9 @@ a:visited {
   }
   a button {
     max-width: 300px;
+  }
+  #root .navBar {
+    height: 190px;
   }
 }
 .breaker {
@@ -770,6 +785,17 @@ a:visited {
     font-size: 10px;
   }
   .gameTwo-mainLobby-container h2 {
+    margin: 5px;
+  }
+  .gameFour-mainLobby-container {
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+  }
+  .gameFour-mainLobby-container .join-button {
+    font-size: 10px;
+  }
+  .gameFour-mainLobby-container h2 {
     margin: 5px;
   }
 }
@@ -1171,8 +1197,36 @@ a:visited {
   height: 40px;
   border-radius: 5px;
 }
-.editProfile .select {
+.editProfile .avatar-selector-edit {
+  max-width: 350px;
+}
+.editProfile .select-edit {
+  width: 350px;
+}
+.editProfile .select-edit {
+  position: relative;
+  display: flex;
+  height: 3em;
+  line-height: 3;
+  background: #072A41;
+  overflow: hidden;
+  border-radius: 0.25em;
+  justify-content: center;
   width: 300px;
+}
+.select-edit::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #175075;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+}
+.select-edit:hover::after {
+  color: #7C72E0;
 }
 @media only screen and (max-width: 750px) {
   .profile {
@@ -1185,10 +1239,13 @@ a:visited {
   .editProfile button {
     font-size: 15px;
   }
-  div.select {
+  .form-item input {
     max-width: 200px;
   }
-  .avatar-selector {
+  div.select-edit {
+    max-width: 200px;
+  }
+  .avatar-selector-edit {
     max-width: 200px;
   }
 }

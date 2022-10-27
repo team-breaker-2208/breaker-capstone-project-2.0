@@ -280,4 +280,15 @@
   .gameTwo-mainLobby-container h2 {
     margin: 5px;
   }
+  .gameFour-mainLobby-container {
+    height: 80px;
+    width: 80px;
+    border-radius: 1px;
+  }
+  .gameFour-mainLobby-container .join-button {
+    font-size: 10px;
+  }
+  .gameFour-mainLobby-container h2 {
+    margin: 5px;
+  }
 }

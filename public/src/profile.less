@@ -50,10 +50,41 @@
         }
     }
 
-    .select {
-        width:300px;
+    .avatar-selector-edit{
+        max-width: 350px;
     }
+
+    .select-edit {
+        width:350px;
+    }
+
+    .select-edit {
+        position: relative;
+        display: flex;
+        height: 3em;
+        line-height: 3;
+        background: @Players;
+        overflow: hidden;
+        border-radius: .25em;
+        justify-content: center;
+        width: 300px;
+      }
 }
+.select-edit::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: @User;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+  }
+
+.select-edit:hover::after {
+    color: @cookieLobbyBorders;
+  }
 
 @media only screen and (max-width: 750px){
     .profile{
@@ -69,11 +100,17 @@
         
     }
     
-    div.select{
+    .form-item{
+        input{
+            max-width: 200px;
+        }
+    }
+
+    div.select-edit{
         max-width: 200px;
       }
     
-      .avatar-selector{
+      .avatar-selector-edit{
         max-width: 200px;
       }
 

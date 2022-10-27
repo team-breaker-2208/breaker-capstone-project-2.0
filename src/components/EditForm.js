@@ -54,8 +54,8 @@ export default function EditForm({email,stars,setUser,setClickEdit}) {
                 <input type="text" value={form.displayName || ""} onChange={handleChange("displayName")} /> 
             </div>
 
-            <div className='select'>
-                      <select className='avatar-selector' value={form.avatar || ""} onChange={handleChange("avatar")} >
+            <div className='select-edit'>
+                      <select className='avatar-selector-edit' value={form.avatar || ""} onChange={handleChange("avatar")} >
                         <option value="" disabled>Please Choose an Avatar</option>
                         <option value="cat" >Cat <FontAwesomeIcon icon="cat" /></option>
                         <option value="dog" >Dog <FontAwesomeIcon icon="dog" /></option>
