@@ -176,7 +176,7 @@ const Memory = ({setShowNav}) => {
                         setGameOver(true)
                 }
                 
-                if(losersRef.length === 1){
+                if(losersRef.length === 3){
                     updateGame()
                 }
 

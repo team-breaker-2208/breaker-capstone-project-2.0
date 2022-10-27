@@ -147,7 +147,7 @@ window.onunload = function(){
 
   return (
     <div className='mainLobby-container'>
-        <h1 className='test'>WELCOME TO BREAKER GAMES!</h1>
+        <h1 className='test'><span className='welcome'>WELCOME </span> <span className='welcome'>TO </span><span className='breaker'>BREAKER </span><span className='welcome'>GAMES!</span></h1>
         {/* <h2 className='welcome-user'>WELCOME {mainLobbyPlayer.displayName.toUpperCase()} !</h2> */}
         {/* <span>{currentUser.displayName}</span> */}
         {loading ?<div>Loading...</div> : 
@@ -157,10 +157,13 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>COOKIE CLICKER</h2>
+                    <h4 className='difficulty'>DIFFUCULTY: </h4>    
+                    <span className='easy'>EASY</span>
+                    <h4 className='star-reward'>STAR REWARD: 5 <span className='star'>{star}</span> </h4>
                 </div>
                 <div className='cookieClicker-mainLobby-container'></div>
-                <h4>PLAYERS: {cookiePlayers.length} / 2</h4>
-                {cookiePlayers.length < 2 ? 
+                <h4>PLAYERS: {cookiePlayers.length} / 4</h4>
+                {cookiePlayers.length < 4 ? 
                 <Link to="/CookieLobby">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
                 </Link>: 
@@ -169,10 +172,14 @@ window.onunload = function(){
             <div className="eachGame">
                 <div className="gameTitle">
                     <h2>WHACK A MOLE</h2>
+                    <h4 className='difficulty'>DIFFUCULTY: </h4>    
+                    <span className='medium'>MEDIUM</span>
+                    <h4 className='star-reward'>STAR REWARD: 10 <span className='star'>{star}</span> </h4>
+                    
                 </div>
                 <div className='gameTwo-mainLobby-container'></div>
-                    <h4>PLAYERS: {molePlayers.length} / 2</h4>
-                    {molePlayers.length < 2 ? 
+                    <h4>PLAYERS: {molePlayers.length} / 4</h4>
+                    {molePlayers.length < 4 ? 
                     <Link to="/whackAMoleLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
@@ -180,11 +187,14 @@ window.onunload = function(){
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>MEMORY</h2>
+                    <h2>MEMORY GAME</h2>
+                    <h4 className='difficulty'>DIFFUCULTY: </h4>    
+                    <span className='hard'>HARD</span>
+                    <h4 className='star-reward'>STAR REWARD: 15 <span className='star'>{star}</span> </h4>
                 </div>
                 <div className='gameThree-mainLobby-container'></div>
-                <h4>PLAYERS: {memoryPlayers.length} / 2</h4>
-                    {memoryPlayers.length < 2 ? 
+                <h4>PLAYERS: {memoryPlayers.length} / 4</h4>
+                    {memoryPlayers.length < 4 ? 
                     <Link to="/memoryLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
@@ -192,11 +202,15 @@ window.onunload = function(){
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>SLIDE GAME</h2>
+                    <h2>SLIDE PUZZLE GAME</h2>
+                    <h4 className='difficulty'>DIFFUCULTY: </h4>    
+                    <span className='veryHard'>VERY HARD</span>
+                    <h4 className='star-reward'>STAR REWARD: 20 <span className='star'>{star}</span> </h4>
+                    
                 </div>
                 <div className='gameFour-mainLobby-container'></div>
-                <h4>PLAYERS: {slideGamePlayers.length} / 2</h4>
-                    {slideGamePlayers.length < 2 ? 
+                <h4>PLAYERS: {slideGamePlayers.length} / 4</h4>
+                    {slideGamePlayers.length < 4 ? 
                     <Link to="/slideGameLobby">
                     <button className='join-button'>Join Game</button>
                     </Link>: 
@@ -225,7 +239,7 @@ window.onunload = function(){
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>MEMORY</h2>
+                    <h2>MEMORY GAME</h2>
                 </div>
                 <div className='gameThree-mainLobby-container'></div> 
                 <Link to="/memorySingle">
@@ -234,7 +248,7 @@ window.onunload = function(){
             </div>
             <div className="eachGame">
                 <div className="gameTitle">
-                    <h2>SLIDE GAME</h2>
+                    <h2>SLIDE PUZZLE GAME</h2>
                 </div>
                 <div className='gameFour-mainLobby-container'></div> 
                 <Link to="/slideGameSingle">
@@ -266,15 +280,6 @@ window.onunload = function(){
                       </div>
                     )
             })}
-
-            {/* {dummyData.map((singlePlayer)=>{
-                return(
-                    <div key={singlePlayer.uid} className="main-lobby-player">
-                        <h3>{singlePlayer.displayName}</h3>
-                        <h4>{singlePlayer.stars} Stars</h4>
-                    </div>
-                )
-            })} */}
 
         </div>
     </div>}

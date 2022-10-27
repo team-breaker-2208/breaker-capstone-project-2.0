@@ -1,11 +1,8 @@
 import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
-// import { onAuthStateChanged } from "firebase/auth";
-// import { ref } from "firebase/storage";
 import { doc, setDoc, getDoc, collection, getDocs, addDoc, deleteDoc } from "firebase/firestore"; 
 import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../../server/firebase';
-// import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -34,7 +31,6 @@ const WhackAMoleLobby = ({setShowNav}) => {
                 }
                 return currentGame
             })
-            // console.log('get games runs!')
 
             if(currentGame === false ){
                 const addGame = async()=>{
@@ -59,8 +55,6 @@ const WhackAMoleLobby = ({setShowNav}) => {
         }
     }, [])  
 
- 
-    
     //adding players to whackAMoleGames lobby
     useEffect(()=>{
   
@@ -97,13 +91,8 @@ const WhackAMoleLobby = ({setShowNav}) => {
         }
         setLoading(true);
 
-        // setTimeout(()=>{
-        //     console.log("loading complete")
         getSinglePlayer(); 
         setLoading(false);
-        // }, 5000);
-        
-        // console.log("now loading")
     },[currentUser, gameId])
     
       
@@ -135,7 +124,7 @@ const WhackAMoleLobby = ({setShowNav}) => {
         await deleteDoc(doc(db, 'whackAMolePlayers', player.uid))
     }
 
-    if (players.length === 2){
+    if (players.length === 4){
         setShowNav(false)
         setTimeout(()=>{
             navigate("/whackAMole");
@@ -154,7 +143,7 @@ const WhackAMoleLobby = ({setShowNav}) => {
     <>
     <h1 className="welcome">WELCOME TO WHACK A MOLE LOBBY!</h1>
     <div className="lobbyContainer">
-        <h2 className="infoDiv">LOBBY STATUS: {players.length}/2 PLAYERS</h2>
+        <h2 className="infoDiv">LOBBY STATUS: {players.length}/4 PLAYERS</h2>
         {loading ?<div>Loading...</div> : <div className="PlayersContainer">
             {players.map((singlePlayer) => {
                 return (
@@ -167,7 +156,7 @@ const WhackAMoleLobby = ({setShowNav}) => {
         
         
         </div>}
-        <div className="infoDiv">WAITING ON {2 - players.length} MORE</div>         
+        <div className="infoDiv">WAITING ON {4 - players.length} MORE</div>         
     </div>
     <Link to="/"><button onClick={()=>handleClick(player)}>Return to Game Select</button></Link>
     </>

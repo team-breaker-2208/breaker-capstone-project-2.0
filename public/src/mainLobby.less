@@ -1,5 +1,34 @@
 @import './colors.less';
 
+.breaker{
+  font-family: 'kidGames';
+  font-size: 1em;
+  text-shadow: 3px 3px white;
+  color: @cookieLobbyFont;
+  margin:10px;
+  -webkit-text-stroke: 2px rgb(62, 7, 129);
+}
+.BREAKER{
+  font-family: 'kidGames';
+  font-size: 8em;
+  text-shadow: 3px 3px white;
+  color: @cookieLobbyFont;
+  margin:10px;
+  -webkit-text-stroke: 2px rgb(62, 7, 129);
+  margin-top: 100px;
+}
+
+.welcome{
+    font-family: "kidGames";
+    text-shadow: 4px 4px black;
+    font-weight: normal;
+    color: white;
+    margin: 10px;
+}
+.test{
+  margin-left: 10px;
+}
+
 .mainLobby-container {
   display: flex;
   justify-content: center;
@@ -15,6 +44,9 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 50px;
     margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   h2 {
@@ -47,7 +79,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 260px;
   margin: 20px;
 
   h4 {
@@ -81,7 +113,26 @@
       font-size: 1.5em;
       text-align: center;
     }
-
+    .veryHard{
+      color: red;
+      font-size: 20px;
+    }
+    .easy{
+      color: yellow;
+      font-size: 20px;
+    }
+    .medium{
+      color: orange;
+      font-size: 20px;
+    }
+    .hard{
+      color: darkred;
+      font-size: 20px;
+    }
+    .star{
+      color: @cookieLobbyFont;
+      font-size: 20px;
+    }
   }
 }
 
@@ -167,7 +218,7 @@
 
 .gameFour-mainLobby-container {
   .cookieClicker-mainLobby-container;
-  background-image: url("../images/10.jpg");
+  background-image: url("../images//slide\ puzzle\ pic.png");
 }
 
 @media only screen and (max-width: 750px) {

@@ -1,10 +1,16 @@
 #whack-a-mole {
-    background-color: darkolivegreen;
-    border: solid 20px #000;
+    background-color: @mainLobbyUser;
+    border: solid 20px @mainLobbyBorders;
     padding: 20px;
     width: 440px;
     display: flex;
     flex-wrap: wrap;
+    cursor: url("../images/whackAMole/hammer.png"), auto;
+    border-radius: 10px;
+    box-shadow: 0 0 0.7em 0 black;
+}
+#whack-a-mole:active {
+    cursor: url("../images/whackAMole/hammer\ slam.png"), auto;
 }
 
 .hole {
@@ -16,11 +22,11 @@
 }
 
 .mole {
-    background-image: url("https://i.ebayimg.com/images/g/miwAAOSw6GVjTNc~/s-l500.png");
+    background-image: url("../images/whackAMole/mole.jpg");
   }
 
 .hit{
-    background-image: url("https://studio.code.org/v3/assets/o7BkGtOAPgv4W1PcGfEY_zg3RZBXqekP7ovkgKtrYx0/pic5abfb8c76243f4_512x-_51645367.png");
+    background-image: url("../images/whackAMole/angry\ mole.jpg");
 }
 
 @media screen and (max-width: 700px) {

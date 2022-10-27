@@ -11,6 +11,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+#board {
+  margin: 40px;
+}
 #board img {
   width: 113px;
   height: 113px;
