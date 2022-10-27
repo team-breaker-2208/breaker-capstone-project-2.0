@@ -1379,6 +1379,9 @@ input::placeholder {
   input {
     max-width: 320px;
   }
+  .chatHeader {
+    font-size: 24px;
+  }
 }
 body {
   height: 100%;

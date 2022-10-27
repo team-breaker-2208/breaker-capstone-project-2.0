@@ -6,12 +6,15 @@ import { AuthContext } from "../context/AuthContext";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const moment = require('moment');
+const Filter =  require('bad-words');
 
 export default function ChatRoom() {
 
     const {currentUser} = useContext(AuthContext);
     
     const dummy = useRef();
+
+    const filter = new Filter();
 
     const [messages,setMessages] = useState([]);
     const [formMessage,setFormMessage] = useState("");
@@ -27,7 +30,8 @@ export default function ChatRoom() {
             const avatar = currentPlayerSnap.data().avatar
             await addDoc(collection(db, "messages"),{
                 userId:currentUser.uid,
-                text:formMessage,
+                // text:formMessage,
+                text:filter.clean(formMessage),
                 createdAt: serverTimestamp(),
                 displayName:currentUser.displayName,
                 avatar:avatar
@@ -40,7 +44,7 @@ export default function ChatRoom() {
 
       //watching messages in chatRoom
     useEffect(()=>{
-        let messageRef = query(collection(db,"messages"),orderBy("createdAt","desc"),limit(20));
+        let messageRef = query(collection(db,"messages"),orderBy("createdAt","desc"),limit(50));
         
         //get the message array from db
         const unsubscribe = onSnapshot(messageRef, (querySnapshot) => {
