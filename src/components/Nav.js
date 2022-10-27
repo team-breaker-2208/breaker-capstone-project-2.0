@@ -33,7 +33,7 @@ export default function Nav() {
   return (
     <div className="navBar">
         <div className="logo">
-            <span className='logo-title'>BREAKER</span>
+            <Link to="/" onClick={handleClick}><span className='logo-title'>BREAKER</span></Link>
         </div>
 
         <div className="dropdown">

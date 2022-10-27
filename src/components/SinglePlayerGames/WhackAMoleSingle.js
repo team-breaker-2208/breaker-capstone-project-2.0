@@ -33,7 +33,7 @@ const WhackAMoleSingle = ()=>{
     }
 
     return(
-        score !== 5  ? 
+        score !== 15  ? 
         <> 
             <h1>WHACK A MOLE!</h1>
             <h1 id="score">{score}</h1>

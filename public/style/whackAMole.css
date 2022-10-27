@@ -14,10 +14,10 @@
   margin: 5px;
 }
 .mole {
-  background-image: url("https://i.ebayimg.com/images/g/miwAAOSw6GVjTNc~/s-l500.png");
+  background-image: url("../images/whackAMole/mole.jpg");
 }
 .hit {
-  background-image: url("https://studio.code.org/v3/assets/o7BkGtOAPgv4W1PcGfEY_zg3RZBXqekP7ovkgKtrYx0/pic5abfb8c76243f4_512x-_51645367.png");
+  background-image: url("../images/whackAMole/angry\ mole.jpg");
 }
 @media screen and (max-width: 700px) {
   #whack-a-mole {

@@ -1,11 +1,8 @@
 import React, { useContext,useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
-// import { onAuthStateChanged } from "firebase/auth";
-// import { ref } from "firebase/storage";
 import { doc, setDoc, getDoc, collection, getDocs, addDoc, deleteDoc } from "firebase/firestore"; 
 import { query, onSnapshot } from "firebase/firestore";
 import { db } from '../../server/firebase';
-// import {onDisconnect} from "firebase/database";
 import { Link , useNavigate} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -34,7 +31,6 @@ const WhackAMoleLobby = ({setShowNav}) => {
                 }
                 return currentGame
             })
-            // console.log('get games runs!')
 
             if(currentGame === false ){
                 const addGame = async()=>{
@@ -59,8 +55,6 @@ const WhackAMoleLobby = ({setShowNav}) => {
         }
     }, [])  
 
- 
-    
     //adding players to whackAMoleGames lobby
     useEffect(()=>{
   
@@ -97,13 +91,8 @@ const WhackAMoleLobby = ({setShowNav}) => {
         }
         setLoading(true);
 
-        // setTimeout(()=>{
-        //     console.log("loading complete")
         getSinglePlayer(); 
         setLoading(false);
-        // }, 5000);
-        
-        // console.log("now loading")
     },[currentUser, gameId])
     
       
