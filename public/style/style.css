@@ -396,7 +396,8 @@ select::-ms-expand {
 .select:hover::after {
   color: #7C72E0;
 }
-a:visited {
+a:visited,
+a:link {
   color: white;
 }
 @media only screen and (max-width: 750px) {
@@ -458,12 +459,13 @@ a:visited {
   margin: 40px;
 }
 .PlayersContainer {
-  height: 20vh;
+  height: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 40px;
   gap: 1em;
+  margin-bottom: 40px;
 }
 .players {
   display: flex;
@@ -1403,9 +1405,19 @@ body {
   color: #574FC2;
   font-size: 4em;
 }
+.slide-game-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 #title {
   height: 150px;
   width: 400px;
+  text-align: center;
+}
+#turns {
+  font-family: "kidGames";
 }
 #board {
   width: 359px;

@@ -235,7 +235,7 @@ window.onunload = function(){
                 <div className='gameTwo-mainLobby-container'></div>
                 <Link to="/whackAMoleSingle">
                 <button onClick={handleClick} className='join-button'>Join Game</button>
-                </Link>: 
+                </Link> 
             </div>
             <div className="eachGame">
                 <div className="gameTitle">

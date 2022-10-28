@@ -73,7 +73,7 @@ const SlideGameSingle = ()=>{
 
     return (
         !gameWin ?
-            <div>
+            <div className='slide-game-container'>
                     <h1>SLIDE GAME</h1>
                     {/* <div id="board">
                         <img id="0-0" onClick={handleClick} src={img1} alt='img1'/>
